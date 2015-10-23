@@ -1,0 +1,22 @@
+.frosty{
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+}
+
+.bowling{
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+}
+
+.container{
+	padding-top: 25px;
+}
+
+/* body{
+	background:#00FFFF!important;
+} */
+	
