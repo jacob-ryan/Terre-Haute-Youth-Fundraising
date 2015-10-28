@@ -194,8 +194,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="site\bowling_signup.html" />
+    <Content Include="site\company_signup.html" />
+    <Content Include="site\header.html" />
     <Content Include="site\index.html" />
     <Content Include="site\js\index.js" />
+    <Content Include="site\signup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
