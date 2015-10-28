@@ -12,11 +12,30 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <style>
-.navbar-inverse .navbar-nav>li>a {
-    color: #9B30FF;
+.navbar-brand {
+    padding: 1px 0px;
 }
-.navbar-inverse .navbar-brand {
-    color: #9B30FF;
+.navbar-fixed-top {
+    background-color: #7F3F98;
+}
+.navbar .navbar-nav>li>a {
+    color: #000000;
+    font-weight: bold;
+}
+.navbar .navbar-brand {
+    color: #000000;
+    font-weight: bold;
+}
+.dropdown {
+	padding-top: 15px;
+	padding-left: 15px;
+}
+.dropdown-menu {
+	background-color: #7F3F98;
+}
+.dropdown-menu>li>a {
+	color: #000000;
+    font-weight: bold;
 }
 body {
     padding-top: 50px; 
@@ -24,21 +43,31 @@ body {
 </style>
 </head>
 <body>				
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">THYF</a>
+				
+				<a class="navbar-brand" href="#"><img src="BBBS_logo.png" alt="Big Brothers Big Sisters of Vigo Country" style="width:75px;height:49px;"></a>
+				
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<li><a id="signin-link" href="#">Sign-in</a></li>
 					<li><a id="home-link" href="#">Home</a></li>
-					<li><a id="home-link" href="splash.html">Fundraising Pages</a></li>
+					<li><a id="fund-link" class="dropdown" href="#" data-toggle="dropdown"> 
+							Fundraising Pages<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+    						<li><a id="frosty-link" href="#">Frosty 5K</a></li>
+							<li><a id="bowl-link" href="#">Bowling for Kids</a></li>
+ 						</ul>	
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a id="home-link" href="#">Donate Now</a></li>
+					<li><a id="donate-link" href="#">Donate Now</a></li>
 					<li><a id="contact-us-link" href="#">Contact Us</a></li>
 				</ul>
 			</div>
