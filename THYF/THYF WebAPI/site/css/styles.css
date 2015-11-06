@@ -1,0 +1,80 @@
+﻿body
+{
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.hide2
+{
+	display: none;
+}
+
+.center-vertically
+{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.loading-overlay, .lost-connection-overlay
+{
+	background-color: rgba(255, 255, 255, 0.20);
+	display: table;
+	z-index: 10000;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.loading-background, .lost-connection-background
+{
+	border: 1px solid black;
+	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.75);
+	background-color: white;
+	width: 280px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.lost-connection-overlay
+{
+	z-index: 10001;
+}
+
+.lost-connection-background
+{
+	width: 400px;
+}
+
+.error-overlay
+{
+	z-index: 10003;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	border: 1px solid black;
+	border-radius: 0px;
+	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.75);
+	background: linear-gradient(to bottom, #FF9999 0px, #FFFFFF 192px);
+	width: 500px;
+	margin-left: -250px;
+	padding: 20px;
+	transition-property: bottom;
+	transition-duration: 1s;
+	transition-timing-function: ease;
+}
+
+error-overlay h3, .lost-connection-background h3
+{
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.error-details-text
+{
+	margin-top: 20px;
+	overflow: auto;
+}
