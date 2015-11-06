@@ -195,11 +195,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="site\footer.html" />
+    <Content Include="site\img\BBBS_logo.png" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\company_signup.html" />
+    <Content Include="site\css\styles.css" />
     <Content Include="site\header.html" />
+    <Content Include="site\codeSpike.html" />
+    <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
-    <Content Include="site\js\index.js" />
+    <Content Include="site\js\codeSpike.js" />
+    <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
+    <Content Include="site\js\plugins\moment.min.js" />
+    <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\signup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -253,9 +261,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>58239</DevelopmentServerPort>
+          <DevelopmentServerPort>8888</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58239/</IISUrl>
+          <IISUrl>http://localhost:8888/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
