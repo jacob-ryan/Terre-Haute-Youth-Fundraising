@@ -29,8 +29,13 @@
 	<script src="js/thyf-loader.js"></script>
 
 	<style>
-		.navbar-brand {
-			padding: 1px 0px;
+        #main-body {
+            padding: 50px 0px;
+        }
+
+        .navbar-brand > img {
+            margin-top: -15px;
+			padding: 0px 0px;
 		}
 
 		.navbar-fixed-top {
@@ -51,6 +56,27 @@
 			background-color: #000000;
 		}
 
+        
+        .navbar-collapse .navbar-nav > li > .dropdown-menu {
+            background-color: #7F3F98;
+        }
+
+        .navbar .navbar-collapse .navbar-nav > li > .dropdown-menu > li > a {
+            font-weight: bold;
+        }
+
+        .navbar-collapse .navbar-nav > li > a:hover, .navbar-collapse .navbar-nav > li > a:focus {
+            background-color: #9B30FF;
+        }
+       
+        <!-- Trying set it up so that dropdown hover links work with these two. -->
+        #frosty-link:hover, #frosty-link:focus {
+             background-color: #9B30FF;
+        }
+        #main-header > .navbar > .container > .navbar-collapse > .navbar-nav > li > .dropdown-menu > li > a:hover, #main-header > .navbar > .container > .navbar-collapse > .navbar-nav > li > .dropdown-menu > li > a:focus {
+            background-color: #9B30FF;
+        }
+
 		.icon-bar {
 			background-color: #F0F8FF;
 		}
@@ -64,10 +90,10 @@
 			background-color: #7F3F98;
 		}
 
-			.dropdown-menu > li > a {
-				color: #000000;
-				font-weight: bold;
-			}
+		.dropdown-menu > li > a {
+			color: #000000;
+			font-weight: bold;
+		}
 	</style>
 </head>
 <body>
