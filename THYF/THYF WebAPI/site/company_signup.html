@@ -11,17 +11,23 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <style>
+        @media (min-width: 992px) {
+            .center {
+                margin: auto;
+                width: 992px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1 align="center">Create Company account</h1>
 
-    <div class="container-fluid">
+    <div class="container center">
         <form class="form" role="form">
             <div class="row">
                 <div class="form-group col-sm-12">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email address" />
+                    <input type="email" class="form-control" id="email" />
                 </div>
             </div>
             <div class="row">
