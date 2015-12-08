@@ -1,6 +1,23 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+	<!-- Auto redirect to the main /site/ location -->
+	@{
+		var redirect = MvcHtmlString.Create("");
+		var redirectJS = MvcHtmlString.Create("");
+		if (HttpContext.Current.IsDebuggingEnabled)
+		{
+			redirect = MvcHtmlString.Create("<meta http-equiv='refresh' content='0; url=https://thyf.azurewebsites.net/site/'>");
+			redirectJS = MvcHtmlString.Create("window.location.href = 'https://thyf.azurewebsites.net/site/';");
+		}
+		else
+		{
+			redirect = MvcHtmlString.Create("<meta http-equiv='refresh' content='0; url=https://thyf.azurewebsites.net/site/'>");
+			redirectJS = MvcHtmlString.Create("window.location.href = 'https://thyf.azurewebsites.net/site/';");
+		}
+	}
+	@redirect
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -8,6 +25,11 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+	<!-- Auto redirect to the main /site/ location -->
+	<script>
+		@redirectJS
+	</script>
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

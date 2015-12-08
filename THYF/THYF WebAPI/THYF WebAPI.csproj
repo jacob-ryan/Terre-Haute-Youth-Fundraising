@@ -196,6 +196,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="site\footer.html" />
+    <Content Include="site\home.html" />
     <Content Include="site\img\BBBS_logo.png" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\company_signup.html" />
@@ -208,6 +209,7 @@
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
     <Content Include="site\js\plugins\moment.min.js" />
     <Content Include="site\js\thyf-loader.js" />
+    <Content Include="site\js\thyf-routes.js" />
     <Content Include="site\signup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

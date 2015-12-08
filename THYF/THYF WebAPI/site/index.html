@@ -3,12 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>BBBS of Terre Haute, IN</title>
-	<meta name="description" content="BBBS of Terre Haute, IN">
+	<meta name="description" content="Big Brothers Big Sisters of Terre Haute, IN">
 	<meta name="author" content="Jacob Ryan">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 	<!-- Stylesheets -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//cdn.datatables.net/1.9.4/css/jquery.dataTables.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<!-- END Stylesheets -->
@@ -19,16 +20,25 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 	<!-- Include YUI Router library -->
-	<script src="js/plugins/yui-3.17.2-min.js"></script>
+	<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 
 	<!-- JavaScript for Bootstrap, jQuery Datatables, BootBox, other plugins, and custom JS code -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="//cdn.datatables.net/1.9.4/js/jquery.dataTables.min.js"></script>
 	<script src="js/plugins/moment.min.js"></script>
 
+	<script>
+		window.THYF = {};
+	</script>
+	<script src="js/thyf-routes.js"></script>
 	<script src="js/thyf-loader.js"></script>
 
 	<style>
+		body
+		{
+			padding-top: 50px;
+		}
+
 		.navbar-brand {
 			padding: 1px 0px;
 		}

@@ -1,21 +1,52 @@
 ﻿$(document).ready(function()
 {
-	THYF = {};
-	THYF.hideLoading = function()
+	THYF.showLoading = function(status)
 	{
-		$("#loading-overlay").fadeOut();
+		status = status || "Loading...";
+		$("#loading-text").html(status);
+		return $("#loading-overlay").fadeIn().promise();
 	};
 
-	$.get("/site/header.html").done(function(header)
+	THYF.hideLoading = function()
 	{
-		$("#main-header").html(header);
-		$.get("/site/footer.html").done(function(footer)
+		return $("#loading-overlay").fadeOut().promise();
+	};
+
+	THYF.changePage = function(location)
+	{
+		return THYF.getPage(location, true).done(function(page)
 		{
-			$("#main-footer").html(footer);
-			$.get("/site/signup.html").done(function(body)
+			$("#main-body").empty();
+			$("#main-body").html(page);
+		});
+	};
+
+	THYF.getPage = function(location)
+	{
+		var result = $.Deferred();
+		$.ajax({
+			cache: true,
+			url: "/site/" + location
+		}).done(function(data)
+		{
+			result.resolve(data);
+		}).fail(function(error)
+		{
+			alert(error.status + "\n" + error.statusText + "\n" + "Could not load the page at: " + location);
+			result.reject(error.status, error.statusText, "Could not load the page at: " + location);
+		});
+		return result.promise();
+	};
+
+	THYF.initRoutes().done(function()
+	{
+		$.get("/site/header.html").done(function(header)
+		{
+			$("#main-header").html(header);
+			$.get("/site/footer.html").done(function(footer)
 			{
-				$("#main-body").html(body);
-				THYF.hideLoading();
+				$("#main-footer").html(footer);
+				THYF.go(THYF.getPath());
 			});
 		});
 	});
