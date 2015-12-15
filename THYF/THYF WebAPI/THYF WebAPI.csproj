@@ -151,9 +151,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,6 +198,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="site\footer.html" />
+    <Content Include="site\home.html" />
     <Content Include="site\img\BBBS_logo.png" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\company_signup.html" />
@@ -208,6 +211,7 @@
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
     <Content Include="site\js\plugins\moment.min.js" />
     <Content Include="site\js\thyf-loader.js" />
+    <Content Include="site\js\thyf-routes.js" />
     <Content Include="site\signup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

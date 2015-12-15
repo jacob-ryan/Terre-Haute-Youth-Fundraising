@@ -10,7 +10,7 @@ namespace THYF_WebAPI.Controllers
 	{
 		public ActionResult Index()
 		{
-			ViewBag.Title = "Home Page";
+			ViewBag.Title = "BBBS of TH - Redirect";
 
 			return View();
 		}
