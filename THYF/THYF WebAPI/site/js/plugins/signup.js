@@ -23,7 +23,7 @@
         datatype: "json"
     }).done(function(data)
     {
-        alert("Logged in successfully!\nReturned: '" + data + "'");
+        alert("Sign-up Successful!\nReturned: '" + data + "'");
     });
 });
 });
