@@ -208,10 +208,13 @@
     <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
     <Content Include="site\js\codeSpike.js" />
+    <Content Include="site\js\login.js" />
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
     <Content Include="site\js\plugins\moment.min.js" />
+    <Content Include="site\js\plugins\signup.js" />
     <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\js\thyf-routes.js" />
+    <Content Include="site\login.html" />
     <Content Include="site\signup.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
