@@ -33,7 +33,7 @@ namespace THYF_Repository.Repositories
 		public void updateUser(int currentUserId, int id, WebUser webUser)
 		{
 			this.me = getMe(currentUserId);
-			User user = db.Users.Find(id);
+			User user = db.Users.FirstOrDefault(u => u.id == id);
 			if (user != null && me.id == id)
 			{
 				// Do not allow duplicate email addresses.
@@ -49,6 +49,17 @@ namespace THYF_Repository.Repositories
 				}
 				user.name = webUser.name;
 				user.email = webUser.email;
+				if (webUser.type != "admin" && (webUser.type == "volunteer" || webUser.type == "company"))
+				{
+					user.type = webUser.type;
+				}
+				user.address = webUser.address;
+				user.city = webUser.city;
+				user.state = webUser.state;
+				user.zip = webUser.zip;
+				user.phone = webUser.phone;
+				user.tshirtSize = webUser.tshirtSize;
+				user.companyName = webUser.companyName;
 				if (webUser.newPassword != null && me.id == id)
 				{
 					Passwords.updateUserPassword(user, webUser.newPassword);
@@ -77,6 +88,18 @@ namespace THYF_Repository.Repositories
 				user.isActive = webUser.isActive;
 				user.name = webUser.name;
 				user.email = webUser.email;
+				if (!(webUser.type == "volunteer" || webUser.type == "company"))
+				{
+					throw new Exception("Invalid new user type: " + webUser.type);
+				}
+				user.type = webUser.type;
+				user.address = webUser.address;
+				user.city = webUser.city;
+				user.state = webUser.state;
+				user.zip = webUser.zip;
+				user.phone = webUser.phone;
+				user.tshirtSize = webUser.tshirtSize;
+				user.companyName = webUser.companyName;
 				user.dateCreated = DateTime.UtcNow;
 
 				if (webUser.newPassword == null)

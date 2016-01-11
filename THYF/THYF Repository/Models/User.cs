@@ -8,10 +8,28 @@ namespace THYF_Repository.Models
 	public class User : BaseModel<WebUser>
 	{
 		public int id { get; set; }
+		[Required]
 		public bool isActive { get; set; }
+		[Required, MaxLength(255)]
 		public string name { get; set; }
-		[Index(IsUnique = true), MaxLength(255)]
+		[Required, MaxLength(255), Index(IsUnique = true)]
 		public string email { get; set; }
+		[Required, MaxLength(255)]
+		public string type { get; set; }
+		[MaxLength(1024)]
+		public string address { get; set; }
+		[MaxLength(255)]
+		public string city { get; set; }
+		[MaxLength(2)]
+		public string state { get; set; }
+		[MaxLength(5)]
+		public string zip { get; set; }
+		[MaxLength(255)]
+		public string phone { get; set; }
+		[MaxLength(255)]
+		public string tshirtSize { get; set; }
+		[MaxLength(255)]
+		public string companyName { get; set; }
 
 		private DateTime _dateCreated;
 		public DateTime dateCreated
