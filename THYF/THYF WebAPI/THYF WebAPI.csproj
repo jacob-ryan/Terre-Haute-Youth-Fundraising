@@ -199,6 +199,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="site\footer.html" />
+    <Content Include="site\frosty-5k.html" />
     <Content Include="site\home.html" />
     <Content Include="site\img\BBBS_logo.png" />
     <Content Include="site\bowling_signup.html" />
@@ -208,7 +209,9 @@
     <Content Include="site\codeSpike.html" />
     <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
+    <Content Include="site\js\bfks.js" />
     <Content Include="site\js\codeSpike.js" />
+    <Content Include="site\js\frosty-5k.js" />
     <Content Include="site\js\login.js" />
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
     <Content Include="site\js\plugins\moment.min.js" />
