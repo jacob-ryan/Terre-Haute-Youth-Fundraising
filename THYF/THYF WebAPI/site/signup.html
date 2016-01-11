@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<script src="js/signup.js"></script>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -62,6 +64,13 @@
 				<input type="text" class="form-control" id="year" />
 			</div>
 			<div class="form-group col-sm-2">
+				<label for="type">Type of Account:</label>
+				<select class="form-control" id="type">
+					<option value="volunteer">Volunteer</option>
+					<option value="company">Company</option>
+				</select>
+			</div>
+			<div id="volunteer_sec" class="form-group col-sm-2 hide2">
 				<label for="t-shirt">T-shirt size:</label>
 				<select class="form-control" id="t-shirt">
 					<option>S</option>
@@ -69,10 +78,13 @@
 					<option>L</option>
 				</select>
 			</div>
-			<div class="form-group col-sm-12">
-				<button type="submit" class="btn btn-default" id="signup-button">Sign up</button>
+			<div id="company_sec" class="form-group col-sm-3 hide2">
+				<label for="company_name">Name of Company:</label>
+				<input type="text" class="form-control" id="company_name" />
 			</div>
-
+			<div class="form-group col-sm-12">
+				<button type="button" class="btn btn-default" id="signup-button">Sign up</button>
+			</div>
 		</form>
 	</div>
 </body>

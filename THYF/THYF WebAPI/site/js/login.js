@@ -8,14 +8,16 @@
                 password: $("#password").val(),
                 rememberMe: true
             };
-            $.post({
+        	$.ajax({
+        		type: "POST",
                 url: "/api/Login",
                 contentType: "application/json",
-            data: data ? JSON.stringify(data) : null,
-            datatype: "json"
+				data: data ? JSON.stringify(data) : null,
+				datatype: "json"
         }).done(function(data)
         {
             alert("Logged in successfully!\nReturned: '" + data + "'");
         });
-    });
+        });
+        THYF.hideLoading();
 });

@@ -212,7 +212,7 @@
     <Content Include="site\js\login.js" />
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />
     <Content Include="site\js\plugins\moment.min.js" />
-    <Content Include="site\js\plugins\signup.js" />
+    <Content Include="site\js\signup.js" />
     <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\js\thyf-routes.js" />
     <Content Include="site\login.html" />
