@@ -30,7 +30,7 @@
 			path: "/bowl-for-kids",
 			callbacks: function()
 			{
-				THYF.changePage("bowl-for-kids.html");
+				THYF.changePage("bowling_signup.html");
 			}
 		},
 		{

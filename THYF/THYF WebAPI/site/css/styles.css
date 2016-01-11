@@ -78,3 +78,58 @@ error-overlay h3, .lost-connection-background h3
 	margin-top: 20px;
 	overflow: auto;
 }
+
+.frosty{
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	border:1px solid black;
+	margin: auto;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px black;
+}
+
+.bowling{
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	border:1px solid black;
+	margin: auto;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px black;
+}
+
+#boot{
+	margin: auto;
+	background-color: white;
+	padding-bottom: 20px;
+	border-radius: 10px;
+}
+
+.CenterContainer{
+    margin: auto;
+    width: 80%;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.frosty:hover { 
+   	border:3px solid black;
+}
+
+#splashBody{
+	background-color: #66ffff;
+}
+
+h1{
+	text-align: center;
+	color: #7f3f98; 
+	text-shadow: 1px 1px 2px black;
+	padding-top: 0px;
+}
+
+.bowling:hover { 
+   	border:3px solid black;
+}
