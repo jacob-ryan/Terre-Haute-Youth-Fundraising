@@ -19,5 +19,7 @@ namespace THYF_Repository.Models
 		}
 
 		public DbSet<User> Users { get; set; }
+		public DbSet<BFKSRegistration> BFKSRegistrations { get; set; }
+		public DbSet<BFKSBowler> BFKSBowlers { get; set; }
 	}
 }

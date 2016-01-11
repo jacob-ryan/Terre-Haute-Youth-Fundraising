@@ -8,6 +8,22 @@ namespace THYF_Repository.Models
         public override void Up()
         {
             CreateTable(
+                "dbo.BFKSBowlers",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        userId = c.Int(),
+                        name = c.String(),
+                        tshirtSize = c.String(),
+                        BFKSRegistration_id = c.Int(),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Users", t => t.userId)
+                .ForeignKey("dbo.BFKSRegistrations", t => t.BFKSRegistration_id)
+                .Index(t => t.userId)
+                .Index(t => t.BFKSRegistration_id);
+            
+            CreateTable(
                 "dbo.Users",
                 c => new
                     {
@@ -33,12 +49,33 @@ namespace THYF_Repository.Models
                 .PrimaryKey(t => t.id)
                 .Index(t => t.email, unique: true);
             
+            CreateTable(
+                "dbo.BFKSRegistrations",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        teamName = c.String(),
+                        teamCaptainId = c.Int(nullable: false),
+                        dateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Users", t => t.teamCaptainId, cascadeDelete: true)
+                .Index(t => t.teamCaptainId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.BFKSRegistrations", "teamCaptainId", "dbo.Users");
+            DropForeignKey("dbo.BFKSBowlers", "BFKSRegistration_id", "dbo.BFKSRegistrations");
+            DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
+            DropIndex("dbo.BFKSRegistrations", new[] { "teamCaptainId" });
             DropIndex("dbo.Users", new[] { "email" });
+            DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
+            DropIndex("dbo.BFKSBowlers", new[] { "userId" });
+            DropTable("dbo.BFKSRegistrations");
             DropTable("dbo.Users");
+            DropTable("dbo.BFKSBowlers");
         }
     }
 }

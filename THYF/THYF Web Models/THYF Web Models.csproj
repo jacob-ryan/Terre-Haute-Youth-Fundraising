@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\WebBFKSBowler.cs" />
+    <Compile Include="Models\WebBFKSRegistration.cs" />
     <Compile Include="Models\WebLogin.cs" />
     <Compile Include="Models\WebUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
