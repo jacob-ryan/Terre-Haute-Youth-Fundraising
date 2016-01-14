@@ -152,6 +152,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FrostyRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -198,15 +199,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="site\bowling_individual.html" />
+    <Content Include="site\bowling_signup.html" />
+    <Content Include="site\codeSpike.html" />
+    <Content Include="site\company_signup.html" />
+    <Content Include="site\company_sponsorship_bowling.html" />
+    <Content Include="site\css\styles.css" />
     <Content Include="site\footer.html" />
     <Content Include="site\frosty-5k.html" />
+    <Content Include="site\header.html" />
     <Content Include="site\home.html" />
     <Content Include="site\img\BBBS_logo.png" />
-    <Content Include="site\bowling_signup.html" />
-    <Content Include="site\company_signup.html" />
-    <Content Include="site\css\styles.css" />
-    <Content Include="site\header.html" />
-    <Content Include="site\codeSpike.html" />
+    <Content Include="site\img\bowling.png" />
+    <Content Include="site\img\frosty.png" />
     <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
     <Content Include="site\js\bfks.js" />

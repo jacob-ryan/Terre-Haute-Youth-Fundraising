@@ -62,17 +62,32 @@ namespace THYF_Repository.Models
                 .ForeignKey("dbo.Users", t => t.teamCaptainId, cascadeDelete: true)
                 .Index(t => t.teamCaptainId);
             
+            CreateTable(
+                "dbo.FrostyRegistrations",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        userId = c.Int(nullable: false),
+                        dateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Users", t => t.userId, cascadeDelete: true)
+                .Index(t => t.userId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.FrostyRegistrations", "userId", "dbo.Users");
             DropForeignKey("dbo.BFKSRegistrations", "teamCaptainId", "dbo.Users");
             DropForeignKey("dbo.BFKSBowlers", "BFKSRegistration_id", "dbo.BFKSRegistrations");
             DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
+            DropIndex("dbo.FrostyRegistrations", new[] { "userId" });
             DropIndex("dbo.BFKSRegistrations", new[] { "teamCaptainId" });
             DropIndex("dbo.Users", new[] { "email" });
             DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
             DropIndex("dbo.BFKSBowlers", new[] { "userId" });
+            DropTable("dbo.FrostyRegistrations");
             DropTable("dbo.BFKSRegistrations");
             DropTable("dbo.Users");
             DropTable("dbo.BFKSBowlers");

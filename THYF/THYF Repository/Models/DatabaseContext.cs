@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace THYF_Repository.Models
 {
@@ -21,5 +16,6 @@ namespace THYF_Repository.Models
 		public DbSet<User> Users { get; set; }
 		public DbSet<BFKSRegistration> BFKSRegistrations { get; set; }
 		public DbSet<BFKSBowler> BFKSBowlers { get; set; }
+		public DbSet<FrostyRegistration> FrostyRegistrations { get; set; }
 	}
 }
