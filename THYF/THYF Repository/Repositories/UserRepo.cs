@@ -30,6 +30,20 @@ namespace THYF_Repository.Repositories
 			}
 		}
 
+		public WebUser getUserByEmail(int currentUserId, string email)
+		{
+			this.me = getMe(currentUserId);
+			User user = getAllowedUsers().FirstOrDefault(u => u.email == email);
+			if (user != null)
+			{
+				return user.convert();
+			}
+			else
+			{
+				return null;
+			}
+		}
+
 		public void updateUser(int currentUserId, int id, WebUser webUser)
 		{
 			this.me = getMe(currentUserId);
@@ -72,7 +86,7 @@ namespace THYF_Repository.Repositories
 			}
 		}
 
-		public int addUser(WebUser webUser)
+		public int addUser(WebUser webUser, int currentUserId)
 		{
 			// Anonymous access allowed, needs safe-guard.
 			if (true)
@@ -88,7 +102,7 @@ namespace THYF_Repository.Repositories
 				user.isActive = webUser.isActive;
 				user.name = webUser.name;
 				user.email = webUser.email;
-				if (!(webUser.type == "volunteer" || webUser.type == "company"))
+				if (!(webUser.type == "volunteer" || webUser.type == "company" || (webUser.type == "admin" && currentUserId != -1 && this.getMe(currentUserId).type == "admin")))
 				{
 					throw new Exception("Invalid new user type: " + webUser.type);
 				}

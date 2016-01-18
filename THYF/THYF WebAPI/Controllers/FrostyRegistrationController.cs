@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -17,7 +18,26 @@ namespace THYF_WebAPI.Controllers
 
 		public FrostyRegistrationController()
 		{
-			this.repo = new FrostyRegistrationRepo();
+			this.repo = new FrostyRegistrationRepo(this.currentUserId);
+		}
+
+		// GET api/FrostyRegistration
+		/// <summary>
+		/// Gets all Frosty registrations.
+		/// </summary>
+		/// <returns>FrostyRegistration[] - all registrations</returns>
+		[Authorize]
+		public HttpResponseMessage GetFrostyRegistrations()
+		{
+			try
+			{
+				List<WebFrostyRegistration> registrations = repo.getFrostyRegistrations();
+				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
 		}
 
 		// POST api/FrostyRegistration

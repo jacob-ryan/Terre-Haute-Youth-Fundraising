@@ -68,6 +68,7 @@ namespace THYF_Repository.Models
                     {
                         id = c.Int(nullable: false, identity: true),
                         userId = c.Int(nullable: false),
+                        isMinor = c.Boolean(nullable: false),
                         dateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id)

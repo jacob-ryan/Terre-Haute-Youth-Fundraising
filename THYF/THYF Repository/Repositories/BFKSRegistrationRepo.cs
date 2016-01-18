@@ -9,6 +9,23 @@ namespace THYF_Repository.Repositories
 {
 	public class BFKSRegistrationRepo : BaseRepo
 	{
+		public BFKSRegistrationRepo(int currentUserId) : base(currentUserId)
+		{
+		}
+
+		public List<WebBFKSRegistration> getBFKSRegistrations()
+		{
+			if (this.me.type == "admin")
+			{
+				List<BFKSRegistration> registrations = db.BFKSRegistrations.ToList();
+				return registrations.convertList<BFKSRegistration, WebBFKSRegistration>();
+			}
+			else
+			{
+				throw new PermissionDeniedException();
+			}
+		}
+
 		public int addBFKSRegistration(WebBFKSRegistration webRegistration)
 		{
 			// Perhaps check if registration is enabled for this event (future?).

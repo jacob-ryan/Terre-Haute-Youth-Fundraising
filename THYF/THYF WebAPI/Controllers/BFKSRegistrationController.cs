@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -17,7 +18,26 @@ namespace THYF_WebAPI.Controllers
 
 		public BFKSRegistrationController()
 		{
-			this.repo = new BFKSRegistrationRepo();
+			this.repo = new BFKSRegistrationRepo(this.currentUserId);
+		}
+
+		// GET api/BFKSRegistration
+		/// <summary>
+		/// Gets all BFKS registrations.
+		/// </summary>
+		/// <returns>BFKSRegistration[] - all registrations</returns>
+		[Authorize]
+		public HttpResponseMessage GetBFKSRegistrations()
+		{
+			try
+			{
+				List<WebBFKSRegistration> registrations = repo.getBFKSRegistrations();
+				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
 		}
 
 		// POST api/BFKSRegistration

@@ -50,9 +50,9 @@
   <ItemGroup>
     <Compile Include="Helpers\Passwords.cs" />
     <Compile Include="Helpers\PermissionDeniedException.cs" />
-    <Compile Include="Migrations\201601132009338_InitialCreation.cs" />
-    <Compile Include="Migrations\201601132009338_InitialCreation.Designer.cs">
-      <DependentUpon>201601132009338_InitialCreation.cs</DependentUpon>
+    <Compile Include="Migrations\201601182131280_InitialCreation.cs" />
+    <Compile Include="Migrations\201601182131280_InitialCreation.Designer.cs">
+      <DependentUpon>201601182131280_InitialCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BFKSBowler.cs" />
@@ -82,8 +82,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601132009338_InitialCreation.resx">
-      <DependentUpon>201601132009338_InitialCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601182131280_InitialCreation.resx">
+      <DependentUpon>201601182131280_InitialCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

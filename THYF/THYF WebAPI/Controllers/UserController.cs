@@ -60,6 +60,27 @@ namespace THYF_WebAPI.Controllers
 			}
 		}
 
+		// GET api/User?email=<encoded email>
+		/// <summary>
+		/// Returns the user with the given e-mail address, if one exists,
+		/// or null otherwise.
+		/// </summary>
+		/// <param name="email">string - email</param>
+		/// <returns>User - selected user</returns>
+		[Authorize]
+		public HttpResponseMessage GetUserByEmail(string email)
+		{
+			try
+			{
+				WebUser user = repo.getUserByEmail(this.currentUserId, email);
+				return Request.CreateResponse(HttpStatusCode.OK, user);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
+		}
+
 		// PUT api/User/5
 		/// <summary>
 		/// Updates the user with the given ID with the information in the given User object.
@@ -102,7 +123,7 @@ namespace THYF_WebAPI.Controllers
 
 			try
 			{
-				int id = repo.addUser(user);
+				int id = repo.addUser(user, this.currentUserId);
 				return Request.CreateResponse(HttpStatusCode.Created, id);
 			}
 			catch (Exception e)
