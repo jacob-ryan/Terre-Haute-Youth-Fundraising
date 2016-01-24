@@ -199,11 +199,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="site\bowling_individual.html" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\codeSpike.html" />
     <Content Include="site\company_signup.html" />
     <Content Include="site\company_sponsorship_bowling.html" />
+    <Content Include="site\contact-us.html" />
     <Content Include="site\css\styles.css" />
     <Content Include="site\footer.html" />
     <Content Include="site\frosty-5k.html" />
@@ -216,6 +216,7 @@
     <Content Include="site\index.html" />
     <Content Include="site\js\bfks.js" />
     <Content Include="site\js\codeSpike.js" />
+    <Content Include="site\js\contact-us.js" />
     <Content Include="site\js\frosty-5k.js" />
     <Content Include="site\js\login.js" />
     <Content Include="site\js\plugins\modernizr-2.7.1-respond-1.4.2.min.js" />

@@ -8,7 +8,7 @@ $(document).ready(function ()
 	{
 		e.preventDefault();
 		var data = {
-			age: $("#age").is(":checked")
+			isMinor: $("#age").is(":checked")
 		};
 		$.ajax({
 			type: "POST",
