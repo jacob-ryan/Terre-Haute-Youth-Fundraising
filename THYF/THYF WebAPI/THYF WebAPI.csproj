@@ -200,6 +200,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="site\bowling_signup.html" />
+    <Content Include="site\change_info.html" />
     <Content Include="site\codeSpike.html" />
     <Content Include="site\company_signup.html" />
     <Content Include="site\company_sponsorship_bowling.html" />
