@@ -3,17 +3,21 @@
 	$("#btnOne").on("click", function(e)
 	{
 		e.preventDefault();
-//		var data = {
-//			email: $("#emailOne").val()
-//		};
+		var userList = []; 
 
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			url: "/api/User?email=" + $("#emailOne").val(),
 			contentType: "application/json",
 		}).done(function(data)
 		{
-			alert("Registration Successful!\nReturned: '" + data.name + "'");
+			if (typeof data != 'undefined')
+			{
+				$("#nameOne").val(data.name);
+				$("#shirtOne").val(data.tshirtSize);
+			}
+			userList.push(data);
+			console.log(userList);
 		});
 	});
 	THYF.hideLoading()
