@@ -16,14 +16,19 @@
 				type: "GET",
 				url: "/api/User?email=" + $("#emailOne").val(),
 				contentType: "application/json",
-			}).done(function(data)
+			}).done(function(call)
 			{
-				if (typeof data != 'undefined')
+				if (typeof call != 'undefined')
 				{
-					$("#nameOne").val(data.name);
-					$("#shirtOne").val(data.tshirtSize);
+					$("#nameOne").val(call.name);
+					$("#shirtOne").val(call.tshirtSize);
 				}
-				userList.push(data);
+				userList.push({
+					userId: call.id,
+					name: call.name,
+					tshirt: call.tshirt,
+
+				});
 				checkedEmails.push($("#emailOne").val());
 				console.log(userList);
 			});
@@ -42,14 +47,20 @@
 				type: "GET",
 				url: "/api/User?email=" + $("#emailTwo").val(),
 				contentType: "application/json",
-			}).done(function(data)
+			}).done(function(call)
 			{
-				if (typeof data != 'undefined')
+				if (typeof call != 'undefined')
 				{
-					$("#nameTwo").val(data.name);
-					$("#shirtTwo").val(data.tshirtSize);
+					$("#nameTwo").val(call.name);
+					$("#shirtTwo").val(call.tshirtSize);
+
+					userList.push({
+						userId: call.id,
+						name: call.name,
+						tshirt: call.tshirt,
+
+					});
 				}
-				userList.push(data);
 				checkedEmails.push($("#emailTwo").val());
 				console.log(userList);
 			});
@@ -68,14 +79,19 @@
 				type: "GET",
 				url: "/api/User?email=" + $("#emailThree").val(),
 				contentType: "application/json",
-			}).done(function(data)
+			}).done(function(call)
 			{
-				if (typeof data != 'undefined')
+				if (typeof call != 'undefined')
 				{
-					$("#nameThree").val(data.name);
-					$("#shirtThree").val(data.tshirtSize);
+					$("#nameThree").val(call.name);
+					$("#shirtThree").val(call.tshirtSize);
 				}
-				userList.push(data);
+				userList.push({
+					userId: call.id,
+					name: call.name,
+					tshirt: call.tshirt,
+
+				});
 				checkedEmails.push($("#emailThree").val());
 				console.log(userList);
 			});
@@ -94,14 +110,19 @@
 				type: "GET",
 				url: "/api/User?email=" + $("#emailFour").val(),
 				contentType: "application/json",
-			}).done(function(data)
+			}).done(function(call)
 			{
-				if (typeof data != 'undefined')
+				if (typeof call != 'undefined')
 				{
-					$("#nameFour").val(data.name);
-					$("#shirtFour").val(data.tshirtSize);
+					$("#nameFour").val(call.name);
+					$("#shirtFour").val(call.tshirtSize);
 				}
-				userList.push(data);
+				userList.push({
+					userId: call.id,
+					name: call.name,
+					tshirt: call.tshirt,
+
+				});
 				checkedEmails.push($("#emailFour").val());
 				console.log(userList);
 			});
@@ -110,9 +131,9 @@
 
 	$("#submit").on("click", function(e)
 	{
-
 		var data = {
 			teamName: $("#teamName").val(),
+			teamCaptainId: userList[1].id,
 			teamCaptain: userList[1],
 			bowlers: userList
 		};
@@ -130,7 +151,6 @@
 		});
 		console.log(data);
 	});
-
 
 	THYF.hideLoading()
 });
