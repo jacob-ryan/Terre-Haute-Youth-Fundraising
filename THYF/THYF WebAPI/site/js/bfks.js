@@ -5,20 +5,19 @@
 	$("#btnOne").on("click", function(e)
 	{
 		e.preventDefault();
-
 		if ($.inArray($("#emailOne").val(), checkedEmails) != -1)
 		{
 			alert("Email " + $("#emailOne").val() + " already added");
 		} else
+			console.log("Made it");
 		{
-
 			$.ajax({
 				type: "GET",
 				url: "/api/User?email=" + $("#emailOne").val(),
 				contentType: "application/json",
 			}).done(function(call)
 			{
-				if (typeof call != 'undefined')
+				if (call != null)
 				{
 					$("#nameOne").val(call.name);
 					$("#shirtOne").val(call.tshirtSize);
@@ -133,10 +132,11 @@
 	{
 		var data = {
 			teamName: $("#teamName").val(),
-			teamCaptainId: userList[1].id,
-			teamCaptain: userList[1],
+			teamCaptainId: userList[0].userId,
 			bowlers: userList
 		};
+
+		console.log(data);
 
 		e.preventDefault();
 		$.ajax({
