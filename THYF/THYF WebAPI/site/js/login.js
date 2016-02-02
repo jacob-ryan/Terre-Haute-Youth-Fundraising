@@ -16,8 +16,23 @@
 				datatype: "json"
         }).done(function(data)
         {
-            alert("Logged in successfully!\nReturned: '" + data + "'");
+        	alert("Logged in successfully!\nReturned: '" + data + "'");
+        	loginLabels();
         });
         });
+        var loginLabels = function ()
+        {
+        	$.ajax({
+        		type: "GET",
+        		url: "/api/Login",
+        		contentType: "application/json",
+        		datatype: "json"
+        	}).done(function (user)
+        	{
+        		$("#logged-in").text("User:" + user.name);
+        		$("#logged-in-block").show();
+        		$("#notlogged-in-block").hide();
+        	});
+        };
         THYF.hideLoading();
 });
