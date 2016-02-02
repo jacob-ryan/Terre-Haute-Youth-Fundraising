@@ -1,3 +1,5 @@
+<script src="js/header.js"></script>
+
 <div class="navbar navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -24,9 +26,13 @@
 					</ul>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-                <li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
-                <li><a id="login-link" href="#/login">Log-in</a></li>
+			<ul id="notlogged-in-block" class="nav navbar-nav navbar-right">
+				<li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
+				<li><a id="login-link" href="#/login">Log-in</a></li>
+			</ul>
+			<ul id="logged-in-block"class="nav navbar-nav navbar-right hide2">
+				<li><a id="logged-in"></a></li>
+				<li><a id="logout-link">Log-out</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
