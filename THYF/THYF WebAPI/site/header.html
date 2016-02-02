@@ -3,16 +3,16 @@
 <div style="color: #FFF;  background-color: #7F3F98; ">
     <ul class="head1">
         <li><a id="logo" href="#"><img src="img/BBBS_logo.png" alt="Big Brothers Big Sisters of Vigo Country" style="width:100px;background-color:#FFF; padding:5px;"></a></li>
-        <ul  style="float:right;list-style-type:none;">
-            <!-- turns in to name, sign out, manage-->
-            <li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
-            <li><a id="login-link" href="#/login">Log-in</a></li>
-        </ul>
-        <ul class="hidden" style="float:right;list-style-type:none;">
-            <li><a>name</a></li>
-            <li><a id="account-link" href="#/">Account</a></li>
-            <li><a id="signout-link" href="#/">Sign-out</a></li>
-        </ul>
+		<ul id="notlogged-in-block" style="float:right;list-style-type:none;">
+			<!-- turns in to name, sign out, manage-->
+			<li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
+			<li><a id="login-link" href="#/login">Log-in</a></li>
+		</ul>
+		<ul id="logged-in-block" class="hide2" style="float:right;list-style-type:none;">
+			<li><a id="logged-in">name</a></li>
+			<li><a id="account-link" href="#/">Account</a></li>
+			<li><a id="signout-link" href="#/">Sign-out</a></li>
+		</ul>
     </ul>
     <ul class="head2">
         <li><a class="active" id="home-link" href="#/">Home</a></li>

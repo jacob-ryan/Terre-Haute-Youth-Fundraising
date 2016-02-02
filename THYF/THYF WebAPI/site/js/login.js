@@ -22,6 +22,7 @@
         });
         var loginLabels = function ()
         {
+        	alert("users");
         	$.ajax({
         		type: "GET",
         		url: "/api/Login",
