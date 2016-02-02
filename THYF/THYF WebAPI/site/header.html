@@ -1,40 +1,29 @@
 <script src="js/header.js"></script>
 
-<div class="navbar navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#"><img src="img/BBBS_logo.png" alt="Big Brothers Big Sisters of Vigo Country" style="width:75px;height:51px;"></a>
-		</div>
-		<div class="navbar-collapse collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a id="home-link" href="#/">Home</a></li>
-                <li><a id="contact-us-link" href="#/contact-us">Contact Us</a></li>
-                <li><a id="donate-link" href="#/donate">Donate Now</a></li>
-				<li>
-					<a id="fund-link" class="dropdown" href="" data-toggle="dropdown">
-						Fundraising Pages<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" aria-labelledby="dLabel">
-						<li><a id="frosty-link" href="#/frosty-5k">Frosty 5K</a></li>
-						<li><a id="bowl-link" href="#/bowl-for-kids">Bowling for Kids</a></li>
-					</ul>
-				</li>
-			</ul>
-			<ul id="notlogged-in-block" class="nav navbar-nav navbar-right">
-				<li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
-				<li><a id="login-link" href="#/login">Log-in</a></li>
-			</ul>
-			<ul id="logged-in-block"class="nav navbar-nav navbar-right hide2">
-				<li><a id="logged-in"></a></li>
-				<li><a id="logout-link">Log-out</a></li>
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
+<div style="color: #FFF;  background-color: #7F3F98; ">
+    <ul class="head1">
+        <li><a id="logo" href="#"><img src="img/BBBS_logo.png" alt="Big Brothers Big Sisters of Vigo Country" style="width:100px;background-color:#FFF; padding:5px;"></a></li>
+        <ul  style="float:right;list-style-type:none;">
+            <!-- turns in to name, sign out, manage-->
+            <li><a id="signup-link" href="#/sign-up">Sign-up</a></li>
+            <li><a id="login-link" href="#/login">Log-in</a></li>
+        </ul>
+        <ul class="hidden" style="float:right;list-style-type:none;">
+            <li><a>name</a></li>
+            <li><a id="account-link" href="#/">Account</a></li>
+            <li><a id="signout-link" href="#/">Sign-out</a></li>
+        </ul>
+    </ul>
+    <ul class="head2">
+        <li><a class="active" id="home-link" href="#/">Home</a></li>
+        <li><a id="contact-us-link" href="#/contact-us">Contact Us</a></li>
+        <li><a id="donate-link" href="#/donate">Donate Now</a></li>
+        <li>
+            <a id="fund-link" href="">
+                Fundraising Pages
+            </a>
+        </li>
+        <li><a id="frosty-link" href="#/frosty-5k">Frosty 5K</a></li>
+        <li><a id="bowl-link" href="#/bowl-for-kids">Bowling for Kids</a></li>
+    </ul>
 </div>

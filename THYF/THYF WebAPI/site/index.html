@@ -35,97 +35,71 @@
 	<script src="js/index.js"></script>
 
 	<style>
-		body
-		{
-			padding-top: 50px;
-		}
+        @media (max-width: 750px){
+            .head2 ul{
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                width:200px;
+                background-color: #7F3F98;
+                color: #FFF;
+            }
+            .head2 li{
+                float:none;
+            }
+            .head2 li{
+                border-bottom:1px solid #bbb;
+            }
+            li:last-child{
+                border-bottom: none;
+            }
+        }
+        .head2 {
+            border-top:4px solid #FFF;
+        }
 
-		.navbar-brand
-		{
-			padding: 1px 0px;
-		}
-
-		#main-body
-		{
-			padding: 50px 0px;
-		}
-
-		.navbar-brand > img
-		{
-			margin-top: -15px;
-			padding: 0px 0px;
-		}
-
-		.navbar-fixed-top
-		{
-			background-color: #7F3F98;
-		}
-
-		.navbar .navbar-nav > li > a
-		{
-			color: #000000;
-			font-weight: bold;
-		}
-
-		.navbar .navbar-brand
-		{
-			color: #000000;
-			font-weight: bold;
-		}
-
-		.navbar-header > button
-		{
-			background-color: #000000;
-		}
-
-
-		.navbar-collapse .navbar-nav > li > .dropdown-menu
-		{
-			background-color: #7F3F98;
-		}
-
-		.navbar .navbar-collapse .navbar-nav > li > .dropdown-menu > li > a
-		{
-			font-weight: bold;
-		}
-
-		.navbar-collapse .navbar-nav > li > a:hover, .navbar-collapse .navbar-nav > li > a:focus
-		{
-			background-color: #9B30FF;
-		}
-
-		<!-- Trying set it up so that dropdown hover links work with these two. -->
-		#frosty-link:hover, #frosty-link:focus
-		{
-			background-color: #9B30FF;
-		}
-
-		#main-header > .navbar > .container > .navbar-collapse > .navbar-nav > li > .dropdown-menu > li > a:hover, #main-header > .navbar > .container > .navbar-collapse > .navbar-nav > li > .dropdown-menu > li > a:focus
-		{
-			background-color: #9B30FF;
-		}
-
-		.icon-bar
-		{
-			background-color: #F0F8FF;
-		}
-
-		.dropdown
-		{
-			padding-top: 15px;
-			padding-left: 15px;
-		}
-
-		.dropdown-menu
-		{
-			background-color: #7F3F98;
-		}
-
-			.dropdown-menu > li > a
-			{
-				color: #000000;
-				font-weight: bold;
-			}
+        ul{
+            list-style-type:none;
+            margin:0;
+            padding:0;
+            overflow:hidden;
+            background-color: #7F3F98;
+            color: #FFF;
+        }
+        li{
+            float:left;
+        }
+        .head2 li{
+            border-right:1px solid #bbb;
+        }
+        li:last-child{
+            border-right: none;
+        }
+        .head1 li a {
+            padding:14px 8px;
+        }
+        li a {
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        a, a:active, a:focus {
+            color: #FFF;
+            outline:none;
+            text-decoration: none;
+        }
+        li a:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .head2 li a:hover {
+            background-color: #b681cb;
+        }
+        .active {
+            color: white;
+            background-color: #b681cb;
+        }
 	</style>
 </head>
 <body>
