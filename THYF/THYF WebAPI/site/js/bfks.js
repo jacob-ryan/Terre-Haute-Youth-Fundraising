@@ -136,8 +136,6 @@
 			bowlers: userList
 		};
 
-		console.log(data);
-
 		e.preventDefault();
 		$.ajax({
 			type: "POST",

@@ -58,6 +58,13 @@
 			}
 		},
 		{
+			path: "/change-info",
+			callbacks: function()
+			{
+				THYF.changePage("change_info.html");
+			}
+		},
+		{
 			path: "/login",
 			callbacks: function()
 			{
