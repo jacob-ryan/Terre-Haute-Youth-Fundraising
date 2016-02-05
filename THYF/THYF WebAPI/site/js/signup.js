@@ -1,6 +1,70 @@
 ﻿$(document).ready(function ()
 {
-	$("#signup-button").on("click", function (e)
+	$("#signup-form").validate(
+	{
+		submitHandler: function ()
+		{
+			alert("Submitting form...");
+			submit();
+		},
+		rules: {
+			"email": {
+				required: true,
+				maxlength: 255,
+				email: true
+			},
+			"password": {
+				required: true,
+				maxlength: 255
+			},
+			"password-check": {
+				required: true,
+				maxlength: 255
+			},
+			"name": {
+				required: true,
+				maxlength: 255
+			},
+			"address": {
+				required: true,
+				maxlength: 255
+			},
+			"city": {
+				required: true,
+				maxlength: 255
+			},
+			"state": {
+				required: true,
+				maxlength: 255
+			},
+			"zip": {
+				required: true,
+				maxlength: 255
+			},
+			"phone": {
+				required: true,
+				maxlength: 255
+			},
+			"year": {
+				required: true,
+				maxlength: 255
+			},
+			"type": {
+				required: true,
+				maxlength: 255
+			},
+			"t-shirt": {
+				required: false,
+				maxlength: 255
+			},
+			"company_name": {
+				required: false,
+				maxlength: 255
+			}
+		}
+	});
+
+	var submit = $("#signup-button").on("click", function (e)
 	{
 		e.preventDefault();
 		var data = {

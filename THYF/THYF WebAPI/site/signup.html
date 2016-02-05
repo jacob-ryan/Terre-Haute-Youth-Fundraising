@@ -21,7 +21,7 @@
 <body>
 	<h1 align="center">Create account</h1>
 	<div class="container center">
-		<form class="form" role="form">
+		<form id="signup-form" class="form" role="form">
 			<div class="form-group col-sm-12">
 				<label for="email">Email:</label>
 				<input type="email" class="form-control" id="email" name="email" />
@@ -49,7 +49,7 @@
 
 			<div class="form-group col-sm-2">
 				<label for="state">State:</label>
-				<select class="form-control" id="state">
+				<select class="form-control" id="state" name="state">
 					<option>AL</option>
 					<option>AK</option>
 					<option>AZ</option>
@@ -134,7 +134,7 @@
 				<input type="text" class="form-control" id="company_name" name="company_name" />
 			</div>
 			<div class="form-group col-sm-12">
-				<button type="button" class="btn btn-default" id="signup-button" name="signup-button">Sign up</button>
+				<button type="submit" class="btn btn-default" id="signup-button" name="signup-button">Sign up</button>
 			</div>
 		</form>
 	</div>
