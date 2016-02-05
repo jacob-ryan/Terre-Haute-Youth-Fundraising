@@ -24,7 +24,7 @@ namespace THYF_Repository.Models
 		public string state { get; set; }
 		[MaxLength(5)]
 		public string zip { get; set; }
-		[MaxLength(255)]
+		[Required, MaxLength(255)]
 		public string phone { get; set; }
 		[MaxLength(255)]
 		public string tshirtSize { get; set; }

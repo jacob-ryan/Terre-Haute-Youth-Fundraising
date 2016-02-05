@@ -1,4 +1,10 @@
 #################
+## Custom files
+#################
+## Do not remove this exclusion, contains password information.
+EmailSecret.cs
+
+#################
 ## Visual Studio
 #################
 

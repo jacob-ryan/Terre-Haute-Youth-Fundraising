@@ -127,6 +127,8 @@ namespace THYF_Repository.Repositories
 				db.Users.Add(user);
 				db.SaveChanges();
 
+				Email.sendNewAccount(webUser);
+
 				return user.id;
 			}
 			else

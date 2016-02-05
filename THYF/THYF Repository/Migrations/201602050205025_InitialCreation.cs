@@ -36,7 +36,7 @@ namespace THYF_Repository.Models
                         city = c.String(maxLength: 255),
                         state = c.String(maxLength: 2),
                         zip = c.String(maxLength: 5),
-                        phone = c.String(maxLength: 255),
+                        phone = c.String(nullable: false, maxLength: 255),
                         tshirtSize = c.String(maxLength: 255),
                         companyName = c.String(maxLength: 255),
                         dateCreated = c.DateTime(nullable: false),

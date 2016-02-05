@@ -82,8 +82,8 @@
 	];
 
 	YUI({
-		//combine: false,
-		//base: "/site/js/yui/build/"
+		combine: false,
+		base: "/site/js/plugins/yui.min/"
 	}).use("router", function(Y)
 	{
 		var router = new Y.Router({
