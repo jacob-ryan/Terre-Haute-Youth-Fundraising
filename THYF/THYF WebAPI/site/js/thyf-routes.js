@@ -20,6 +20,13 @@
 			}
 		},
 		{
+			path: "/frostyAd",
+			callbacks: function()
+			{
+				THYF.changePage("frostyAd.html");
+			}
+		},
+		{
 			path: "/frosty-5k",
 			callbacks: function()
 			{

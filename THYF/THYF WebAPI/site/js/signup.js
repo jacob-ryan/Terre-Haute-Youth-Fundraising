@@ -77,7 +77,7 @@
 			zip: $("#zip").val(),
 			phone: $("#phone").val(),
 			year: $("#year").val(),
-			tshirt: $("#t-shirt").val(),
+			tshirtSize: $("#t-shirt").val(),
 			type: $("#type").val(),
 			companyName: $("#company_name").val(),
 			isActive: true
