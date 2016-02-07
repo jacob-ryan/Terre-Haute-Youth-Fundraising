@@ -4,7 +4,6 @@
 	{
 		submitHandler: function()
 		{
-			alert("Submitting form...");
 			submit();
 		},
 		rules: {
@@ -50,7 +49,7 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			alert("Logged in successfully!\nReturned: '" + data + "'");
+			alert("Logged in successfully!\nID = '" + data + "'");
 			loginLabels();
 		});
 	};

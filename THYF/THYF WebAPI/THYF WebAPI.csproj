@@ -210,6 +210,7 @@
     <Content Include="site\css\styles.css" />
     <Content Include="site\footer.html" />
     <Content Include="site\frosty-5k.html" />
+    <Content Include="site\FrostyAd.html" />
     <Content Include="site\header.html" />
     <Content Include="site\home.html" />
     <Content Include="site\img\BBBS_logo.png" />
@@ -223,6 +224,7 @@
     <Content Include="site\js\codeSpike.js" />
     <Content Include="site\js\contact-us.js" />
     <Content Include="site\js\frosty-5k.js" />
+    <Content Include="site\js\frostyAd.js" />
     <Content Include="site\js\header.js" />
     <Content Include="site\js\index.js" />
     <Content Include="site\js\login.js" />
