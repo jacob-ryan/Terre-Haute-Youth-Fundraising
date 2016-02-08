@@ -27,6 +27,18 @@
 			}
 		},
 		{
+		    path: "/bowlingAd",
+		    callbacks: function () {
+		        THYF.changePage("bowlingAd.html");
+		    }
+		},
+        {
+            path: "/donate",
+            callbacks: function () {
+                THYF.changePage("donate.html");
+            }
+        },
+		{
 			path: "/frosty-5k",
 			callbacks: function()
 			{

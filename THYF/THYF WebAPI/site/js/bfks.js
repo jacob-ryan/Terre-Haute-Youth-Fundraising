@@ -145,7 +145,8 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			alert("Team Registered\nReturned: '" + data + "'");
+		    alert("Team Registered\nReturned: '" + data + "'");
+		    THYF.changePage("home.html");
 		});
 		console.log(data);
 	});

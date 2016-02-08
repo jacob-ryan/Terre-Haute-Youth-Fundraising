@@ -198,6 +198,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="site\bowlingAd.html" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\bowling_signup.html" />
     <Content Include="site\change_info.html" />
@@ -208,6 +209,7 @@
     <Content Include="site\company_sponsorship_bowling.html" />
     <Content Include="site\contact-us.html" />
     <Content Include="site\css\styles.css" />
+    <Content Include="site\donate.html" />
     <Content Include="site\footer.html" />
     <Content Include="site\frosty-5k.html" />
     <Content Include="site\FrostyAd.html" />
@@ -220,6 +222,7 @@
     <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
     <Content Include="site\js\bfks.js" />
+    <Content Include="site\js\bowlingAd.js" />
     <Content Include="site\js\change-info.js" />
     <Content Include="site\js\codeSpike.js" />
     <Content Include="site\js\contact-us.js" />

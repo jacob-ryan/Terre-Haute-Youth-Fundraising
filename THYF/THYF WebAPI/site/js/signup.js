@@ -90,7 +90,8 @@
 			datatype: "json"
 		}).done(function (data)
 		{
-			alert("Sign-up Successful!\nReturned: '" + data + "'");
+		    alert("Sign-up Successful!\nReturned: '" + data + "'");
+		    THYF.changePage("home.html");
 		});
 	});
 	$("#type").on("change", function ()

@@ -51,6 +51,7 @@
 		{
 			alert("Logged in successfully!\nID = '" + data + "'");
 			loginLabels();
+			THYF.changePage("home.html");
 		});
 	};
 

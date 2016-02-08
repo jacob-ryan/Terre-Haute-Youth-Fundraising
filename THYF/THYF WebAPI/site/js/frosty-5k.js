@@ -18,7 +18,8 @@ $(document).ready(function ()
 			datatype: "json"
 		}).done(function (data)
 		{
-			alert("Registration Successful!\nReturned: '" + data + "'");
+		    alert("Registration Successful!\nReturned: '" + data + "'");
+		    THYF.changePage("home.html");
 		});
 	});
 });
