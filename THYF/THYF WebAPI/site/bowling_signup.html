@@ -1,159 +1,44 @@
-﻿<script src= "js/bfks.js"></script>
-
-<style>
-    @media (min-width: 992px) {
-        .center {
-            margin: auto;
-            width: 992px;
-        }
-    }
-</style>
-
-<h1 align="center">Create bowling team for company A</h1>
+﻿<script src="js/bfks.js"></script>
 
 <div class="container center">
-    <form class="form" role="form">
+	<h1 class="text-center">Register for BFKS</h1>
+	<p>Please complete this form to register for the Bowl for Kid's Sake (BFKS) event.  For each bowler below, you may enter either an e-mail address (for those with existing accounts), or manually enter a name/t-shirt size (for those without accounts).  The team captain, however, is required to have an existing account.</p>
 
-        <div class="form-group">
-            <label for="name">Team Name:</label>
-            <input type="text" class="form-control" id="teamName" />
-        </div>
+	<form id="bfks-form">
+		<div class="form-group">
+			<label for="team-name">Team Name:</label>
+			<input type="text" class="form-control" id="team-name" name="team-name">
+		</div>
 
-        <div class="form-group">
-            <label for="bowler 1">Team Captian:</label>
-            <div class="row">
-                <!--e-mail-->
-                <div class="form-group col-sm-7">
-                    <label for="email">Email:</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="emailOne" />
-                        <span class="input-group-btn">
-							<button type="button" class="btn btn-default" id="btnOne">Check Users</button>
-                        </span>
-                    </div>
-                </div>
-                <!-- name-->
-                <div class="form-group col-sm-5">
-                    <label for="bower 1 name">Name:</label>
-                    <input type="text" class="form-control" id="nameOne" />
-                </div>
-            </div>
-            <div class="row">
-                <!--t-shirt-->
-                <div class="form-group col-sm-3">
-                    <label for="t-shirt">T-shirt size:</label>
-                    <select class="form-control" id="shirtOne">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+		<div id="bowlers-container">
+			<div class="form-group">
+				<h3>Bowler #1 (Team Captain)</h3>
+				<div class="row">
+					<div class="form-group col-sm-12">
+						<label for="bowler-0-email">Email:</label>
+						<div class="input-group">
+							<input type="email" class="form-control" id="bowler-0-email" name="bowler-0-email">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default js-check-user" data-id="0">Check User</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<label for="bowler-0-name">Name:</label>
+						<input type="text" class="form-control" id="bowler-0-name" name="bowler-0-name" readonly="readonly">
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="bowler-0-tshirt">T-shirt size:</label>
+						<input type="text" class="form-control" id="bowler-0-tshirt" name="bowler-0-tshirt" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!--bowler 2-->
-        <div class="form-group">
-            <label for="bowler 2">Bowler 2:</label>
-            <div class="row">
-                <!--e-mail-->
-                <div class="form-group col-sm-7">
-                    <label for="email">Email:</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="emailTwo" />
-                        <span class="input-group-btn">
-							<button type="button" class="btn btn-default" id="btnTwo">Check Users</button>
-                        </span>
-                    </div>
-                </div>
-                <!-- name-->
-                <div class="form-group col-sm-5">
-                    <label for="bower 2 name">Name:</label>
-                    <input type="text" class="form-control" id="nameTwo" />
-                </div>
-            </div>
-            <div class="row">
-                <!--t-shirt-->
-                <div class="form-group col-sm-3">
-                    <label for="t-shirt">T-shirt size:</label>
-                    <select class="form-control" id="shirtTwo">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!--bowler 3-->
-        <div class="form-group">
-            <label for="bowler 3">Bowler 3:</label>
-            <div class="row">
-                <!--e-mail-->
-                <div class="form-group col-sm-7">
-                    <label for="email">Email:</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="emailThree" />
-                        <span class="input-group-btn">
-							<button type="button" class="btn btn-default" id="btnThree">Check Users</button>
-                        </span>
-                    </div>
-                </div>
-                <!-- name-->
-                <div class="form-group col-sm-5">
-                    <label for="bower 3 name">Name:</label>
-                    <input type="text" class="form-control" id="nameThree" />
-                </div>
-            </div>
-            <div class="row">
-                <!--t-shirt-->
-                <div class="form-group col-sm-3">
-                    <label for="t-shirt">T-shirt size:</label>
-                    <select class="form-control" id="shirtThree">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!--bowler 4-->
-        <div class="form-group">
-            <label for="bowler 4">Bowler 4:</label>
-            <div class="row">
-                <!--e-mail-->
-                <div class="form-group col-sm-7">
-                    <label for="email">Email:</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="emailFour" />
-                        <span class="input-group-btn">
-							<button type="button" class="btn btn-default" id="btnFour">Check Users</button>
-                        </span>
-                    </div>
-                </div>
-                <!-- name-->
-                <div class="form-group col-sm-5">
-                    <label for="bower 4 name">Name:</label>
-                    <input type="text" class="form-control" id="nameFour" />
-                </div>
-            </div>
-            <div class="row">
-                <!--t-shirt-->
-                <div class="form-group col-sm-3">
-                    <label for="t-shirt">T-shirt size:</label>
-                    <select class="form-control" id="shirtFour">
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- submit button -->
-        <div class="form-group">
-            <button type="submit" class="btn btn-default" id="submit">Submit</button>
-        </div>
-
-    </form>
+		<div class="form-group col-sm-6 col-sm-offset-3">
+			<button type="submit" class="btn btn-block btn-primary">Register for Event</button>
+		</div>
+	</form>
 </div>

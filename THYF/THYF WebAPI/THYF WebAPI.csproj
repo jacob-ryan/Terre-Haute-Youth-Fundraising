@@ -200,11 +200,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="site\bowlingAd.html" />
     <Content Include="site\bowling_signup.html" />
-    <Content Include="site\bowling_signup.html" />
     <Content Include="site\change_info.html" />
     <Content Include="site\codeSpike.html" />
-    <Content Include="site\codeSpike.html" />
-    <Content Include="site\company_signup.html" />
     <Content Include="site\company_signup.html" />
     <Content Include="site\company_sponsorship_bowling.html" />
     <Content Include="site\contact-us.html" />
@@ -219,6 +216,7 @@
     <Content Include="site\img\BFKS-A-PPL-GRY.png" />
     <Content Include="site\img\bowling.png" />
     <Content Include="site\img\frosty.png" />
+    <Content Include="site\img\frostytest.png" />
     <Content Include="site\img\loading.gif" />
     <Content Include="site\index.html" />
     <Content Include="site\js\bfks.js" />

@@ -1,155 +1,159 @@
 ﻿$(document).ready(function()
 {
-	var userList = [];
-	var checkedEmails = [];
-	$("#btnOne").on("click", function(e)
+	$("#bowlers-container").on("click", ".js-check-user", function()
 	{
-		e.preventDefault();
-		if ($.inArray($("#emailOne").val(), checkedEmails) != -1)
-		{
-			alert("Email " + $("#emailOne").val() + " already added");
-		} else
-			console.log("Made it");
-		{
-			$.ajax({
-				type: "GET",
-				url: "/api/User?email=" + $("#emailOne").val(),
-				contentType: "application/json",
-			}).done(function(call)
-			{
-				if (call != null)
-				{
-					$("#nameOne").val(call.name);
-					$("#shirtOne").val(call.tshirtSize);
-				}
-				userList.push({
-					userId: call.id,
-					name: call.name,
-					tshirt: call.tshirt,
+		var number = $(this).attr("data-id");
+		var email = $("#bowler-" + number + "-email").val();
 
-				});
-				checkedEmails.push($("#emailOne").val());
-				console.log(userList);
-			});
-		}
+		$.ajax({
+			type: "GET",
+			url: "/api/User?email=" + email,
+			contentType: "application/json",
+		}).done(function(user)
+		{
+			if (!user)
+			{
+				$("#bowler-" + number + "-email").css("background-color", "#FFCCCC");
+			}
+			else
+			{
+				$("#bowler-" + number + "-email").css("background-color", "#CCFFCC");
+				$("#bowler-" + number + "-name").val(user.name);
+				$("#bowler-" + number + "-tshirt").val(user.tshirtSize);
+			}
+		});
 	});
 
-	$("#btnTwo").on("click", function(e)
+	var init = function()
 	{
-		e.preventDefault();
-		if ($.inArray($("#emailTwo").val(), checkedEmails) != -1)
+		for (var i = 1; i < 6; i += 1)
 		{
-			alert("Email " + $("#emailTwo").val() + " already added");
-		} else
-		{
-			$.ajax({
-				type: "GET",
-				url: "/api/User?email=" + $("#emailTwo").val(),
-				contentType: "application/json",
-			}).done(function(call)
-			{
-				if (typeof call != 'undefined')
-				{
-					$("#nameTwo").val(call.name);
-					$("#shirtTwo").val(call.tshirtSize);
-
-					userList.push({
-						userId: call.id,
-						name: call.name,
-						tshirt: call.tshirt,
-
-					});
-				}
-				checkedEmails.push($("#emailTwo").val());
-				console.log(userList);
-			});
+			var html = templateTeamMember(i);
+			$("#bowlers-container").append(html);
 		}
-	});
+		addValidation();
+		THYF.hideLoading();
+	};
 
-	$("#btnThree").on("click", function(e)
+	var addValidation = function()
 	{
-		e.preventDefault();
-		if ($.inArray($("#emailThree").val(), checkedEmails) != -1)
+		var generateRules = function()
 		{
-			alert("Email " + $("#emailThree").val() + " already added");
-		} else
-		{
-			$.ajax({
-				type: "GET",
-				url: "/api/User?email=" + $("#emailThree").val(),
-				contentType: "application/json",
-			}).done(function(call)
-			{
-				if (typeof call != 'undefined')
-				{
-					$("#nameThree").val(call.name);
-					$("#shirtThree").val(call.tshirtSize);
+			var rules = {
+				"team-name": {
+					required: true,
+					required: 255
 				}
-				userList.push({
-					userId: call.id,
-					name: call.name,
-					tshirt: call.tshirt,
-
-				});
-				checkedEmails.push($("#emailThree").val());
-				console.log(userList);
-			});
-		}
-	});
-
-	$("#btnFour").on("click", function(e)
-	{
-		e.preventDefault();
-		if ($.inArray($("#emailFour").val(), checkedEmails) != -1)
-		{
-			alert("Email " + $("#emailFour").val() + " already added");
-		} else
-		{
-			$.ajax({
-				type: "GET",
-				url: "/api/User?email=" + $("#emailFour").val(),
-				contentType: "application/json",
-			}).done(function(call)
+			};
+			for (var i = 0; i < 6; i += 1)
 			{
-				if (typeof call != 'undefined')
-				{
-					$("#nameFour").val(call.name);
-					$("#shirtFour").val(call.tshirtSize);
-				}
-				userList.push({
-					userId: call.id,
-					name: call.name,
-					tshirt: call.tshirt,
-
-				});
-				checkedEmails.push($("#emailFour").val());
-				console.log(userList);
-			});
-		}
-	});
-
-	$("#submit").on("click", function(e)
-	{
-		var data = {
-			teamName: $("#teamName").val(),
-			teamCaptainId: userList[0].userId,
-			bowlers: userList
+				rules["bowler-" + i + "-email"] = {
+					required: true,
+					maxlength: 255,
+					email: true
+				};
+				rules["bowler-" + i + "-name"] = {
+					required: true,
+					maxlength: 255
+				};
+				rules["bowler-" + i + "-tshirt"] = {
+					required: true
+				};
+			}
+			return rules;
 		};
 
-		e.preventDefault();
-		$.ajax({
-			type: "POST",
-			url: "api/BFKSRegistration",
-			contentType: "application/json",
-			data: data ? JSON.stringify(data) : null,
-			datatype: "json"
-		}).done(function(data)
+		var getUser = function(i)
 		{
-		    alert("Team Registered\nReturned: '" + data + "'");
-		    THYF.changePage("home.html");
-		});
-		console.log(data);
-	});
+			var defer = $.Deferred();
+			var email = $("#bowler-" + i + "-email").val();
+			$.ajax({
+				type: "GET",
+				url: "/api/User?email=" + email,
+				contentType: "application/json"
+			}).done(function(user)
+			{
+				if (!user)
+				{
+					defer.resolve({
+						userId: null,
+						name: $("#bowler-" + i + "-name").val(),
+						tshirtSize: $("#bowler-" + i + "-tshirt").val()
+					});
+				}
+				else
+				{
+					defer.resolve({
+						userId: user.id,
+						name: null,
+						tshirtSize: null
+					});
+				}
+			});
+			return defer.promise();
+		};
 
-	THYF.hideLoading()
+		$("#bfks-form").validate(
+		{
+			submitHandler: function()
+			{
+				var bowlers = [];
+				for (var i = 0; i < 6; i += 1)
+				{
+					bowlers.push(getUser(i));
+				}
+				var data = {
+					teamName: $("#team-name").val(),
+					teamCaptainId: getUser(0).id,
+					bowlers: bowlers
+				};
+				$.ajax({
+					type: "POST",
+					url: "/api/BFKSRegistration",
+					contentType: "application/json",
+					data: data ? JSON.stringify(data) : null,
+					datatype: "json"
+				}).done(function(data)
+				{
+					alert("Team Registered\nReturned: '" + data + "'");
+				});
+			},
+			rules: generateRules()
+		});
+	};
+
+	var templateTeamMember = function(number)
+	{
+		var html = "<div class='form-group'>\
+	<h3>Bowler #" + (number + 1) + "</h3>\
+	<div class='row'>\
+		<div class='form-group col-sm-12'>\
+			<label for='bowler-" + number + "-email'>Email:</label>\
+			<div class='input-group'>\
+				<input type='email' class='form-control' id='bowler-" + number + "-email' name='bowler-" + number + "-email'>\
+				<span class='input-group-btn'>\
+					<button type='button' class='btn btn-default js-check-user' data-id='" + number + "'>Check User</button>\
+				</span>\
+			</div>\
+		</div>\
+	</div>\
+	<div class='row'>\
+		<div class='form-group col-sm-6'>\
+			<label for='bowler-" + number + "-name'>Name:</label>\
+			<input type='text' class='form-control' id='bowler-" + number + "-name' name='bowler-" + number + "-name'>\
+		</div>\
+		<div class='form-group col-sm-6'>\
+			<label for='bowler-" + number + "-tshirt'>T-shirt size:</label>\
+			<select class='form-control' id='bowler-" + number + "-tshirt'>\
+				<option>S</option>\
+				<option>M</option>\
+				<option>L</option>\
+			</select>\
+		</div>\
+	</div>\
+</div>";
+		return html;
+	};
+
+	init();
 });

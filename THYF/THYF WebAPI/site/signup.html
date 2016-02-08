@@ -1,142 +1,124 @@
 ﻿<script src="js/signup.js"></script>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		@media (min-width: 992px)
-		{
-			.center
-			{
-				margin: auto;
-				width: 992px;
-			}
-		}
-	</style>
-</head>
-<body>
-	<h1 align="center">Create account</h1>
-	<div class="container center">
-		<form id="signup-form" class="form" role="form">
-			<div class="form-group col-sm-12">
-				<label for="email">Email:</label>
-				<input type="email" class="form-control" id="email" name="email" />
-			</div>
-			<div class="form-group col-sm-6">
-				<label for="password">Password:</label>
-				<input type="password" class="form-control" id="password" name="password" />
-			</div>
-			<div class="form-group col-sm-6">
-				<label for="password-check">Confirm Password:</label>
-				<input type="password" class="form-control" id="password-check" name="password-check" />
-			</div>
-			<div class="form-group col-sm-12">
-				<label for="name">Name:</label>
-				<input type="text" class="form-control" id="name" name="name" />
-			</div>
-			<div class="form-group col-sm-5">
-				<label for="address">Address:</label>
-				<input type="text" class="form-control" id="address" name="address" />
-			</div>
-			<div class="form-group col-sm-3">
-				<label for="city">City:</label>
-				<input type="text" class="form-control" id="city" name="city" />
-			</div>
+<h1 class="text-center">Create Account</h1>
+<div class="container center">
+	<form id="signup-form" class="form" role="form">
+		<div class="form-group col-sm-6">
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" id="email" name="email" />
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="name">Name:</label>
+			<input type="text" class="form-control" id="name" name="name" />
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="password">Password:</label>
+			<input type="password" class="form-control" id="password" name="password" />
+		</div>
+		<div class="form-group col-sm-6">
+			<label for="password-check">Confirm Password:</label>
+			<input type="password" class="form-control" id="password-check" name="password-check" />
+		</div>
+		<div class="form-group col-sm-5">
+			<label for="address">Address:</label>
+			<input type="text" class="form-control" id="address" name="address" />
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="city">City:</label>
+			<input type="text" class="form-control" id="city" name="city" />
+		</div>
 
-			<div class="form-group col-sm-2">
-				<label for="state">State:</label>
-				<select class="form-control" id="state" name="state">
-					<option>AL</option>
-					<option>AK</option>
-					<option>AZ</option>
-					<option>AR</option>
-					<option>CA</option>
-					<option>CO</option>
-					<option>CT</option>
-					<option>DE</option>
-					<option>FL</option>
-					<option>GA</option>
-					<option>HI</option>
-					<option>ID</option>
-					<option>IL</option>
-					<option>IN</option>
-					<option>IA</option>
-					<option>KS</option>
-					<option>KY</option>
-					<option>LA</option>
-					<option>ME</option>
-					<option>MD</option>
-					<option>MA</option>
-					<option>MI</option>
-					<option>MN</option>
-					<option>MS</option>
-					<option>MO</option>
-					<option>MT</option>
-					<option>NE</option>
-					<option>NV</option>
-					<option>NJ</option>
-					<option>NM</option>
-					<option>NY</option>
-					<option>NC</option>
-					<option>ND</option>
-					<option>OK</option>
-					<option>OR</option>
-					<option>PA</option>
-					<option>RI</option>
-					<option>SC</option>
-					<option>SD</option>
-					<option>TN</option>
-					<option>TX</option>
-					<option>UT</option>
-					<option>VT</option>
-					<option>VA</option>
-					<option>WA</option>
-					<option>WV</option>
-					<option>WI</option>
-					<option>WY</option>
-				</select>
-			</div>
+		<div class="form-group col-sm-2">
+			<label for="state">State:</label>
+			<select class="form-control" id="state" name="state">
+				<option>AL</option>
+				<option>AK</option>
+				<option>AZ</option>
+				<option>AR</option>
+				<option>CA</option>
+				<option>CO</option>
+				<option>CT</option>
+				<option>DE</option>
+				<option>FL</option>
+				<option>GA</option>
+				<option>HI</option>
+				<option>ID</option>
+				<option>IL</option>
+				<option>IN</option>
+				<option>IA</option>
+				<option>KS</option>
+				<option>KY</option>
+				<option>LA</option>
+				<option>ME</option>
+				<option>MD</option>
+				<option>MA</option>
+				<option>MI</option>
+				<option>MN</option>
+				<option>MS</option>
+				<option>MO</option>
+				<option>MT</option>
+				<option>NE</option>
+				<option>NV</option>
+				<option>NJ</option>
+				<option>NM</option>
+				<option>NY</option>
+				<option>NC</option>
+				<option>ND</option>
+				<option>OK</option>
+				<option>OR</option>
+				<option>PA</option>
+				<option>RI</option>
+				<option>SC</option>
+				<option>SD</option>
+				<option>TN</option>
+				<option>TX</option>
+				<option>UT</option>
+				<option>VT</option>
+				<option>VA</option>
+				<option>WA</option>
+				<option>WV</option>
+				<option>WI</option>
+				<option>WY</option>
+			</select>
+		</div>
 
-			<div class="form-group col-sm-2">
-				<label for="zip">Zip:</label>
-				<input type="text" class="form-control" id="zip" name="zip" />
-			</div>
+		<div class="form-group col-sm-2">
+			<label for="zip">Zip:</label>
+			<input type="text" class="form-control" id="zip" name="zip" />
+		</div>
 
-			<div class="form-group col-sm-5">
-				<label for="phone">Phone:</label>
-				<input type="text" class="form-control" id="phone" name="phone" />
-			</div>
-			<div class="form-group col-sm-3">
-				<label for="year">Date of Birth:</label>
-				<input type="text" class="form-control" id="year" name="year" />
-			</div>
-			<div class="form-group col-sm-2">
-				<label for="type">Type of Account:</label>
-				<select class="form-control" id="type" name="type">
-					<option value="volunteer">Volunteer</option>
-					<option value="company">Company</option>
-				</select>
-			</div>
-			<div id="volunteer_sec" class="form-group col-sm-2">
-				<label for="t-shirt">T-shirt size:</label>
-				<select class="form-control" id="t-shirt" name="t-shirt">
-					<option>S</option>
-					<option>M</option>
-					<option>L</option>
-				</select>
-			</div>
-			<div id="company_sec" class="form-group col-sm-3 hide2">
-				<label for="company_name">Name of Company:</label>
-				<input type="text" class="form-control" id="company_name" name="company_name" />
-			</div>
-			<div class="form-group col-sm-12">
-				<button type="submit" class="btn btn-default" id="signup-button" name="signup-button">Sign up</button>
-			</div>
-		</form>
-	</div>
-</body>
-</html>
+		<div class="form-group col-sm-5">
+			<label for="phone">Phone:</label>
+			<input type="text" class="form-control" id="phone" name="phone" />
+		</div>
+		<div class="form-group col-sm-3">
+			<label for="year">Date of Birth:</label>
+			<input type="text" class="form-control" id="year" name="year" />
+		</div>
+		<div class="form-group col-sm-2">
+			<label for="type">Account Type:</label>
+			<select class="form-control" id="type" name="type">
+				<option value="volunteer">Volunteer</option>
+				<option value="company">Company</option>
+			</select>
+		</div>
+		<div id="volunteer_sec" class="form-group col-sm-2">
+			<label for="t-shirt">T-shirt size:</label>
+			<select class="form-control" id="t-shirt" name="t-shirt">
+				<option value="S">S - Small</option>
+				<option value="M">M - Medium</option>
+				<option value="L">L - Large</option>
+				<option value="XL">XL - Extra Large</option>
+				<option value="2XL">2XL - 2X Extra Large</option>
+				<option value="3XL">3XL - 3X Extra Large</option>
+			</select>
+		</div>
+		<div id="company_sec" class="form-group col-sm-3 hide2">
+			<label for="company_name">Name of Company:</label>
+			<input type="text" class="form-control" id="company_name" name="company_name" />
+		</div>
+		<div class="form-group col-sm-6 col-sm-offset-3">
+			<button type="submit" class="btn btn-block btn-primary">Create Account</button>
+		</div>
+	</form>
+</div>
