@@ -93,29 +93,57 @@
 			return defer.promise();
 		};
 
+		var getData = function()
+		{
+			var defer = $.Deferred();
+
+			getUser(0).done(function(teamCaptain)
+			{
+				var bowlers = [];
+				var load = function(i)
+				{
+					getUser(i).done(function(bowler)
+					{
+						bowlers.push(bowler);
+						if (i + 1 < 6)
+						{
+							load(i + 1);
+						}
+						else
+						{
+							var data = {
+								teamName: $("#team-name").val(),
+								teamCaptainId: teamCaptain.userId,
+								bowlers: bowlers
+							};
+							defer.resolve(data);
+						}
+					});
+				};
+				load(1);
+			});
+
+			return defer.promise();
+		};
+
 		$("#bfks-form").validate(
 		{
 			submitHandler: function()
 			{
-				var bowlers = [];
-				for (var i = 0; i < 6; i += 1)
+				THYF.showLoading();
+				getData().done(function(data)
 				{
-					bowlers.push(getUser(i));
-				}
-				var data = {
-					teamName: $("#team-name").val(),
-					teamCaptainId: getUser(0).id,
-					bowlers: bowlers
-				};
-				$.ajax({
-					type: "POST",
-					url: "/api/BFKSRegistration",
-					contentType: "application/json",
-					data: data ? JSON.stringify(data) : null,
-					datatype: "json"
-				}).done(function(data)
-				{
-					alert("Team Registered\nReturned: '" + data + "'");
+					$.ajax({
+						type: "POST",
+						url: "/api/BFKSRegistration",
+						contentType: "application/json",
+						data: data ? JSON.stringify(data) : null,
+						datatype: "json"
+					}).done(function(data)
+					{
+						alert("Your team was registered successfully!");
+						THYF.go("/");
+					});
 				});
 			},
 			rules: generateRules()

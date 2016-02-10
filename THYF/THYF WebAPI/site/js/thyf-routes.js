@@ -113,7 +113,6 @@
 
 		THYF.go = function(location)
 		{
-			console.log("router.save = " + location);
 			router.save(location);
 		};
 
