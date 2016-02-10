@@ -6,7 +6,6 @@ $(document).ready(function ()
 {
 	$("#submit").on("click", function (e)
 	{
-		e.preventDefault();
 		var data = {
 			isMinor: $("#age").is(":checked")
 		};
