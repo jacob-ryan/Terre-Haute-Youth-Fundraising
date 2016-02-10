@@ -64,7 +64,7 @@
 		}
 	});
 
-	var submit = $("#signup-button").on("click", function (e)
+	var submit = function (e)
 	{
 		e.preventDefault();
 		var data = {
@@ -93,7 +93,7 @@
 		    alert("Sign-up Successful!\nReturned: '" + data + "'");
 		    THYF.changePage("home.html");
 		});
-	});
+	};
 	$("#type").on("change", function ()
 	{
 		var current = $("#type").val();
