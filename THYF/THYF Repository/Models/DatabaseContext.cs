@@ -17,5 +17,6 @@ namespace THYF_Repository.Models
 		public DbSet<BFKSRegistration> BFKSRegistrations { get; set; }
 		public DbSet<BFKSBowler> BFKSBowlers { get; set; }
 		public DbSet<FrostyRegistration> FrostyRegistrations { get; set; }
+		public DbSet<ContactUs> ContactUsSubmissions { get; set; }
 	}
 }
