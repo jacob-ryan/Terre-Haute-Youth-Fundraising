@@ -176,6 +176,9 @@
 				<option>S</option>\
 				<option>M</option>\
 				<option>L</option>\
+				<option>XL</option>\
+				<option>2XL</option>\
+				<option>3XL</option>\
 			</select>\
 		</div>\
 	</div>\

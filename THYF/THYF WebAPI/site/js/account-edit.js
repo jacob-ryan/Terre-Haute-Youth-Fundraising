@@ -17,8 +17,17 @@
 		$("#phone").val(user.phone);
 		$("#year").val(user.year);
 		$("#t-shirt").val(user.tshirtSize);
+		$("#company").val(user.companyName);
 		data = user;
 		console.log(data);
+
+		if(user.companyName == ""){
+			$("#volunteer_sec").show();
+			$("#company_sec").hide();
+		}else{
+			$("#volunteer_sec").hide();
+			$("#company_sec").show();
+		}
 		THYF.hideLoading();
 	});
 
@@ -35,6 +44,7 @@
 		var newZip = $("#zip").val();
 		var newPhone = $("#phone").val();
 		var newSize = $("#t-shirt").val();
+		var newCompany = $("#company").val();
 
 		if (newPass != newPassCheck)
 		{
@@ -62,6 +72,7 @@
 		data.zip = newZip;
 		data.phone = newPhone;
 		data.tshirtSize = newSize;
+		data.company = newCompany;
 
 		console.log(data);
 
