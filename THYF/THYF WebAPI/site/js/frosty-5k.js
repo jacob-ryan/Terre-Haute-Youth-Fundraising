@@ -2,9 +2,6 @@
 {
 	$("#register").on("click", function()
 	{
-		var data = {
-			isMinor: $("#age").is(":checked")
-		};
 		$.ajax({
 			type: "GET",
 			url: "/api/Login",
