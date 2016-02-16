@@ -1,50 +1,86 @@
 ﻿<script src="js/frosty-5k.js"></script>
 
 <style>
-    @media (min-width: 992px) {
-        .center {
-            margin: auto;
-            width: 992px;
-        }
+	.carousel-control.right, .carousel-control.left
+	{
+		background-image: none;
+	}
 
-        p {
-            font-weight: bold;
-        }
+	.CenterContainer
+	{
+		margin: auto;
+		width: 80%;
+	}
 
-        h1 {
-            font-weight: bold;
-            font-size: 40px;
-        }
-
-        .form-group {
-            text-align: center;
-        }
-    }
+	.carousel-inner
+	{
+		width: 100%;
+	}
 </style>
 
-<h1 align="center">Frosty 5k and Reindeer Trot</h1>
+<div class="CenterContainer">
+	<div class="container" id="boot">
+		<h1 class="text-center">Frosty 5K</h1>
 
-<div class="container center">
-    <hr></hr><br>
-    <p>As a participant in the Frosty 5k, I, for myself, executor, administrators, heirs, devises and assigns do hereby discharge Chances and Services for Youth, Big Brothers Big Sister of Vigo County, and Terre Haute Parks Department from all claims of damages, demands, actions, illnesses, death and causes whatsoever in any matter arising or growing out my participation or that of my child in the event.</p>
-    <p>I Understand that registration fee is a non-refundable gift to Big Brothers Big Sisters of Vigo County in case of withdrawal on my part of cancellation due to inclement weather.</p>
-    <p>I understand that my picture may be used for marketing and promotional purposes. </p>
-    <br>
+		<!-- Image divs -->
+		<div class="col-sm-12">
 
-    <form id="frosty5k-form"class="form" role="form">
-        <div class="form-group">
-            <p>If under the age of 18 parent's signature is required upon entry</p>
-			<div class="checkbox">
-				<label><input type="checkbox" id="age"> I am under the age 18</label>
-				<p></p>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<img src="img/frostytest.png" alt="Chania">
+					</div>
+
+					<div class="item">
+						<img src="img/frostytest.png" alt="Chania">
+					</div>
+
+					<div class="item">
+						<img src="img/frostytest.png" alt="Flower">
+					</div>
+
+					<div class="item">
+						<img src="img/frostytest.png" alt="Flower">
+					</div>
+				</div>
+
+				<!-- Left and right controls -->
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
-            <div class="form-group">
-                <button type="button" class="submit" id="submit">Submit</button>
-            </div>
 
-            <p>Questions: Contact BBBS Staff at 812.232.3952 ex52</p>
+			<hr>
 
-        </div>
+			<div class="frosty panel-default">
+				<h1 class="text-center">Frosty 5K</h1>
 
-    </form>
+				<div class="row">
+					<div class="col-sm-6 col-sm-offset-3">
+						<button id="register" class="btn btn-primary btn-block">Register for Event</button>
+					</div>
+					<div class="col-sm-10 col-sm-offset-1">
+						<br />
+						<p>
+							The Frosty 5K is Big Brothers Big Sisters of Vigo County's local signature fundraising event. Taking place in the winter months, the Frosty 5K offers a chance for individuals to move for the power of Wabash Valley mentoring. As a 5K fun run, participants can walk or jog to show their support. The Frosty 5K is a low-cost fundraiser so that participants can, "Give a little, move a little, and support a Little". You can rest assured that 100% of the proceeds from Frosty 5K in Terre Haute, Indiana go directly to serving our Wabash Valley youth.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

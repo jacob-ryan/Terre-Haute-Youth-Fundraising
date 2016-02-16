@@ -16,7 +16,7 @@ namespace THYF_Repository.Models
 
 		protected override void Seed(DatabaseContext context)
 		{
-			System.Diagnostics.Debug.WriteLine("Seed() method called");
+			System.Diagnostics.Debug.WriteLine("MigrationConfiguration.Seed() method called - Initializing database...");
 		}
 	}
 }

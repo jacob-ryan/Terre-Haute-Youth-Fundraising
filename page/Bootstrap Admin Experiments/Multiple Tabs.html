@@ -1,0 +1,88 @@
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="style.css">
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#Users">Users</a></li>
+  <li><a data-toggle="tab" href="#menu1">Events</a></li>
+  <li><a data-toggle="tab" href="#menu2">Editing</a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="Users" class="tab-pane fade in active">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<label for="searching">Search User:</label>
+				<div class="input-group">
+					<input type="input" class="form-control" id="input">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default">Search</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="wrapper">
+			<div id="UserList">
+				<ul class="list-group" id="List">
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>
+					<li class="list-group-item">a@a.com</li>				
+				</ul>
+			</div>
+			
+			<div id="userInfo">
+				<div id = "InfoList">
+					<p>Username:    Apple</p>
+					<p>Address:     788 south 6th</p>
+					<p>City:        Terre Haute</p>
+					<p>State:       IN</p>
+					<p>Zip:         47807</p>
+					<p>Phone:       (812)867-5309</p>
+					<p>Shirt Size:  3XL</p>
+					<p>Events:      Frosty, BFKS</p>
+				</div>
+				
+				<a class = "btn navbar-btn btn-primary">Edit User</a>
+				<a class = "btn navbar-btn btn-primary">Delete User</a>
+			</div>	
+		</div>
+		
+		<div class="row" id="addGroup">
+			<div class="col-sm-12 text-center">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary">Add User</label>
+				</div>
+			</div>
+		</div>
+	</div> 
+	
+	<div id="menu1" class="tab-pane fade">
+		<p id="test">Some content in menu 1.</p>
+	</div>
+
+	<div id="menu2" class="tab-pane fade">
+		<p>Some content in menu 2.</p>
+	</div>
+</div>

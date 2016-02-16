@@ -56,15 +56,21 @@
     <Compile Include="Migrations\201602050205025_InitialCreation.Designer.cs">
       <DependentUpon>201602050205025_InitialCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602112330450_Test2.cs" />
+    <Compile Include="Migrations\201602112330450_Test2.Designer.cs">
+      <DependentUpon>201602112330450_Test2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BFKSBowler.cs" />
     <Compile Include="Models\BFKSRegistration.cs" />
+    <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\FrostyRegistration.cs" />
     <Compile Include="Models\MigrationConfiguration.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepo.cs" />
+    <Compile Include="Repositories\ContactUsRepo.cs" />
     <Compile Include="Repositories\FrostyRegistrationRepo.cs" />
     <Compile Include="Repositories\LoginRepo.cs" />
     <Compile Include="Repositories\BFKSRegistrationRepo.cs" />
@@ -86,6 +92,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602050205025_InitialCreation.resx">
       <DependentUpon>201602050205025_InitialCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602112330450_Test2.resx">
+      <DependentUpon>201602112330450_Test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

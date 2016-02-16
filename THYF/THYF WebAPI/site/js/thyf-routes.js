@@ -20,25 +20,6 @@
 			}
 		},
 		{
-			path: "/frostyAd",
-			callbacks: function()
-			{
-				THYF.changePage("frostyAd.html");
-			}
-		},
-		{
-		    path: "/bowlingAd",
-		    callbacks: function () {
-		        THYF.changePage("bowlingAd.html");
-		    }
-		},
-        {
-            path: "/donate",
-            callbacks: function () {
-                THYF.changePage("donate.html");
-            }
-        },
-		{
 			path: "/frosty-5k",
 			callbacks: function()
 			{
@@ -46,10 +27,24 @@
 			}
 		},
 		{
-			path: "/bowl-for-kids",
+			path: "/frosty-5k/registration",
 			callbacks: function()
 			{
-				THYF.changePage("bowling_signup.html");
+				THYF.changePage("frosty-5k-registration.html");
+			}
+		},
+		{
+			path: "/bfks",
+			callbacks: function()
+			{
+				THYF.changePage("bfks.html");
+			}
+		},
+		{
+			path: "/bfks/registration",
+			callbacks: function()
+			{
+				THYF.changePage("bfks-registration.html");
 			}
 		},
 		{
@@ -70,17 +65,17 @@
 			path: "/sign-up",
 			callbacks: function()
 			{
-				THYF.changePage("signup.html").done(function()
+				THYF.changePage("sign-up.html").done(function()
 				{
 					THYF.hideLoading();
 				});
 			}
 		},
 		{
-			path: "/change-info",
+			path: "/account/edit",
 			callbacks: function()
 			{
-				THYF.changePage("change_info.html");
+				THYF.changePage("account-edit.html");
 			}
 		},
 		{
@@ -96,6 +91,7 @@
 			callbacks: function()
 			{
 				alert("The location you requested was invalid: " + THYF.getPath());
+				THYF.hideLoading();
 			}
 		}
 	];
@@ -113,7 +109,6 @@
 
 		THYF.go = function(location)
 		{
-			console.log("router.save = " + location);
 			router.save(location);
 		};
 
