@@ -1,5 +1,6 @@
 ﻿$(document).ready(function ()
 {
+	//Click handlers
 	$("#signout-link").on("click", function (e)
 	{
 		e.preventDefault();
@@ -14,6 +15,32 @@
 			logoutLabels();
 		});
 	});
+	$("#home-link").on("click", function (e)
+	{
+		$("a").removeClass("active");
+		$("#home-link").addClass("active");
+	});
+	$("#contact-us-link").on("click", function (e)
+	{
+		$("a").removeClass("active");
+		$("#contact-us-link").addClass("active");
+	});
+	$("#donate-link").on("click", function (e)
+	{
+		$("a").removeClass("active");
+		$("#donate-link").addClass("active");
+	});
+	$("#frosty-link").on("click", function (e)
+	{
+		$("a").removeClass("active");
+		$("#frosty-link").addClass("active");
+	});
+	$("#bowl-link").on("click", function (e)
+	{
+		$("a").removeClass("active");
+		$("#bowl-link").addClass("active");
+	});
+	//Helper functions
 	var logoutLabels = function ()
 	{
 			$("#logged-in").text("");
