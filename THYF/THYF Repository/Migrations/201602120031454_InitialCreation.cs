@@ -54,25 +54,58 @@ namespace THYF_Repository.Models
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
+                        eventOccurrenceId = c.Int(nullable: false),
                         teamName = c.String(),
                         teamCaptainId = c.Int(nullable: false),
                         dateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.teamCaptainId, cascadeDelete: true)
+                .Index(t => t.eventOccurrenceId)
                 .Index(t => t.teamCaptainId);
+            
+            CreateTable(
+                "dbo.EventOccurrences",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        type = c.String(nullable: false, maxLength: 255),
+                        description = c.String(nullable: false, maxLength: 255),
+                        date = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.id);
+            
+            CreateTable(
+                "dbo.ContactUs",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        userId = c.Int(nullable: false),
+                        ipAddress = c.String(),
+                        date = c.DateTime(nullable: false),
+                        firstName = c.String(nullable: false, maxLength: 255),
+                        lastName = c.String(nullable: false, maxLength: 255),
+                        emailAddress = c.String(maxLength: 255),
+                        phone = c.String(maxLength: 255),
+                        message = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.id);
             
             CreateTable(
                 "dbo.FrostyRegistrations",
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
+                        eventOccurrenceId = c.Int(nullable: false),
                         userId = c.Int(nullable: false),
                         isMinor = c.Boolean(nullable: false),
                         dateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId, cascadeDelete: true)
                 .ForeignKey("dbo.Users", t => t.userId, cascadeDelete: true)
+                .Index(t => t.eventOccurrenceId)
                 .Index(t => t.userId);
             
         }
@@ -80,15 +113,21 @@ namespace THYF_Repository.Models
         public override void Down()
         {
             DropForeignKey("dbo.FrostyRegistrations", "userId", "dbo.Users");
+            DropForeignKey("dbo.FrostyRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
             DropForeignKey("dbo.BFKSRegistrations", "teamCaptainId", "dbo.Users");
+            DropForeignKey("dbo.BFKSRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
             DropForeignKey("dbo.BFKSBowlers", "BFKSRegistration_id", "dbo.BFKSRegistrations");
             DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
             DropIndex("dbo.FrostyRegistrations", new[] { "userId" });
+            DropIndex("dbo.FrostyRegistrations", new[] { "eventOccurrenceId" });
             DropIndex("dbo.BFKSRegistrations", new[] { "teamCaptainId" });
+            DropIndex("dbo.BFKSRegistrations", new[] { "eventOccurrenceId" });
             DropIndex("dbo.Users", new[] { "email" });
             DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
             DropIndex("dbo.BFKSBowlers", new[] { "userId" });
             DropTable("dbo.FrostyRegistrations");
+            DropTable("dbo.ContactUs");
+            DropTable("dbo.EventOccurrences");
             DropTable("dbo.BFKSRegistrations");
             DropTable("dbo.Users");
             DropTable("dbo.BFKSBowlers");

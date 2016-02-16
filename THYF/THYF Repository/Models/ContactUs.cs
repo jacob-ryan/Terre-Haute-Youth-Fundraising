@@ -11,9 +11,21 @@ namespace THYF_Repository.Models
 	public class ContactUs : BaseModel<WebContactUs>
 	{
 		public int id { get; set; }
-		public DateTime date { get; set; }
 		public int userId { get; set; }
 		public string ipAddress { get; set; }
+
+		private DateTime _date;
+		public DateTime date
+		{
+			get
+			{
+				return DateTime.SpecifyKind(_date, DateTimeKind.Utc);
+			}
+			set
+			{
+				_date = value;
+			}
+		}
 
 		[Required, MaxLength(255)]
 		public string firstName { get; set; }

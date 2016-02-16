@@ -1,12 +1,9 @@
-﻿$(document).ready(function () {
-    THYF.hideLoading()
-});
-
-$(document).ready(function ()
+﻿$(document).ready(function()
 {
-	$("#submit").on("click", function (e)
+	$("#submit").on("click", function(e)
 	{
 		var data = {
+			eventOccurrenceId: $("#occurrence").val(),
 			isMinor: $("#age").is(":checked")
 		};
 		$.ajax({
@@ -15,10 +12,12 @@ $(document).ready(function ()
 			contentType: "application/json",
 			data: data ? JSON.stringify(data) : null,
 			datatype: "json"
-		}).done(function (data)
+		}).done(function(data)
 		{
-		    alert("Registration Successful!\nReturned: '" + data + "'");
-		    THYF.changePage("home.html");
+			alert("Registration Successful!\nReturned: '" + data + "'");
+			THYF.changePage("home.html");
 		});
 	});
+
+	THYF.hideLoading();
 });

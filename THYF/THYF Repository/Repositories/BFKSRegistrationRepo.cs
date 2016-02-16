@@ -32,6 +32,7 @@ namespace THYF_Repository.Repositories
 			if (true)
 			{
 				BFKSRegistration registration = new BFKSRegistration();
+				registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
 				registration.teamName = webRegistration.teamName;
 				registration.teamCaptainId = webRegistration.teamCaptainId;
 				registration.dateCreated = DateTime.UtcNow;

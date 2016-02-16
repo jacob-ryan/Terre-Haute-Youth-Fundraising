@@ -10,6 +10,9 @@ namespace THYF_Repository.Models
 	public class BFKSRegistration : BaseModel<WebBFKSRegistration>
 	{
 		public int id { get; set; }
+		public int eventOccurrenceId { get; set; }
+		public EventOccurrence eventOccurrence { get; set; }
+
 		public string teamName { get; set; }
 		public int teamCaptainId { get; set; }
 		public User teamCaptain { get; set; }

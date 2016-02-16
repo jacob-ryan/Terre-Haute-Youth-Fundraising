@@ -52,19 +52,16 @@
     <Compile Include="Helpers\EmailSecret.cs" />
     <Compile Include="Helpers\Passwords.cs" />
     <Compile Include="Helpers\PermissionDeniedException.cs" />
-    <Compile Include="Migrations\201602050205025_InitialCreation.cs" />
-    <Compile Include="Migrations\201602050205025_InitialCreation.Designer.cs">
-      <DependentUpon>201602050205025_InitialCreation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602112330450_Test2.cs" />
-    <Compile Include="Migrations\201602112330450_Test2.Designer.cs">
-      <DependentUpon>201602112330450_Test2.cs</DependentUpon>
+    <Compile Include="Migrations\201602120031454_InitialCreation.cs" />
+    <Compile Include="Migrations\201602120031454_InitialCreation.Designer.cs">
+      <DependentUpon>201602120031454_InitialCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BFKSBowler.cs" />
     <Compile Include="Models\BFKSRegistration.cs" />
     <Compile Include="Models\ContactUs.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
+    <Compile Include="Models\EventOccurrence.cs" />
     <Compile Include="Models\FrostyRegistration.cs" />
     <Compile Include="Models\MigrationConfiguration.cs" />
     <Compile Include="Models\User.cs" />
@@ -109,11 +106,8 @@
     <Content Include="obj\Debug\THYF Repository.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602050205025_InitialCreation.resx">
-      <DependentUpon>201602050205025_InitialCreation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602112330450_Test2.resx">
-      <DependentUpon>201602112330450_Test2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602120031454_InitialCreation.resx">
+      <DependentUpon>201602120031454_InitialCreation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\THYF_Repository.Models.InitialCreation.resources" />
     <EmbeddedResource Include="obj\Debug\THYF_Repository.Models.Test2.resources" />

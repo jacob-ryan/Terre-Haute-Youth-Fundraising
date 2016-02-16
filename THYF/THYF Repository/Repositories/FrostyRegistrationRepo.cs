@@ -32,6 +32,7 @@ namespace THYF_Repository.Repositories
 			if (true)
 			{
 				FrostyRegistration registration = new FrostyRegistration();
+				registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
 				registration.userId = this.me.id;
 				registration.isMinor = webRegistration.isMinor;
 				registration.dateCreated = DateTime.UtcNow;

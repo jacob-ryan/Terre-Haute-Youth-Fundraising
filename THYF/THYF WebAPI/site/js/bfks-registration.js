@@ -48,16 +48,16 @@
 			for (var i = 0; i < 6; i += 1)
 			{
 				rules["bowler-" + i + "-email"] = {
-					required: true,
+					required: i < 4,
 					maxlength: 255,
 					email: true
 				};
 				rules["bowler-" + i + "-name"] = {
-					required: true,
+					required: i < 4,
 					maxlength: 255
 				};
 				rules["bowler-" + i + "-tshirt"] = {
-					required: true
+					required: i < 4
 				};
 			}
 			return rules;
@@ -75,11 +75,20 @@
 			{
 				if (!user)
 				{
-					defer.resolve({
-						userId: null,
-						name: $("#bowler-" + i + "-name").val(),
-						tshirtSize: $("#bowler-" + i + "-tshirt").val()
-					});
+					var name = $("#bowler-" + i + "-name").val();
+					var tshirtSize = $("#bowler-" + i + "-tshirt").val();
+					if (name != "" && tshirtSize != "")
+					{
+						defer.resolve({
+							userId: null,
+							name: name,
+							tshirtSize: tshirtSize
+						});
+					}
+					else
+					{
+						defer.resolve(null);
+					}
 				}
 				else
 				{
@@ -104,7 +113,10 @@
 				{
 					getUser(i).done(function(bowler)
 					{
-						bowlers.push(bowler);
+						if (bowler)
+						{
+							bowlers.push(bowler);
+						}
 						if (i + 1 < 6)
 						{
 							load(i + 1);
@@ -112,6 +124,7 @@
 						else
 						{
 							var data = {
+								eventOccurrenceId: $("#occurrence").val(),
 								teamName: $("#team-name").val(),
 								teamCaptainId: teamCaptain.userId,
 								bowlers: bowlers
