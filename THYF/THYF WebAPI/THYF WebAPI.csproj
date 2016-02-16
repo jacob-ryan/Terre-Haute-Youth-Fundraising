@@ -283,7 +283,6 @@
     <Content Include="site\js\contact-us.js" />
     <Content Include="site\js\frosty-5k-registration.js" />
     <Content Include="site\js\frosty-5k.js" />
-    <Content Include="site\js\header.js" />
     <Content Include="site\js\index.js" />
     <Content Include="site\js\login.js" />
     <Content Include="site\js\plugins\jquery.validate.min.js" />
