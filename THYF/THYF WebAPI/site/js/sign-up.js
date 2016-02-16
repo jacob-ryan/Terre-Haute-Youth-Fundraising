@@ -66,6 +66,7 @@
 
 	var submit = function (e)
 	{
+		e.preventDefault();
 		var data = {
 			email: $("#email").val(),
 			newPassword: $("#password").val(),
