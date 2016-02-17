@@ -15,4 +15,11 @@
 			$("#notlogged-in-block").show();
 		});
 	});
+
+	$(".head2 a").on("click", function()
+	{
+		var element = $(this);
+		$(".head2 a").removeClass("active");
+		element.addClass("active");
+	});
 });
