@@ -9,10 +9,10 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			alert("Logged out successfully!\nReturned: '" + data + "'");
 			$("#logged-in").text("");
 			$("#logged-in-block").hide();
 			$("#notlogged-in-block").show();
+			THYF.go("/login");
 		});
 	});
 

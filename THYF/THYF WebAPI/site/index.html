@@ -35,99 +35,58 @@
 	<script src="js/thyf-loader.js"></script>
 
 	<style>
-		@media (max-width: 750px)
-		{
-			.head2 ul
-			{
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				width: 200px;
-				background-color: #7F3F98;
-				color: #FFF;
-			}
-
-			.head2 li
-			{
-				float: none;
-			}
-
-			.head2 li
-			{
-				border-bottom: 1px solid #bbb;
-			}
-
-			li:last-child
-			{
-				border-bottom: none;
-			}
-		}
-
 		.head2
 		{
-			border-top: 4px solid #FFF;
-		}
-
-		ul
-		{
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
 			background-color: #7F3F98;
-			color: #FFF;
-		}
-
-		li
-		{
-			float: left;
+			background: linear-gradient(#7F3F98, #400080);
+			color: white;
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
 		}
 
 		.head2 li
 		{
 			border-right: 1px solid #bbb;
+			float: left;
 		}
 
-		li:last-child
+		.head2 a
 		{
-			border-right: none;
-		}
-
-		.head1 li a
-		{
-			padding: 14px 8px;
-		}
-
-		li a
-		{
+			background: transparent;
+			transition: background linear 0.3s;
+			color: white;
+			text-decoration: none;
 			display: block;
 			text-align: center;
-			padding: 14px 16px;
-			text-decoration: none;
+			padding: 12px 18px;
 		}
 
-		a, a:active, a:focus
+		.head2 a:hover
 		{
-			color: #FFF;
-			outline: none;
-			text-decoration: none;
+			background: rgba(255, 255, 255, 0.30);
 		}
 
-		li a:hover
+		.head2 a.active
 		{
-			color: white;
-			text-decoration: none;
+			background: rgba(0, 0, 0, 0.30);
 		}
 
-		.head2 li a:hover
+		@media (max-width: 650px)
 		{
-			background-color: #b681cb;
-		}
+			.head2 li
+			{
+				float: none;
+				border-bottom: 1px solid #bbb;
+				border-right: none;
+			}
 
-		.active
-		{
-			color: white;
-			background-color: #b681cb;
+			.user-info-container
+			{
+				float: none;
+				height: auto;
+			}
 		}
 	</style>
 </head>

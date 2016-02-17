@@ -236,6 +236,8 @@
     <Content Include="site\img\frosty.png" />
     <Content Include="site\img\frostytest.png" />
     <Content Include="site\img\loading.gif" />
+    <Content Include="site\img\logo-graphic.png" />
+    <Content Include="site\img\logo-text.png" />
     <Content Include="site\index.html" />
     <Content Include="site\js\bfks-registration.js" />
     <Content Include="site\js\bfks.js" />

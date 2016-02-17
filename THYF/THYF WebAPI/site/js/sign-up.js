@@ -1,10 +1,11 @@
-﻿$(document).ready(function ()
+﻿$(document).ready(function()
 {
+	$(".head2 a").removeClass("active");
+
 	$("#signup-form").validate(
 	{
-		submitHandler: function ()
+		submitHandler: function()
 		{
-			alert("Submitting form...");
 			submit();
 		},
 		rules: {
@@ -64,7 +65,7 @@
 		}
 	});
 
-	var submit = function (e)
+	var submit = function(e)
 	{
 		var data = {
 			email: $("#email").val(),
@@ -87,13 +88,14 @@
 			contentType: "application/json",
 			data: data ? JSON.stringify(data) : null,
 			datatype: "json"
-		}).done(function (data)
+		}).done(function(data)
 		{
-		    alert("Sign-up Successful!\nReturned: '" + data + "'");
-		    THYF.changePage("home.html");
+			alert("Sign-up Successful!\nReturned: '" + data + "'");
+			THYF.changePage("home.html");
 		});
 	};
-	$("#type").on("change", function ()
+
+	$("#type").on("change", function()
 	{
 		var current = $("#type").val();
 		if (current == "volunteer")

@@ -1,6 +1,8 @@
 ﻿body
 {
 	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/* Get rid of stupid "hovering" scroll bar in IE that either covers content or disappears from view */
+	-ms-overflow-style: scrollbar;
 }
 
 .hide2
@@ -79,6 +81,36 @@ error-overlay h3, .lost-connection-background h3
 	overflow: auto;
 }
 
+footer
+{
+	color: white;
+	padding: 20px;
+	background-color: #333333;
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5) inset;
+	text-align: center;
+}
+
+#main-body
+{
+	background-color: white;
+	background: linear-gradient(#A080C0, white);
+}
+
+.container
+{
+	background-color: white;
+	padding: 20px;
+}
+
+.user-info-container
+{
+	background-color: #333333;
+	box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5) inset;
+	float: right;
+	padding: 20px;
+	height: 100px;
+}
+
 .frosty
 {
 	background-position: center;
@@ -103,11 +135,11 @@ error-overlay h3, .lost-connection-background h3
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-#boot
+.home-container
 {
 	margin: auto;
 	background-color: white;
-	padding-bottom: 20px;
+	padding: 20px;
 	border-radius: 10px;
 }
 
