@@ -1,0 +1,62 @@
+#wrapper{
+	width: 100%;
+	margin: auto;
+	overflow: auto;
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#userInfo{
+	overflow-y:scroll;
+	width: 40%;
+	min-width: 20%;
+	float: right;
+	border: solid green 1px;
+	height: 50%;
+	margin-right: 10px;
+}
+
+#userList{
+	overflow-y:scroll;
+	width: 40%;
+	max-width: 60%;
+	float: left;
+	border: solid green 1px;
+	margin-right: 10px;
+	height: 50%;
+}
+
+#EventUserList{
+	overflow-y:scroll;
+	width: 100%;
+	border: solid green 1px;
+	margin-right: 10px;
+	height: 50%;
+}
+
+.row{
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#userButtons{
+	margin-left: 5px;
+}
+
+#addGroup{
+	margin-top: 10px;
+}
+
+.dropdown-menu {
+    width: 80% !important;
+}
+
+#left{
+	float:left;
+	width: 50%;
+}
+
+#right{
+	float:right;
+}
+
