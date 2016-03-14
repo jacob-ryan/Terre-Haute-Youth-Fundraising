@@ -82,6 +82,8 @@
 			companyName: $("#company_name").val(),
 			isActive: true
 		};
+
+		console.log(data.type);
 		$.ajax({
 			type: "POST",
 			url: "/api/User",

@@ -21,21 +21,6 @@
 		}
 	});
 
-	var populateUserInfo = function()
-	{
-		$.ajax({
-			type: "GET",
-			url: "/api/Login",
-			contentType: "application/json",
-			datatype: "json"
-		}).done(function(user)
-		{
-			$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-			$("#logged-in-block").show();
-			$("#notlogged-in-block").hide();
-		});
-	};
-
 	var submit = function()
 	{
 		THYF.showLoading();
@@ -55,9 +40,23 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			console.log("Logged in successfully: userId = " + data);
-			populateUserInfo();
-			THYF.changePage("home.html");
+		    $.ajax({
+		        type: "GET",
+		        url: "/api/Login",
+		        contentType: "application/json",
+		        datatype: "json"
+		    }).done(function (user) {
+		        if (user.type == "admin") {
+		            console.log("Logging into admin panel");
+		            THYF.changePage("admin-home.html");
+		        }else{
+		            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+		            $("#logged-in-block").show();
+		            $("#notlogged-in-block").hide();
+		            console.log("Logged in successfully: userId = " + data);
+		            THYF.changePage("home.html");
+		        }
+		    });
 		}).fail(function(jqXHR, textStatus, error)
 		{
 			THYF.hideLoading();

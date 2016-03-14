@@ -26,6 +26,12 @@
 				THYF.changePage("frosty-5k.html");
 			}
 		},
+        {
+            path: "/admin-home",
+        	callbacks: function () {
+        	   THYF.changePage("admin.html");
+        	}
+        },
 		{
 			path: "/frosty-5k/registration",
 			callbacks: function()
