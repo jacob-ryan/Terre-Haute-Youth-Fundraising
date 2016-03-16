@@ -22,4 +22,9 @@
 		$(".head2 a").removeClass("active");
 		element.addClass("active");
 	});
+	$(".header-top a").on("click", function ()
+	{
+		$(".head2 a").removeClass("active");
+		$("#home-link").addClass("active");
+	});
 });
