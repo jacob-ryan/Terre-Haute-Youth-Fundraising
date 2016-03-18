@@ -48,7 +48,7 @@ namespace THYF_Repository.Repositories
 		{
 			this.me = getMe(currentUserId);
 			User user = db.Users.FirstOrDefault(u => u.id == id);
-			if (user != null && me.id == id)
+			if (user != null && (me.id == id || me.type == "admin"))
 			{
 				// Do not allow duplicate email addresses.
 				int others = db.Users.Count(u => u.email == webUser.email && u.id != id);

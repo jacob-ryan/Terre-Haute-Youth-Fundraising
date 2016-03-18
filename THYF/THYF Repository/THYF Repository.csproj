@@ -71,6 +71,7 @@
     <Compile Include="Repositories\FrostyRegistrationRepo.cs" />
     <Compile Include="Repositories\LoginRepo.cs" />
     <Compile Include="Repositories\BFKSRegistrationRepo.cs" />
+    <Compile Include="Repositories\EventOccurrenceRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
