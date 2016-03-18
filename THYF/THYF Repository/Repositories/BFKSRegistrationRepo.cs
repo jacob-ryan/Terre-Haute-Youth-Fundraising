@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using THYF_Repository.Helpers;
 using THYF_Repository.Models;
@@ -18,6 +19,22 @@ namespace THYF_Repository.Repositories
 			if (this.me.type == "admin")
 			{
 				List<BFKSRegistration> registrations = db.BFKSRegistrations.ToList();
+				return registrations.convertList<BFKSRegistration, WebBFKSRegistration>();
+			}
+			else
+			{
+				throw new PermissionDeniedException();
+			}
+		}
+
+		public List<WebBFKSRegistration> getBFKSRegistrations(int userId)
+		{
+			if (this.me.id == userId || this.me.type == "admin")
+			{
+				List<BFKSRegistration> registrations = db.BFKSRegistrations
+					.Include(r => r.bowlers)
+					.Where(r => r.teamCaptainId == userId || r.bowlers.Any(b => b.userId == userId))
+					.ToList();
 				return registrations.convertList<BFKSRegistration, WebBFKSRegistration>();
 			}
 			else

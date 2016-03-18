@@ -26,6 +26,21 @@ namespace THYF_Repository.Repositories
 			}
 		}
 
+		public List<WebFrostyRegistration> getFrostyRegistrations(int userId)
+		{
+			if (this.me.id == userId || this.me.type == "admin")
+			{
+				List<FrostyRegistration> registrations = db.FrostyRegistrations
+					.Where(r => r.userId == userId)
+					.ToList();
+				return registrations.convertList<FrostyRegistration, WebFrostyRegistration>();
+			}
+			else
+			{
+				throw new PermissionDeniedException();
+			}
+		}
+
 		public int addFrostyRegistration(WebFrostyRegistration webRegistration)
 		{
 			// Perhaps check if registration is enabled for this event (future?).

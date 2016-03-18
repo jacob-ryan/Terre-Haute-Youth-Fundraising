@@ -40,6 +40,25 @@ namespace THYF_WebAPI.Controllers
 			}
 		}
 
+		// GET api/BFKSRegistration?userId=42
+		/// <summary>
+		/// Gets all BFKS registrations for the user with the given ID.
+		/// </summary>
+		/// <returns>BFKSRegistration[] - all registrations</returns>
+		[Authorize]
+		public HttpResponseMessage GetBFKSRegistrations(int userId)
+		{
+			try
+			{
+				List<WebBFKSRegistration> registrations = repo.getBFKSRegistrations(userId);
+				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
+		}
+
 		// POST api/BFKSRegistration
 		/// <summary>
 		/// Adds a new BFKS registration with the information in the given BFKSRegistration object.

@@ -40,6 +40,25 @@ namespace THYF_WebAPI.Controllers
 			}
 		}
 
+		// GET api/FrostyRegistration?userId=42
+		/// <summary>
+		/// Gets all Frosty registrations for the user with the given ID.
+		/// </summary>
+		/// <returns>FrostyRegistration[] - all registrations</returns>
+		[Authorize]
+		public HttpResponseMessage GetFrostyRegistrations(int userId)
+		{
+			try
+			{
+				List<WebFrostyRegistration> registrations = repo.getFrostyRegistrations(userId);
+				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
+		}
+
 		// POST api/FrostyRegistration
 		/// <summary>
 		/// Adds a new Frosty registration with the information in the given FrostyRegistration object.
