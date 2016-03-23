@@ -2,10 +2,46 @@
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
-<table id="example">
-    <thead>
-        <tr><th class="site_name">Name</th><th>Url </th><th>Type</th><th>Last modified</th></tr>
-    </thead>
-    <tbody></tbody>
-</table>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table id="example" class="display" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Active</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>Phone</th>
+                    <th>Shirt Size</th>
+                    <th>Company Name</th>
+                    <th>Member Since</th>
+                </tr>
+            </thead>
+
+
+        </table>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button id ="deactivate" class="btn btn-primary" type="button">Deactivate user</button>
+            </span>
+            <input id ="userID" type="text" class="form-control" placeholder="User Id ">
+        </div>
+    </div>
+</div>

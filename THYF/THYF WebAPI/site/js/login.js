@@ -48,7 +48,7 @@
 		    }).done(function (user) {
 		        if (user.type == "admin") {
 		            console.log("Logging into admin panel");
-		            THYF.changePage("admin-home.html");
+		            THYF.go("/admin-home");
 		        }else{
 		            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
 		            $("#logged-in-block").show();

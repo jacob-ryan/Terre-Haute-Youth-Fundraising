@@ -29,7 +29,7 @@
         {
             path: "/admin-home",
         	callbacks: function () {
-        	   THYF.changePage("admin.html");
+        	   THYF.changePage("admin-home.html");
         	}
         },
 		{
