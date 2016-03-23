@@ -1,5 +1,18 @@
 ﻿$(document).ready(function()
 {
+    $.ajax({
+        type: "GET",
+        url: "/api/Login",
+        contentType: "application/json",
+        datatype: "json"
+    }).done(function (user) {
+        if (user != "undefined") {
+            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+            $("#logged-in-block").show();
+            $("#notlogged-in-block").hide();
+        }
+    });
+
 	$("#signout-link").on("click", function()
 	{
 		$.ajax({
