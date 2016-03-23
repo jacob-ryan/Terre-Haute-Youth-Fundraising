@@ -84,8 +84,18 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			$("#logged-in").html("<span class='badge badge-default'>" + newName + "</span>");
-			alert("Information Updated!\nReturned: '" + data + "'");
+
+		    $.ajax({
+		        type: "PUT",
+		        url: "/api/User/" + data.id,
+		        contentType: "application/json",
+		        data: data ? JSON.stringify(data) : null,
+		        datatype: "json"
+		    }).done(function (data) {
+		        $("#logged-in").html("<span class='badge badge-default'>" + newName + "</span>");
+		        alert("Information Updated!\nReturned: '" + data + "'");
+		    });
+
 		});
 	});
 });

@@ -83,7 +83,7 @@
 			isActive: true
 		};
 
-		console.log(data.type);
+		console.log(data);
 		$.ajax({
 			type: "POST",
 			url: "/api/User",
@@ -93,7 +93,7 @@
 		}).done(function(data)
 		{
 			alert("Sign-up Successful!\nReturned: '" + data + "'");
-			THYF.changePage("home.html");
+			THYF.go("/");
 		});
 	};
 

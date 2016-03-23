@@ -47,6 +47,9 @@
 		        datatype: "json"
 		    }).done(function (user) {
 		        if (user.type == "admin") {
+		            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+		            $("#logged-in-block").show();
+		            $("#notlogged-in-block").hide();
 		            console.log("Logging into admin panel");
 		            THYF.go("/admin-home");
 		        }else{

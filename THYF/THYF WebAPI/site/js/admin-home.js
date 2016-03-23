@@ -34,8 +34,7 @@
             url: "/api/User/" + id,
             contentType: "application/json",
             datatype: "json"
-        }).done(function(data)
-        {
+        }).done(function(data){
             var userInfo = data;
             userInfo.isActive = false;
 
@@ -54,5 +53,39 @@
         {
             alert("No user with that ID");
         });
+    });
+
+    $("#addUser").on("click", function () {
+        var userName = $("#userName").val();
+        var userEmail = $("#userEmail").val();
+
+        var data = {
+            email: userName,
+            newPassword: "change",
+            name: userName,
+            address: "change",
+            city: "change",
+            state: "IN",
+            zip: "47804",
+            phone: "change",
+            year: "change",
+            tshirtSize: "change",
+            type: "volunteer",
+            companyName: "change",
+            isActive: true
+        };
+
+       console.log(data);
+       $.ajax({
+           type: "POST",
+           url: "/api/User",
+           contentType: "application/json",
+           data: data ? JSON.stringify(data) : null,
+           datatype: "json"
+       }).done(function (data) {
+           alert("User Created" + data + "'");
+       }).fail(function () {
+           alert("Failed to Create User");
+       });
     });
 });
