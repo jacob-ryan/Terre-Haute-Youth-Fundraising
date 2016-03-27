@@ -3,85 +3,95 @@
 <style>
 	.carousel-control.right, .carousel-control.left
 	{
-		background-image: none;
+		/*background-image: none;*/
 	}
 
-	.CenterContainer
+	.carousel-indicators > li
 	{
-		margin: auto;
-		width: 80%;
+		box-shadow: rgba(0, 0, 0, 1.0) 2px 2px 10px;
 	}
 
-	.carousel-inner
+	.carousel-inner > .item > img
 	{
-		width: 100%;
+		margin: 0 auto 0 auto;
 	}
 </style>
 
-<div class="CenterContainer">
-	<div class="container" id="boot">
-		<h1 class="text-center">Bowl for Kids' Sake</h1>
+<div class="container" id="boot">
+	<h1 class="text-center">Bowl for Kids' Sake</h1>
 
-		<!-- Image divs -->
-		<div class="col-sm-12">
+	<!-- Image divs -->
+	<div class="col-sm-12">
 
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-					<li data-target="#myCarousel" data-slide-to="3"></li>
-				</ol>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+				<li data-target="#myCarousel" data-slide-to="5"></li>
+				<li data-target="#myCarousel" data-slide-to="6"></li>
+				<li data-target="#myCarousel" data-slide-to="7"></li>
+				<li data-target="#myCarousel" data-slide-to="8"></li>
+			</ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="img/frostytest.png" alt="Chania">
-					</div>
-
-					<div class="item">
-						<img src="img/frostytest.png" alt="Chania">
-					</div>
-
-					<div class="item">
-						<img src="img/frostytest.png" alt="Flower">
-					</div>
-
-					<div class="item">
-						<img src="img/frostytest.png" alt="Flower">
-					</div>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="img/bfks/1.jpg" alt="BFKS event image">
 				</div>
-
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
+				<div class="item">
+					<img src="img/bfks/2.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/3.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/4.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/5.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/6.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/7.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/8.jpg" alt="BFKS event image">
+				</div>
+				<div class="item">
+					<img src="img/bfks/9.jpg" alt="BFKS event image">
+				</div>
 			</div>
 
-			<hr>
-
-			<div class="bowling panel-default">
-				<h1 class="text-center">BFKS</h1>
-
-				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-						<button id="register" class="btn btn-primary btn-block">Register for Event</button>
-					</div>
-					<div class="col-sm-10 col-sm-offset-1">
-						<br />
-						<p>
-							Bowl for Kids' Sake is Big Brothers Big Sisters signature fundraising event. Each year, half a million people across the United States come together to have fun and raise money to support their local Big Brothers Big Sisters organizations. Teams of 4 to 6 individuals (friends, family, coworkers, organizations, etc.) come together to fundraise for Big Brothers Big Sisters, leading up to a fun evening of bowling.  
-						</p>
-						<p>
-							You can rest assured that 100% of proceeds from Bowl for Kids' Sake in Terre Haute, Indiana go directly to serving our Wabash Valley youth. Big Brothers Big Sisters depends on donations to conducts thorough background checks and screening on volunteer mentors to ensure child safety. Your donations also provide training and ongoing support for children, families, and volunteers to build and sustain long-lasting relationships. 
-						</p>
-					</div>
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<hr>
+		<div class="bowling panel-default" style="padding-top: 20px; padding-bottom: 10px;">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<button id="register" class="btn btn-primary btn-block">Register for Event</button>
+				</div>
+				<div class="col-sm-10 col-sm-offset-1">
+					<br />
+					<p>
+						Bowl for Kids' Sake is Big Brothers Big Sisters signature fundraising event. Each year, half a million people across the United States come together to have fun and raise money to support their local Big Brothers Big Sisters organizations. Teams of 4 to 6 individuals (friends, family, coworkers, organizations, etc.) come together to fundraise for Big Brothers Big Sisters, leading up to a fun evening of bowling.  
+					</p>
+					<p>
+						You can rest assured that 100% of proceeds from Bowl for Kids' Sake in Terre Haute, Indiana go directly to serving our Wabash Valley youth. Big Brothers Big Sisters depends on donations to conducts thorough background checks and screening on volunteer mentors to ensure child safety. Your donations also provide training and ongoing support for children, families, and volunteers to build and sustain long-lasting relationships. 
+					</p>
 				</div>
 			</div>
 		</div>
