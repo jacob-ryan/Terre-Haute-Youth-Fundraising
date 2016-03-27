@@ -3,6 +3,7 @@
     THYF.hideLoading();
     var userData = [];
     var table;
+    var checkedValues;
 
     $.ajax({
         type: "GET",
@@ -16,7 +17,7 @@
             if (d[i].companyName === null || d[i].companyName == "") {
                 d[i].companyName = "No Company";
             }
-            userData[i].push(d[i].id, d[i].name, d[i].isActive + "", d[i].email, d[i].type, d[i].address,
+            userData[i].push("<input class = 'boxes' type='checkbox' value='" + d[i].id + "'>", d[i].id, d[i].name, d[i].isActive + "", d[i].email, d[i].type, d[i].address,
             d[i].city, d[i].state, d[i].zip, d[i].phone, d[i].tshirtSize, d[i].companyName + "", d[i].dateCreated + "");
         }
         console.log(userData);
@@ -27,32 +28,27 @@
     });
 
     $("#deactivate").on("click", function () {
-        var id = $("#userID").val();
+        checkedValues = $('input:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
 
-        $.ajax({
-            type: "GET",
-            url: "/api/User/" + id,
-            contentType: "application/json",
-            datatype: "json"
-        }).done(function(data){
-            var userInfo = data;
-            userInfo.isActive = false;
+        //console.log(checkedValues);
+        for (i = 0; i < checkedValues.length; i++) {
+            console.log(i);
+            makeAPICalls(checkedValues[i], false);
+        }
+    });
 
-            $.ajax({
-                type: "PUT",
-                url: "/api/User/" + id,
-                contentType: "application/json",
-                data: data ? JSON.stringify(data) : null,
-                datatype: "json"
-            }).done(function (data) {
-                alert("Test user is inactive");
-            });
+    $("#activate").on("click", function () {
+        checkedValues = $('input:checkbox:checked').map(function () {
+            return this.value;
+        }).get()
 
-
-        }).fail(function()
-        {
-            alert("No user with that ID");
-        });
+        //console.log(checkedValues);
+        for (i = 0; i < checkedValues.length; i++) {
+            console.log(i);
+            makeAPICalls(checkedValues[i], true);
+        }
     });
 
     $("#addUser").on("click", function () {
@@ -89,3 +85,27 @@
        });
     });
 });
+
+function makeAPICalls(userID, activateBoolean) {
+    console.log(userID);
+    $.ajax({
+        type: "GET",
+        url: "/api/User/" + userID,
+        contentType: "application/json",
+        datatype: "json"
+    }).done(function (data) {
+        var userInfo = data;
+        userInfo.isActive = activateBoolean;
+        console.log(userID);
+        $.ajax({
+            type: "PUT",
+            url: "/api/User/" + userID,
+            contentType: "application/json",
+            data: data ? JSON.stringify(data) : null,
+            datatype: "json"
+        })
+    }).fail(function () {
+        alert("No user with that ID");
+    });
+}
+
