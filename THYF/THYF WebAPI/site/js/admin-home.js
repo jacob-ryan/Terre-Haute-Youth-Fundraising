@@ -71,18 +71,18 @@
             isActive: true
         };
 
-       console.log(data);
-       $.ajax({
-           type: "POST",
-           url: "/api/User",
-           contentType: "application/json",
-           data: data ? JSON.stringify(data) : null,
-           datatype: "json"
-       }).done(function (data) {
-           alert("User Created" + data + "'");
-       }).fail(function () {
-           alert("Failed to Create User");
-       });
+        console.log(data);
+        $.ajax({
+            type: "POST",
+            url: "/api/User",
+            contentType: "application/json",
+            data: data ? JSON.stringify(data) : null,
+            datatype: "json"
+        }).done(function (data) {
+            alert("User Created" + data + "'");
+        }).fail(function () {
+            alert("Failed to Create User");
+        });
     });
 });
 
@@ -103,7 +103,9 @@ function makeAPICalls(userID, activateBoolean) {
             contentType: "application/json",
             data: data ? JSON.stringify(data) : null,
             datatype: "json"
-        })
+        }).done(function (data) {
+            location.reload();
+        });
     }).fail(function () {
         alert("No user with that ID");
     });
