@@ -27,12 +27,13 @@
         });
     });
 
+    $("#datepicker").datepicker();
+
     $("#deactivate").on("click", function () {
         checkedValues = $('input:checkbox:checked').map(function () {
             return this.value;
         }).get()
 
-        //console.log(checkedValues);
         for (i = 0; i < checkedValues.length; i++) {
             console.log(i);
             makeAPICalls(checkedValues[i], false);
@@ -44,7 +45,6 @@
             return this.value;
         }).get()
 
-        //console.log(checkedValues);
         for (i = 0; i < checkedValues.length; i++) {
             console.log(i);
             makeAPICalls(checkedValues[i], true);
@@ -110,4 +110,3 @@ function makeAPICalls(userID, activateBoolean) {
         alert("No user with that ID");
     });
 }
-

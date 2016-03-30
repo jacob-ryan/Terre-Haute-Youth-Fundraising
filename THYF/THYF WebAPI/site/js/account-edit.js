@@ -8,7 +8,8 @@
 		datatype: "json"
 	}).done(function(user)
 	{
-		$("#newPass").val(user.password);
+	    $("#newPass").val(user.password);
+	    $("#email").val(user.email);
 		$("#name").val(user.name);
 		$("#address").val(user.address);
 		$("#city").val(user.city);
@@ -38,6 +39,7 @@
 		var newPass = $("#password").val();
 		var newPassCheck = $("#passwordCheck").val();
 		var newName = $("#name").val();
+		var newEmail = $("#email").val();
 		var newAddress = $("#address").val();
 		var newCity = $("#city").val();
 		var newState = $("#state").val();
@@ -66,6 +68,7 @@
 		}
 
 		data.name = newName
+		data.email = newEmail;
 		data.address = newAddress
 		data.city = newCity;
 		data.state = newState;
