@@ -4,6 +4,23 @@
     var userData = [];
     var table;
     var checkedValues;
+    var eventList = [];
+
+    $.ajax({
+        type: "GET",
+        url: "/api/EventOccurrence",
+        contentType: "application/json",
+    }).done(function (d) {
+        console.log(d);
+        $.each(d, function (key, value) {
+            $('#selectEvent')
+                .append($("<option></option>")
+                .attr("value", value.id)
+                .text(value.type));
+        });
+    });
+
+    console.log(eventList);
 
     $.ajax({
         type: "GET",
@@ -11,7 +28,7 @@
         contentType: "application/json",
     }).done(function (d) {
         var userArray = [];
-        console.log(d);
+        //console.log(d);
         for (i = 0; i < d.length; i++) {
             userData[i] = [];
             if (d[i].companyName === null || d[i].companyName == "") {
@@ -20,14 +37,12 @@
             userData[i].push("<input class = 'boxes' type='checkbox' value='" + d[i].id + "'>", d[i].id, d[i].name, d[i].isActive + "", d[i].email, d[i].type, d[i].address,
             d[i].city, d[i].state, d[i].zip, d[i].phone, d[i].tshirtSize, d[i].companyName + "", d[i].dateCreated + "");
         }
-        console.log(userData);
+        //console.log(userData);
 
         table = $('#example').DataTable({
             "aaData": userData,
         });
     });
-
-    $("#datepicker").datepicker();
 
     $("#deactivate").on("click", function () {
         checkedValues = $('input:checkbox:checked').map(function () {
@@ -35,7 +50,7 @@
         }).get()
 
         for (i = 0; i < checkedValues.length; i++) {
-            console.log(i);
+            //console.log(i);
             makeAPICalls(checkedValues[i], false);
         }
     });
@@ -46,7 +61,7 @@
         }).get()
 
         for (i = 0; i < checkedValues.length; i++) {
-            console.log(i);
+            //console.log(i);
             makeAPICalls(checkedValues[i], true);
         }
     });
@@ -71,7 +86,7 @@
             isActive: true
         };
 
-        console.log(data);
+        //console.log(data);
         $.ajax({
             type: "POST",
             url: "/api/User",
@@ -84,10 +99,31 @@
             alert("Failed to Create User");
         });
     });
+
+    $("#createEventButton").on("click", function () {
+        var data = {
+            date: $("#datepickerID").val(),
+            type: $("#EventType").val(),
+            description: $("#description").val()
+        };
+
+        console.log(data);
+
+        $.ajax({
+            type: "POST",
+            url: "/api/EventOccurrence",
+            contentType: "application/json",
+            data: data ? JSON.stringify(data) : null,
+            datatype: "json"
+        }).done(function (data) {
+            console.log(data);
+        });
+    });
+
 });
 
 function makeAPICalls(userID, activateBoolean) {
-    console.log(userID);
+    //console.log(userID);
     $.ajax({
         type: "GET",
         url: "/api/User/" + userID,
@@ -96,7 +132,7 @@ function makeAPICalls(userID, activateBoolean) {
     }).done(function (data) {
         var userInfo = data;
         userInfo.isActive = activateBoolean;
-        console.log(userID);
+        //console.log(userID);
         $.ajax({
             type: "PUT",
             url: "/api/User/" + userID,
