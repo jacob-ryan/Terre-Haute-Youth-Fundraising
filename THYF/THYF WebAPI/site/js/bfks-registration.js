@@ -1,5 +1,24 @@
 ﻿$(document).ready(function()
 {
+
+    var eventList = [];
+
+    $.ajax({
+        type: "GET",
+        url: "/api/EventOccurrence",
+        contentType: "application/json",
+    }).done(function (d) {
+        console.log(d);
+        $.each(d, function (key, value) {
+            if (value.type == "Bowling for Kids") {
+                $('#occurrence')
+                    .append($("<option></option>")
+                    .attr("value", value.id)
+                    .text(value.type + " " + value.date));
+            }
+        });
+    });
+
 	$("#bowlers-container").on("click", ".js-check-user", function()
 	{
 		var number = $(this).attr("data-id");

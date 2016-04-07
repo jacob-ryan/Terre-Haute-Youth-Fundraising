@@ -6,22 +6,30 @@
     var checkedValues;
     var eventList = [];
 
-    $.ajax({
+    // <summary>
+    // Get's all event's from database and populates the event selector within the
+    // Events tab
+    // </summary>
+     $.ajax({
         type: "GET",
+        async: false,
         url: "/api/EventOccurrence",
         contentType: "application/json",
     }).done(function (d) {
-        console.log(d);
+        //console.log(d);
+        eventList = d;
         $.each(d, function (key, value) {
             $('#selectEvent')
                 .append($("<option></option>")
                 .attr("value", value.id)
-                .text(value.type));
+                .text(value.type + " " + value.date));
         });
     });
+    //console.log(eventList);
 
-    console.log(eventList);
-
+    // <summary>
+    // Creates the user table within the Users tab
+    // </summary>
     $.ajax({
         type: "GET",
         url: "/api/User",
@@ -44,6 +52,9 @@
         });
     });
 
+    // <summary>
+    // Deactivates all the users selected within Users tab
+    // </summary>
     $("#deactivate").on("click", function () {
         checkedValues = $('input:checkbox:checked').map(function () {
             return this.value;
@@ -55,6 +66,9 @@
         }
     });
 
+    // <summary>
+    // Activates all the users selected within Users tab
+    // </summary>
     $("#activate").on("click", function () {
         checkedValues = $('input:checkbox:checked').map(function () {
             return this.value;
@@ -66,6 +80,10 @@
         }
     });
 
+
+    // <summary>
+    // Allows admin to create a new user within the Users tab
+    // </summary>
     $("#addUser").on("click", function () {
         var userName = $("#userName").val();
         var userEmail = $("#userEmail").val();
@@ -100,6 +118,10 @@
         });
     });
 
+
+    // <summary>
+    // Allows admin to create a new event within the Events tab
+    // </summary>
     $("#createEventButton").on("click", function () {
         var data = {
             date: $("#datepickerID").val(),
@@ -120,8 +142,43 @@
         });
     });
 
+    // <summary>
+    // Populates existing event information when user click Edit Event
+    // within the Events tab
+    // </summary>
+    $("#editEventButton").on("click", function () {
+        $("#descriptionEvent").val(eventList[$("#selectEvent").val() - 1].description);
+        $("#datepickerID2").val(eventList[$("#selectEvent").val() - 1].date);
+    });
+
+    $("#updateEventButton").on("click", function () {
+        var eventId = $("#selectEvent").val();       
+        var data = {
+            date: $("#datepickerID2").val(),
+            type: eventList[eventId - 1].type,
+            description: $("#descriptionEvent").val()
+        };
+
+        console.log(data);
+        console.log(eventId);
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/EventOccurrence/" + eventId,
+            contentType: "application/json",
+            data: data ? JSON.stringify(data) : null,
+            datatype: "json"
+        }).fail(function () {
+            alert("Failed To Update Event");
+        });
+    });
+
 });
 
+// <summary>
+// An extracted method API that is used to activate and deactivate
+// users with in User Tab
+// </summary>
 function makeAPICalls(userID, activateBoolean) {
     //console.log(userID);
     $.ajax({
@@ -145,4 +202,12 @@ function makeAPICalls(userID, activateBoolean) {
     }).fail(function () {
         alert("No user with that ID");
     });
+}
+
+
+// <summary>
+// Refreshs information when event is selected with Events tab
+// </summary>
+function jsFunction() {
+    //console.log("It works");
 }
