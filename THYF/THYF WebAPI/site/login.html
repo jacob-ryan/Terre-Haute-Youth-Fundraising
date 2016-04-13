@@ -11,8 +11,20 @@
 			<label for="password">Password:</label>
 			<input type="password" class="form-control" id="password" name="password" />
 		</div>
-		<div class="alert alert-danger hide2" id="invalid-email-password">
-			<strong>Invalid email and/or password.</strong>  Please try again.
+		<div class="alert alert-danger hide2" id="login-invalid-email">
+			<strong>No user account exists for the given e-mail address.</strong>  Please try again.
+		</div>
+		<div class="alert alert-danger hide2" id="login-invalid-password">
+			<strong>Invalid password entered.</strong>  Please try again.
+		</div>
+		<div class="alert alert-danger hide2" id="login-inactive-user">
+			<strong>Your user account is not active.</strong>  Please contact BBBS to resolve this issue.
+		</div>
+		<div class="alert alert-danger hide2" id="login-expired-password">
+			<strong>Your temporary password has expired.</strong>  You will need to reset your password and try again.
+		</div>
+		<div class="alert alert-danger hide2" id="login-unknown-error">
+			<strong>An unknown error has occurred while logging in.</strong>  Details of the error:<div></div>
 		</div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary col-xs-6 col-xs-offset-3" id="login-button" name="login-button">Login</button>

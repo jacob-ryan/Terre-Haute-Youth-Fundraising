@@ -24,7 +24,11 @@
 	var submit = function()
 	{
 		THYF.showLoading();
-		$("#invalid-email-password").slideUp();
+		$("#login-invalid-email").slideUp();
+		$("#login-invalid-password").slideUp();
+		$("#login-inactive-user").slideUp();
+		$("#login-expired-password").slideUp();
+		$("#login-unknown-error").slideUp();
 
 		var data = {
 			email: $("#email").val(),
@@ -40,33 +44,53 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-		    $.ajax({
-		        type: "GET",
-		        url: "/api/Login",
-		        contentType: "application/json",
-		        datatype: "json"
-		    }).done(function (user) {
-		        if (user.type == "admin") {
-		            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-		            $("#logged-in-block").show();
-		            $("#notlogged-in-block").hide();
-		            console.log("Logging into admin panel");
-		            THYF.go("/admin-home");
-		        }else{
-		            $("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-		            $("#logged-in-block").show();
-		            $("#notlogged-in-block").hide();
-		            console.log("Logged in successfully: userId = " + data);
-		            THYF.changePage("home.html");
-		        }
-		    });
+			$.ajax({
+				type: "GET",
+				url: "/api/Login",
+				contentType: "application/json",
+				datatype: "json"
+			}).done(function(user)
+			{
+				if (user.type == "admin")
+				{
+					$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+					$("#logged-in-block").show();
+					$("#notlogged-in-block").hide();
+					console.log("Logging into admin panel");
+					THYF.go("/admin-home");
+				} else
+				{
+					$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+					$("#logged-in-block").show();
+					$("#notlogged-in-block").hide();
+					console.log("Logged in successfully: userId = " + data);
+					THYF.changePage("home.html");
+				}
+			});
 		}).fail(function(jqXHR, textStatus, error)
 		{
 			THYF.hideLoading();
-			var message = jqXHR.responseJSON.Message;
-			if (message == "Invalid email address" || message == "Invalid password")
+			var message = jqXHR.responseJSON ? jqXHR.responseJSON.Message : "No details";
+			if (message === "Invalid email address")
 			{
-				$("#invalid-email-password").slideDown();
+				$("#login-invalid-email").slideDown();
+			}
+			else if (message === "Invalid password")
+			{
+				$("#login-invalid-password").slideDown();
+			}
+			else if (message === "User not active")
+			{
+				$("#login-inactive-user").slideDown();
+			}
+			else if (message === "Temporary password has expired")
+			{
+				$("#login-expired-password").slideDown();
+			}
+			else
+			{
+				$("#login-unknown-error").slideDown();
+				$("#login-unknown-error > div").text(textStatus + " - " + message);
 			}
 		});
 	};
