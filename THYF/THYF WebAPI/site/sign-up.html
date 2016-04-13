@@ -1,4 +1,7 @@
 ﻿<script src="js/sign-up.js"></script>
+<script type="text/javascript" charset="utf8" src="../Scripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" charset="utf8" src="../Scripts/jquery-ui-1.9.2.custom.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 
 <div class="container center">
 	<h1 class="text-center">Create Account</h1>
@@ -123,3 +126,11 @@
 		</div>
 	</form>
 </div>
+
+<script type="text/javascript">
+    $("document").ready(function () {
+        $("#year").datepicker({
+            changeYear: true
+        });
+    });
+</script>
