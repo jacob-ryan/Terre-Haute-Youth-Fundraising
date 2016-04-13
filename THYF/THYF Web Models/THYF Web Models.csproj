@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\WebPayPalNotification.cs" />
     <Compile Include="Models\WebBFKSBowler.cs" />
+    <Compile Include="Models\WebBFKSRegistration.cs" />
     <Compile Include="Models\WebContactUs.cs" />
     <Compile Include="Models\WebEventOccurrence.cs" />
     <Compile Include="Models\WebFrostyRegistration.cs" />
-    <Compile Include="Models\WebBFKSRegistration.cs" />
     <Compile Include="Models\WebLogin.cs" />
     <Compile Include="Models\WebUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

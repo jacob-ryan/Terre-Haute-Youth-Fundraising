@@ -52,9 +52,9 @@
     <Compile Include="Helpers\EmailSecret.cs" />
     <Compile Include="Helpers\Passwords.cs" />
     <Compile Include="Helpers\PermissionDeniedException.cs" />
-    <Compile Include="Migrations\201602120031454_InitialCreation.cs" />
-    <Compile Include="Migrations\201602120031454_InitialCreation.Designer.cs">
-      <DependentUpon>201602120031454_InitialCreation.cs</DependentUpon>
+    <Compile Include="Migrations\201603301947550_InitialCreation.cs" />
+    <Compile Include="Migrations\201603301947550_InitialCreation.Designer.cs">
+      <DependentUpon>201603301947550_InitialCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\BFKSBowler.cs" />
@@ -64,21 +64,17 @@
     <Compile Include="Models\EventOccurrence.cs" />
     <Compile Include="Models\FrostyRegistration.cs" />
     <Compile Include="Models\MigrationConfiguration.cs" />
+    <Compile Include="Models\PayPalNotification.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepo.cs" />
+    <Compile Include="Repositories\BFKSRegistrationRepo.cs" />
     <Compile Include="Repositories\ContactUsRepo.cs" />
+    <Compile Include="Repositories\EventOccurrenceRepo.cs" />
     <Compile Include="Repositories\FrostyRegistrationRepo.cs" />
     <Compile Include="Repositories\LoginRepo.cs" />
-    <Compile Include="Repositories\BFKSRegistrationRepo.cs" />
-    <Compile Include="Repositories\EventOccurrenceRepo.cs" />
+    <Compile Include="Repositories\PayPalNotificationRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\THYF Web Models\THYF Web Models.csproj">
@@ -86,10 +82,16 @@
       <Name>THYF Web Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602120031454_InitialCreation.resx">
-      <DependentUpon>201602120031454_InitialCreation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603301947550_InitialCreation.resx">
+      <DependentUpon>201603301947550_InitialCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

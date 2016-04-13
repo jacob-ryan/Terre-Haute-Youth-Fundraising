@@ -108,6 +108,24 @@ namespace THYF_Repository.Models
                 .Index(t => t.eventOccurrenceId)
                 .Index(t => t.userId);
             
+            CreateTable(
+                "dbo.PayPalNotifications",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        dateReceived = c.DateTime(nullable: false),
+                        transactionId = c.String(maxLength: 1024),
+                        payerId = c.String(maxLength: 1024),
+                        paymentGross = c.String(maxLength: 1024),
+                        paymentFee = c.String(maxLength: 1024),
+                        mcCurrency = c.String(maxLength: 1024),
+                        mcGross = c.String(maxLength: 1024),
+                        reasonCode = c.String(maxLength: 1024),
+                        paymentDate = c.String(maxLength: 1024),
+                        paymentStatus = c.String(maxLength: 1024),
+                    })
+                .PrimaryKey(t => t.id);
+            
         }
         
         public override void Down()
@@ -125,6 +143,7 @@ namespace THYF_Repository.Models
             DropIndex("dbo.Users", new[] { "email" });
             DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
             DropIndex("dbo.BFKSBowlers", new[] { "userId" });
+            DropTable("dbo.PayPalNotifications");
             DropTable("dbo.FrostyRegistrations");
             DropTable("dbo.ContactUs");
             DropTable("dbo.EventOccurrences");

@@ -155,18 +155,34 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BFKSRegistrationController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
+    <Compile Include="Controllers\EventOccurrenceController.cs" />
     <Compile Include="Controllers\FrostyRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\EventOccurrenceController.cs" />
+    <Compile Include="Controllers\PayPalNotificationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GetIPAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\Terre Haute Youth Fundraising %28Production%29.pubxml" />
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\THYF Repository\THYF Repository.csproj">
+      <Project>{c7743df2-d7b0-4bfc-95d6-d390fca8687d}</Project>
+      <Name>THYF Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\THYF Web Models\THYF Web Models.csproj">
+      <Project>{aa9d7e94-5ce6-48f5-a68a-7978b16581a5}</Project>
+      <Name>THYF Web Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -191,27 +207,27 @@
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <None Include="Properties\PublishProfiles\Terre Haute Youth Fundraising %28Production%29.pubxml" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Global.asax" />
+    <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -335,27 +351,12 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\THYF Repository\THYF Repository.csproj">
-      <Project>{c7743df2-d7b0-4bfc-95d6-d390fca8687d}</Project>
-      <Name>THYF Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\THYF Web Models\THYF Web Models.csproj">
-      <Project>{aa9d7e94-5ce6-48f5-a68a-7978b16581a5}</Project>
-      <Name>THYF Web Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
