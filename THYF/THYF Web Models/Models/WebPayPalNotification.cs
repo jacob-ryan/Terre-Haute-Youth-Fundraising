@@ -1,23 +1,33 @@
-﻿namespace THYF_Web_Models.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace THYF_Web_Models.Models
 {
 	public class WebPayPalNotification
 	{
-		public string payer_id { get; set; }
-		public string charset { get; set; }
-		public string payment_gross { get; set; }
-		public string parent_txn_id { get; set; }
-		public string verify_sign { get; set; }
-		public string txb_type { get; set; }
-		public string payment_fee { get; set; }
-		public string mc_currency { get; set; }
-		public string reason_code { get; set; }
-		public string payer_status { get; set; }
-		public string mc_gross { get; set; }
-		public string payment_date { get; set; }
-		public string payment_status { get; set; }
-		public string txn_id { get; set; }
-		public string resend { get; set; }
-		public string notify_version { get; set; }
-		public string player_email { get; set; }
+		public int id { get; set; }
+		public DateTime dateReceived { get; set; }
+
+		[MaxLength(1024)]
+		public string transactionId { get; set; }
+		[MaxLength(1024)]
+		public string payerId { get; set; }
+		[MaxLength(1024)]
+		public string paymentGross { get; set; }
+		[MaxLength(1024)]
+		public string paymentFee { get; set; }
+		[MaxLength(1024)]
+		public string mcCurrency { get; set; }
+		[MaxLength(1024)]
+		public string mcGross { get; set; }
+		[MaxLength(1024)]
+		public string reasonCode { get; set; }
+		[MaxLength(1024)]
+		public string paymentDate { get; set; }
+		[MaxLength(1024)]
+		public string paymentStatus { get; set; }
+
+		[MinLength(36), MaxLength(36)]
+		public string custom { get; set; }
 	}
 }

@@ -26,5 +26,8 @@ namespace THYF_Repository.Models
 		public string paymentDate { get; set; }
 		[MaxLength(1024)]
 		public string paymentStatus { get; set; }
+
+		[MinLength(36), MaxLength(36)]
+		public string custom { get; set; }
 	}
 }

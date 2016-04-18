@@ -20,5 +20,6 @@ namespace THYF_Repository.Models
 		public DbSet<FrostyRegistration> FrostyRegistrations { get; set; }
 		public DbSet<ContactUs> ContactUsSubmissions { get; set; }
 		public DbSet<PayPalNotification> PayPalNotifications { get; set; }
+		public DbSet<PayPalAuthorization> PayPalAuthorizations { get; set; }
 	}
 }

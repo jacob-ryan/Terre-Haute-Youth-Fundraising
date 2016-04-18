@@ -21,11 +21,22 @@ namespace THYF_Repository.Repositories
 			{
 				List<PayPalNotification> notifications = db.PayPalNotifications.ToList();
 				List<WebPayPalNotification> result = new List<WebPayPalNotification>();
-				foreach (PayPalNotification n in notifications)
+				foreach (PayPalNotification notification in notifications)
 				{
-					WebPayPalNotification r = new WebPayPalNotification();
-					// TODO: Decide on field names.
-					result.Add(r);
+					WebPayPalNotification n = new WebPayPalNotification();
+					n.id = notification.id;
+					n.dateReceived = notification.dateReceived;
+					n.transactionId = notification.transactionId;
+					n.payerId = notification.payerId;
+					n.paymentGross = notification.paymentGross;
+					n.paymentFee = notification.paymentFee;
+					n.mcCurrency = notification.mcCurrency;
+					n.mcGross = notification.mcGross;
+					n.reasonCode = notification.reasonCode;
+					n.paymentDate = notification.paymentDate;
+					n.paymentStatus = notification.paymentStatus;
+					n.custom = notification.custom;
+					result.Add(n);
 				}
 				return result;
 			}
@@ -35,7 +46,7 @@ namespace THYF_Repository.Repositories
 			}
 		}
 
-		public void addNotification(WebPayPalNotification notification)
+		public void addNotification(WebPayPalIPN notification)
 		{
 			PayPalNotification n = new PayPalNotification();
 			n.dateReceived = DateTime.UtcNow;
@@ -48,6 +59,8 @@ namespace THYF_Repository.Repositories
 			n.reasonCode = notification.reason_code;
 			n.paymentDate = notification.payment_date;
 			n.paymentStatus = notification.payment_status;
+
+			n.custom = notification.custom;
 
 			db.PayPalNotifications.Add(n);
 			db.SaveChanges();

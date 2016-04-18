@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\WebPayPalNotification.cs" />
+    <Compile Include="Models\WebPayPalAuthorization.cs" />
+    <Compile Include="Models\WebPayPalIPN.cs" />
     <Compile Include="Models\WebBFKSBowler.cs" />
     <Compile Include="Models\WebBFKSRegistration.cs" />
     <Compile Include="Models\WebContactUs.cs" />

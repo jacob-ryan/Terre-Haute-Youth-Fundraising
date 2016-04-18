@@ -109,6 +109,22 @@ namespace THYF_Repository.Models
                 .Index(t => t.userId);
             
             CreateTable(
+                "dbo.PayPalAuthorizations",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        guid = c.String(maxLength: 36),
+                        type = c.String(maxLength: 255),
+                        userId = c.Int(),
+                        email = c.String(maxLength: 255),
+                        name = c.String(maxLength: 255),
+                        date = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Users", t => t.userId)
+                .Index(t => t.userId);
+            
+            CreateTable(
                 "dbo.PayPalNotifications",
                 c => new
                     {
@@ -123,6 +139,7 @@ namespace THYF_Repository.Models
                         reasonCode = c.String(maxLength: 1024),
                         paymentDate = c.String(maxLength: 1024),
                         paymentStatus = c.String(maxLength: 1024),
+                        custom = c.String(maxLength: 36),
                     })
                 .PrimaryKey(t => t.id);
             
@@ -130,12 +147,14 @@ namespace THYF_Repository.Models
         
         public override void Down()
         {
+            DropForeignKey("dbo.PayPalAuthorizations", "userId", "dbo.Users");
             DropForeignKey("dbo.FrostyRegistrations", "userId", "dbo.Users");
             DropForeignKey("dbo.FrostyRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
             DropForeignKey("dbo.BFKSRegistrations", "teamCaptainId", "dbo.Users");
             DropForeignKey("dbo.BFKSRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
             DropForeignKey("dbo.BFKSBowlers", "BFKSRegistration_id", "dbo.BFKSRegistrations");
             DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
+            DropIndex("dbo.PayPalAuthorizations", new[] { "userId" });
             DropIndex("dbo.FrostyRegistrations", new[] { "userId" });
             DropIndex("dbo.FrostyRegistrations", new[] { "eventOccurrenceId" });
             DropIndex("dbo.BFKSRegistrations", new[] { "teamCaptainId" });
@@ -144,6 +163,7 @@ namespace THYF_Repository.Models
             DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
             DropIndex("dbo.BFKSBowlers", new[] { "userId" });
             DropTable("dbo.PayPalNotifications");
+            DropTable("dbo.PayPalAuthorizations");
             DropTable("dbo.FrostyRegistrations");
             DropTable("dbo.ContactUs");
             DropTable("dbo.EventOccurrences");

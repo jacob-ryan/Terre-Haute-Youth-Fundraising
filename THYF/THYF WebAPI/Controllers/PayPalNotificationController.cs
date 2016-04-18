@@ -54,7 +54,7 @@ namespace THYF_WebAPI.Controllers
 		/// <param name="notification">PayPalNotification - IPN notification content</param>
 		/// <returns>Nothing</returns>
 		[AllowAnonymous]
-		public HttpResponseMessage PostPayPalNotification(WebPayPalNotification notification)
+		public HttpResponseMessage PostPayPalNotification(WebPayPalIPN notification)
 		{
 			if (!ModelState.IsValid || notification == null)
 			{
