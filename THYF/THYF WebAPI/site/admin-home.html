@@ -2,228 +2,230 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<script src="../Scripts/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/plugins/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="js/admin-home.js"></script>
 
 <style type="text/css">
-    #divtest {
-        background-color: black;
-        height: 100%;
-    }
+	#divtest
+	{
+		background-color: black;
+		height: 100%;
+	}
 </style>
 
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#Users">Users</a></li>
-    <li><a data-toggle="tab" href="#menu1">Events</a></li>
-    <li><a data-toggle="tab" href="#menu2">Paypal</a></li>
-    <li><a data-toggle="tab" href="#menu3">Bowling</a></li>
-    <li><a data-toggle="tab" href="#menu4">Footer</a></li>
-    <li><a data-toggle="tab" href="#menu5">Footer</a></li>
+	<li class="active"><a data-toggle="tab" href="#Users">Users</a></li>
+	<li><a data-toggle="tab" href="#menu1">Events</a></li>
+	<li><a data-toggle="tab" href="#menu2">Paypal</a></li>
+	<li><a data-toggle="tab" href="#menu3">Bowling</a></li>
+	<li><a data-toggle="tab" href="#menu4">Footer</a></li>
+	<li><a data-toggle="tab" href="#menu5">Footer</a></li>
 </ul>
 
 
 <div class="tab-content">
-    <div id="Users" class="tab-pane fade in active">
-        <div class="row">
-            <div class="col-sm-12">
-                <table id="example" class="display" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Select User</th>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Active</th>
-                            <th>Email</th>
-                            <th>Type</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip Code</th>
-                            <th>Phone</th>
-                            <th>Shirt Size</th>
-                            <th>Company Name</th>
-                            <th>Member Since</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
+	<div id="Users" class="tab-pane fade in active">
+		<div class="row">
+			<div class="col-sm-12">
+				<table id="example" class="display" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Select User</th>
+							<th>User ID</th>
+							<th>Name</th>
+							<th>Active</th>
+							<th>Email</th>
+							<th>Type</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Zip Code</th>
+							<th>Phone</th>
+							<th>Shirt Size</th>
+							<th>Company Name</th>
+							<th>Member Since</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
 
-        <br />
-        <br />
-        <br />
+		<br />
+		<br />
+		<br />
 
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button id="deactivate" class="btn btn-primary" type="button">Deactivate Users</button>
-                        <button id="activate" class="btn btn-primary" type="button">Activate Users</button>
-                    </span>
-                </div>
-                <br />
-                <br />
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button id="addUser" class="btn btn-primary" type="button">Add User</button>
-                    </span>
-                    <input id="userName" type="text" class="form-control" placeholder="User Name ">
-                    <input id="userEmail" type="text" class="form-control" placeholder="User Email ">
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button id="deactivate" class="btn btn-primary" type="button">Deactivate Users</button>
+						<button id="activate" class="btn btn-primary" type="button">Activate Users</button>
+					</span>
+				</div>
+				<br />
+				<br />
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button id="addUser" class="btn btn-primary" type="button">Add User</button>
+					</span>
+					<input id="userName" type="text" class="form-control" placeholder="User Name ">
+					<input id="userEmail" type="text" class="form-control" placeholder="User Email ">
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div id="menu1" class="tab-pane fade">
-        <div class="EventsSelector">
-            <div class="row text-center">
-                <form role="form" class="form-inline">
+	<div id="menu1" class="tab-pane fade">
+		<div class="EventsSelector">
+			<div class="row text-center">
+				<form role="form" class="form-inline">
 
-                    <div class="form-group">
-                        <select id="selectEvent" onChange="jsFunction()" class="form-control"></select>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createEvent">Create Event</button>
-                        <button type="button" id ="editEventButton" class="btn btn-default" data-toggle="modal" data-target="#editEvent">Edit Event</button>
-                        <button class="btn btn-default">Deactivate Event</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+					<div class="form-group">
+						<select id="selectEvent" onchange="jsFunction()" class="form-control"></select>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#createEvent">Create Event</button>
+						<button type="button" id="editEventButton" class="btn btn-default" data-toggle="modal" data-target="#editEvent">Edit Event</button>
+						<button class="btn btn-default">Deactivate Event</button>
+					</div>
+				</form>
+			</div>
+		</div>
 
-        <div id="divtest">
-            <p> Should show below menus</p>
-        </div>
+		<div id="divtest">
+			<p> Should show below menus</p>
+		</div>
 
-        <!-- Modal -->
-        <div id="createEvent" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+		<!-- Modal -->
+		<div id="createEvent" class="modal fade" role="dialog">
+			<div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Event Information</h4>
-                    </div>
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Event Information</h4>
+					</div>
 
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="EventType">Event:</label>
-                            <select id="EventType" class="form-control selectWidth">
-                                <option>Frosty 5k</option>
-                                <option>Bowling for Kids</option>
-                            </select>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="EventType">Event:</label>
+							<select id="EventType" class="form-control selectWidth">
+								<option>Frosty 5k</option>
+								<option>Bowling for Kids</option>
+							</select>
 
-                            <br />
-                            <form id="dateform" class="form" role="form">
-                                <div class="form-group col-sm-6">
-                                    <label for="datepickID">Date:</label>
-                                    <input type="text" class="form-control" name="datepickerID" id="datepickerID" />
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="name">Time:</label>
-                                    <input type="text" class="form-control" id="timePicker" name="timePicker" />
-                                </div>
-                            </form>
+							<br />
+							<form id="dateform" class="form" role="form">
+								<div class="form-group col-sm-6">
+									<label for="datepickID">Date:</label>
+									<input type="text" class="form-control" name="datepickerID" id="datepickerID" />
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="name">Time:</label>
+									<input type="text" class="form-control" id="timePicker" name="timePicker" />
+								</div>
+							</form>
 
-                            <br />
-                            <br />
-                            <label for="comment">Event Description:</label>
-                            <br />
-                            <textarea class="form-control" rows="3" id="description"></textarea>
-                        </div>
-                    </div>
+							<br />
+							<br />
+							<label for="comment">Event Description:</label>
+							<br />
+							<textarea class="form-control" rows="3" id="description"></textarea>
+						</div>
+					</div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="createEventButton">Create</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="createEventButton">Create</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
 
-            </div>
-        </div>
+			</div>
+		</div>
 
-        <!-- Modal -->
-        <div id="editEvent" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Event Information</h4>
-                    </div>
+		<!-- Modal -->
+		<div id="editEvent" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Event Information</h4>
+					</div>
 
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <form id="dateform" class="form" role="form">
-                                <div class="form-group col-sm-6">
-                                    <label for="datepickID">Date:</label>
-                                    <input type="text" class="form-control" name="datepickerID" id="datepickerID2" />
-                                </div>
-                                <div class="form-group col-sm-6">
-                                    <label for="name">Time:</label>
-                                    <input type="text" class="form-control" id="timePicker" name="timePicker2" />
-                                </div>
-                            </form>
+					<div class="modal-body">
+						<div class="form-group">
+							<form id="dateform" class="form" role="form">
+								<div class="form-group col-sm-6">
+									<label for="datepickID">Date:</label>
+									<input type="text" class="form-control" name="datepickerID" id="datepickerID2" />
+								</div>
+								<div class="form-group col-sm-6">
+									<label for="name">Time:</label>
+									<input type="text" class="form-control" id="timePicker" name="timePicker2" />
+								</div>
+							</form>
 
-                            <br />
-                            <br />
-                            <label for="comment">Event Description:</label>
-                            <br />
-                            <textarea class="form-control" rows="3" id="descriptionEvent"></textarea>
-                        </div>
-                    </div>
+							<br />
+							<br />
+							<label for="comment">Event Description:</label>
+							<br />
+							<textarea class="form-control" rows="3" id="descriptionEvent"></textarea>
+						</div>
+					</div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="updateEventButton">Save</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="updateEventButton">Save</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
-    <div id="menu2" class="tab-pane fade">
+	<div id="menu2" class="tab-pane fade">
 
-        <div class="row">
-            <div class="col-sm-12">
-                <table id="paypal" class="display" cellspacing="0">
-                    <thead>
-                        <tr>                        
-                            <th>Transaction ID</th>
-                            <th>User Email</th>
-                            <th>User Name</th>
-                            <th>Date Recieved</th>                     
-                            <th>Paypal Fee</th>
-                            <th>Gross Recieved</th>
-                            <th>Transaction Status</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-        
-    </div>
-    <div id="menu3" class="tab-pane fade">
-        <p>Bowling.</p>
-    </div>
-    <div id="menu4" class="tab-pane fade">
-        <p>Frosty.</p>
-    </div>
-    <div id="menu5" class="tab-pane fade">
-        <p>Footer.</p>
-    </div>
+		<div class="row">
+			<div class="col-sm-12">
+				<table id="paypal" class="display" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Transaction ID</th>
+							<th>User Email</th>
+							<th>User Name</th>
+							<th>Date Recieved</th>
+							<th>Paypal Fee</th>
+							<th>Gross Recieved</th>
+							<th>Transaction Status</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<div id="menu3" class="tab-pane fade">
+		<p>Bowling.</p>
+	</div>
+	<div id="menu4" class="tab-pane fade">
+		<p>Frosty.</p>
+	</div>
+	<div id="menu5" class="tab-pane fade">
+		<p>Footer.</p>
+	</div>
 
 </div>
 
 <script type="text/javascript">
-    $("document").ready(function () {
-        $("#datepickerID").datepicker({
-            changeYear: true
-        });
-        $("#datepickerID2").datepicker({
-            changeYear: true
-        });
-    });
+	$("document").ready(function()
+	{
+		$("#datepickerID").datepicker({
+			changeYear: true
+		});
+		$("#datepickerID2").datepicker({
+			changeYear: true
+		});
+	});
 </script>
