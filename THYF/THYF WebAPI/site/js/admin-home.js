@@ -5,6 +5,7 @@
     var table;
     var paypaltable
     var checkedValues;
+    var paypalData;
     var eventList = [];
 
     // <summary>
@@ -52,7 +53,20 @@
         });
     });
 
-    paypaltable = $('#paypal').DataTable({
+    $.ajax({
+        type: "GET",
+        url: "/api/PayPalNotification",
+        contentType: "application/json",
+    }).done(function (d) {
+        for (i = 0; i < d.length; i++) {
+            var row = [];
+            row.push(d.transactionID, "User Email", "User Name", d.dateReceived, d.paymentGross, d.paymentFee, d.paymentStatus);
+            paypalData[i].push(row);
+        }
+
+        paypaltable = $('#paypal').DataTable({
+            "aaData": paypalData,
+        });
     });
 
     // <summary>
