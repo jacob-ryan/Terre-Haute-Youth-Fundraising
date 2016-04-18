@@ -51,20 +51,17 @@
 				datatype: "json"
 			}).done(function(user)
 			{
-				if (user.type == "admin")
+				$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
+				$("#logged-in-block").show();
+				$("#notlogged-in-block").hide();
+				if (user.type === "admin")
 				{
-					$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-					$("#logged-in-block").show();
-					$("#notlogged-in-block").hide();
-					console.log("Logging into admin panel");
+					$("#admin-link").parent().show();
 					THYF.go("/admin-home");
-				} else
+				}
+				else
 				{
-					$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-					$("#logged-in-block").show();
-					$("#notlogged-in-block").hide();
-					console.log("Logged in successfully: userId = " + data);
-					THYF.changePage("home.html");
+					THYF.go("/");
 				}
 			});
 		}).fail(function(jqXHR, textStatus, error)

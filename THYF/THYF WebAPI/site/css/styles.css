@@ -90,14 +90,14 @@ footer
 	text-align: center;
 }
 
-footer .footer-logo
-{
-	background-color: white;
-	float: left;
-	margin-right: 30px;
-	padding: 15px;
-	width: 180px;
-}
+	footer .footer-logo
+	{
+		background-color: white;
+		float: left;
+		margin-right: 30px;
+		padding: 15px;
+		width: 180px;
+	}
 
 #main-body
 {
@@ -105,23 +105,27 @@ footer .footer-logo
 	background: linear-gradient(#A080C0, white);
 }
 
-.body_wrapper{
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+.body_wrapper
+{
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto -60px;
+	padding: 0 0 60px;
 }
 
-html, body {
-    height: 100%;
+html, body
+{
+	height: 100%;
 }
 
-* {
-    margin: 0;
+*
+{
+	margin: 0;
 }
 
-.footer, .push {
-    height: 60px;
+.footer, .push
+{
+	height: 60px;
 }
 
 .container
