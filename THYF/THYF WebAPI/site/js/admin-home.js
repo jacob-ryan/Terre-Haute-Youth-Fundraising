@@ -3,6 +3,7 @@
     THYF.hideLoading();
     var userData = [];
     var table;
+    var paypaltable
     var checkedValues;
     var eventList = [];
 
@@ -12,7 +13,6 @@
     // </summary>
      $.ajax({
         type: "GET",
-        async: false,
         url: "/api/EventOccurrence",
         contentType: "application/json",
     }).done(function (d) {
@@ -50,6 +50,9 @@
         table = $('#example').DataTable({
             "aaData": userData,
         });
+    });
+
+    paypaltable = $('#paypal').DataTable({
     });
 
     // <summary>
