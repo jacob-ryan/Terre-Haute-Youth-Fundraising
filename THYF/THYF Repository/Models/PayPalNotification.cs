@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using THYF_Web_Models.Models;
 
 namespace THYF_Repository.Models
 {
-	public class PayPalNotification
+	public class PayPalNotification : BaseModel<WebPayPalNotification>
 	{
 		public int id { get; set; }
 		public DateTime dateReceived { get; set; }

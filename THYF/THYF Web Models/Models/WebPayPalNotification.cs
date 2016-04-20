@@ -29,5 +29,7 @@ namespace THYF_Web_Models.Models
 
 		[MinLength(36), MaxLength(36)]
 		public string custom { get; set; }
+
+		public WebPayPalAuthorization authorization { get; set; }
 	}
 }

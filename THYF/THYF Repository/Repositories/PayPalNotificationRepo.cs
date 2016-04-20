@@ -21,23 +21,32 @@ namespace THYF_Repository.Repositories
 			{
 				List<PayPalNotification> notifications = db.PayPalNotifications.ToList();
 				List<WebPayPalNotification> result = new List<WebPayPalNotification>();
-				foreach (PayPalNotification notification in notifications)
+
+				using (PayPalAuthorizationRepo authorizationRepo = new PayPalAuthorizationRepo())
 				{
-					WebPayPalNotification n = new WebPayPalNotification();
-					n.id = notification.id;
-					n.dateReceived = notification.dateReceived;
-					n.transactionId = notification.transactionId;
-					n.payerId = notification.payerId;
-					n.paymentGross = notification.paymentGross;
-					n.paymentFee = notification.paymentFee;
-					n.mcCurrency = notification.mcCurrency;
-					n.mcGross = notification.mcGross;
-					n.reasonCode = notification.reasonCode;
-					n.paymentDate = notification.paymentDate;
-					n.paymentStatus = notification.paymentStatus;
-					n.custom = notification.custom;
-					result.Add(n);
+					foreach (PayPalNotification notification in notifications)
+					{
+						WebPayPalNotification n = notification.convert();
+
+						/*n.id = notification.id;
+						n.dateReceived = notification.dateReceived;
+						n.transactionId = notification.transactionId;
+						n.payerId = notification.payerId;
+						n.paymentGross = notification.paymentGross;
+						n.paymentFee = notification.paymentFee;
+						n.mcCurrency = notification.mcCurrency;
+						n.mcGross = notification.mcGross;
+						n.reasonCode = notification.reasonCode;
+						n.paymentDate = notification.paymentDate;
+						n.paymentStatus = notification.paymentStatus;
+						n.custom = notification.custom;*/
+
+						n.authorization = authorizationRepo.getAuthorization(this.me, notification.custom);
+
+						result.Add(n);
+					}
 				}
+
 				return result;
 			}
 			else
