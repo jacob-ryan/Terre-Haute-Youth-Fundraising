@@ -2,12 +2,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>$(document).ready( function() {
+	$.ajax({
+		type: "GET",
+		url: "/api/Login",
+		contentType: "application/json",
+		datatype: "json"
+	}).done(function (user)
+	{
+		userInfo = user;
+		alert(userInfo);
+	});
+	$("#makecall").on("click", function ()
+	{
+		var selected = $("input[name = 'transtype']:checked").val();
+		var email = $("#email-email").val();
+		var name = $("#email-name").val();
+		var userInfo;
+
+		if (selected == "email")
+		{
+			$.ajax({
+				type: "POST",
+				url: "https://thyf.azurewebsites.net/api/PaypalAuthorization",
+				contentType: "application/json",
+				datatype: "json",
+				data: JSON.stringify({
+					type: "Logged-in",
+					email: email,
+					name: name
+				})
+			}).done(function (user)
+				{
+					alert(user);
+				}).fail(function ()
+				{
+					alert("Please log in to register.");
+				});
+		}
+		else if (selected == "logged-in")
+		{
+			var email = "emailName";
+			var name = "userName";
+			var userId = 11111;
+			var user = JSON.stringify({});
+			//var email = userInfo.email;
+			//var name = userInfo.name;
+			//var userId = userInfo.userId;
+			//var user = userInfo
+			$.ajax({
+				type: "POST",
+				url: "https://thyf.azurewebsites.net/api/PaypalAuthorization",
+				contentType: "application/json",
+				datatype: "json",
+				data: JSON.stringify({
+					type: "Email",
+					email: email,
+					name: name,
+					userId: userId,
+					user: userInfo
+				})
+			}).done(function (user)
+				{
+					alert(user);
+				}).fail(function ()
+				{
+					alert("Please log in to register.");
+				});
+		}
+		else if (selected == "Anonymous")
+		{
+			$.ajax({
+				type: "POST",
+				url: "https://thyf.azurewebsites.net/api/PaypalAuthorization",
+				contentType: "application/json",
+				datatype: "json",
+				data: JSON.stringify({
+					type: "Anonymous"
+				})
+			}).done(function (authorization)
+			{
+				var hash = $("input[name = 'custom']").val(authorization);
+				alert(authorization);
+			}).fail(function ()
+			{
+				alert("Please log in to register.");
+			});
+		}
+		alert(selected + " " + email + " " + name + " " + userId + " " + user);
+	});
+	})</script>
 </head>
 <body>
 	<h1>Test Donate</h1>
 	<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 		<input type="hidden" name="cmd" value="_donations">
-		<input type="hidden" name="email" value="bbbstest@test.com">
+		<input type="hidden" name="custom" value="">
 		<input type="hidden" name="business" value="bbbsreceiver@test.com">
 		<input type="hidden" name="lc" value="US">
 		<input type="hidden" name="item_name" value="Big Brothers Big Sisters">
@@ -17,5 +108,14 @@
 		<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 	</form>
+	<form action="">
+		<input type="radio" name="transtype" value="logged-in" id="logged-in"> Logged In<br>
+		<input type="radio" name="transtype" value="email" id="email"> Email <br>
+		<input type="radio" name="transtype" value="Anonymous" id="anonymous"> Anonymous
+	</form>
+	<h1>Email Fields</h1>
+	<input type="text" id="email-name" value="Name"/> <br />
+	<input type="text" id="email-email" value="Email"/>
+	<button id="makecall" type="button" class="btn btn-default">Make the Call</button>
 </body>
 </html>
