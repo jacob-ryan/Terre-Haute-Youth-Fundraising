@@ -92,9 +92,21 @@
 			</div>
 		</div>
 
-		<div id="divtest">
-			<p> Should show below menus</p>
-		</div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="eventUsers" class="display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Event Occurrence ID</th>
+                            <th>Event Type</th>
+                            <th>Event ID</th>
+                            <th>UserID</th>
+                            <th>DateCreated</th>                           
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
 
 		<!-- Modal -->
 		<div id="createEvent" class="modal fade" role="dialog">
@@ -163,7 +175,7 @@
 								</div>
 								<div class="form-group col-sm-6">
 									<label for="name">Time:</label>
-									<input type="text" class="form-control" id="timePicker" name="timePicker2" />
+									<input type="text" class="form-control" id="eventTimeEdit" name="timePicker2" />
 								</div>
 							</form>
 
