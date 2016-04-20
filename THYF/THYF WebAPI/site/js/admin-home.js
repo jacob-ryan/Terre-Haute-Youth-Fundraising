@@ -4,9 +4,13 @@
 	THYF.hideLoading();
 	var userData = [];
 	var table;
-	var paypaltable
+	var paypalTable;
+	var eventTable;
 	var checkedValues;
 	var eventList = [];
+	var eventType;
+	var allRegistrations = [];
+
 
 	// <summary>
 	// Get's all event's from database and populates the event selector within the
@@ -27,7 +31,49 @@
                 .attr("value", value.id)
                 .text(value.type + " " + value.date));
 		});
+		eventType = eventList[0].type;
+		var registrationsData = [];
+
+		$.ajax({
+		    type: "GET",
+		    url: "/api/BFKSRegistration",
+		    contentType: "application/json",
+		}).done(function (f) {
+		    for (i = 0; i < f.length; i++) {
+		        //console.log(f[i]);
+		        registrationsData.push(f[i]);
+		    }
+
+		    $.ajax({
+		        type: "GET",
+		        url: "/api/FrostyRegistration",
+		        contentType: "application/json",
+		    }).done(function (e) {
+		        for (i = 0; i < e.length; i++) {
+		            //console.log(e[i]);
+		            registrationsData.push(e[i]);
+		        }
+		        console.log(registrationsData);
+                
+
+		        var eventTableData = [];
+                var temp = []
+		        //for (i = 0; i < registrationsData.length; i++) {
+		           	        
+		        //}
+                temp.push("12", "Bowling", "1", "6", "November 5");
+                eventTableData.push(temp);
+		        eventTable = $('#eventUsers').DataTable({
+		            "aaData": eventTableData,
+		        });
+		    });
+		    
+		});
 	});
+
+
+
+     
 	//console.log(eventList);
 
 	// <summary>
@@ -59,23 +105,21 @@
 	});
 
 	$.ajax({
-		type: "GET",
-		url: "/api/PayPalNotification",
-		contentType: "application/json",
-	}).done(function(d)
-	{
-		var paypalData = [];
-		for (i = 0; i < d.length; i++)
-		{
-			var row = [];
-			var n = d[i];
-			row.push(n.transactionId, "User Email", "User Name", n.dateReceived, n.paymentGross, n.paymentFee, n.paymentStatus);
-			paypalData.push(row);
-		}
-
-		paypaltable = $('#paypal').DataTable({
-			"aaData": paypalData,
-		});
+	    type: "GET",
+	    url: "/api/PayPalNotification",
+	    contentType: "application/json",
+	}).done(function (d) {
+	    var paypalData = [];
+	    for (i = 0; i < d.length; i++) {
+	        var row = [];
+	        var n = d[i];
+	        var userInfo = n.authorization.user;
+	        row.push(n.transactionId, userInfo.email, userInfo.name, n.dateReceived, n.paymentFee, n.paymentGross, n.paymentStatus);
+	        paypalData.push(row);
+	    }
+	    paypalTable = $('#paypal').DataTable({
+	        "aaData": paypalData,
+	    });
 	});
 
 	// <summary>
@@ -159,13 +203,16 @@
 	// </summary>
 	$("#createEventButton").on("click", function()
 	{
+	    var dateObject = $("#datepickerID").val();
+        //Need to do something with the hours here
+	    var hours = $("#timePicker").val();
 		var data = {
-			date: $("#datepickerID").val(),
+			date: dateObject,
 			type: $("#EventType").val(),
 			description: $("#description").val()
 		};
 
-		console.log(data);
+		//console.log(data);
 
 		$.ajax({
 			type: "POST",
@@ -175,7 +222,7 @@
 			datatype: "json"
 		}).done(function(data)
 		{
-			console.log(data);
+			//console.log(data);
 		});
 	});
 
@@ -187,19 +234,23 @@
 	{
 		$("#descriptionEvent").val(eventList[$("#selectEvent").val() - 1].description);
 		$("#datepickerID2").val(eventList[$("#selectEvent").val() - 1].date);
+        
+        //Need date so I can populate hours field here
+		//$("eventTimeEdit").val(eventList[$("#selectEvent").val() - 1);
 	});
 
 	$("#updateEventButton").on("click", function()
 	{
 		var eventId = $("#selectEvent").val();
 		var data = {
+		    id: eventId,
 			date: $("#datepickerID2").val(),
 			type: eventList[eventId - 1].type,
 			description: $("#descriptionEvent").val()
 		};
 
-		console.log(data);
-		console.log(eventId);
+		//console.log(data);
+		//console.log(eventId);
 
 		$.ajax({
 			type: "PUT",
@@ -212,7 +263,6 @@
 			alert("Failed To Update Event");
 		});
 	});
-
 });
 
 // <summary>
