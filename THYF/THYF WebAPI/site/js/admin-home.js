@@ -31,7 +31,7 @@
                 .attr("value", value.id)
                 .text(value.type + " " + value.date));
 		});
-		eventType = eventList[0].type;
+		//eventType = eventList[0].type;
 		var registrationsData = [];
 
 		$.ajax({
@@ -111,7 +111,7 @@
 	        var row = [];
 	        var n = d[i];
 	        var userInfo = n.authorization.user;
-	        row.push(n.transactionId, userInfo.email, userInfo.name, n.dateReceived, n.paymentFee, n.paymentGross, n.paymentStatus);
+	        row.push(n.transactionId, userInfo ? userInfo.email : "None", userInfo ? userInfo.name : "None", n.dateReceived, n.paymentFee, n.paymentGross, n.paymentStatus);
 	        paypalData.push(row);
 	    }
 	    paypalTable = $('#paypal').DataTable({

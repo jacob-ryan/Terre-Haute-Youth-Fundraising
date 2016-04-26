@@ -72,6 +72,7 @@ namespace THYF_Repository.Repositories
 				user.state = webUser.state;
 				user.zip = webUser.zip;
 				user.phone = webUser.phone;
+				user.dateOfBirth = webUser.dateOfBirth;
 				user.tshirtSize = webUser.tshirtSize;
 				user.companyName = webUser.companyName;
 				if (webUser.newPassword != null && me.id == id)
@@ -112,6 +113,7 @@ namespace THYF_Repository.Repositories
 				user.state = webUser.state;
 				user.zip = webUser.zip;
 				user.phone = webUser.phone;
+				user.dateOfBirth = webUser.dateOfBirth;
 				user.tshirtSize = webUser.tshirtSize;
 				user.companyName = webUser.companyName;
 				user.dateCreated = DateTime.UtcNow;

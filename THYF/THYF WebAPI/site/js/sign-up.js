@@ -80,7 +80,7 @@
 			state: $("#state").val(),
 			zip: $("#zip").val(),
 			phone: $("#phone").val(),
-			year: $("#year").val(),
+			dateOfBirth: $("#year").val(),
 			tshirtSize: $("#t-shirt").val(),
 			type: $("#type").val(),
 			companyName: $("#company_name").val(),

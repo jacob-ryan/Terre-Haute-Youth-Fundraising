@@ -7,9 +7,10 @@ namespace THYF_Repository.Models
 	public class EventOccurrence : BaseModel<WebEventOccurrence>
 	{
 		public int id { get; set; }
+		public bool isActive { get; set; }
 		[Required, MaxLength(255)]
 		public string type { get; set; }
-		[Required, MaxLength(255)]
+		[Required, MaxLength(1024)]
 		public string description { get; set; }
 
 		private DateTime _date;

@@ -36,9 +36,10 @@ namespace THYF_Repository.Repositories
 			EventOccurrence eventOccurrence = db.EventOccurrences.SingleOrDefault(u => u.id == id);
 			if (eventOccurrence != null && me.type == "admin")
 			{
+				eventOccurrence.isActive = webEventOccurrence.isActive;
 				eventOccurrence.type = webEventOccurrence.type;
-				eventOccurrence.date = webEventOccurrence.date;
 				eventOccurrence.description = webEventOccurrence.description;
+				eventOccurrence.date = webEventOccurrence.date;
 				db.SaveChanges();
 			}
 			else
@@ -52,9 +53,10 @@ namespace THYF_Repository.Repositories
 			if (me.type == "admin")
 			{
 				EventOccurrence eventOccurrence = new EventOccurrence();
+				eventOccurrence.isActive = webEventOccurrence.isActive;
 				eventOccurrence.type = webEventOccurrence.type;
-				eventOccurrence.date = webEventOccurrence.date;
 				eventOccurrence.description = webEventOccurrence.description;
+				eventOccurrence.date = webEventOccurrence.date;
 				db.EventOccurrences.Add(eventOccurrence);
 				db.SaveChanges();
 

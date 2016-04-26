@@ -93,7 +93,7 @@ namespace THYF_WebAPI.Controllers
 		/// </summary>
 		/// <param name="eventOccurrence">EventOccurrence - eventOccurrence info</param>
 		/// <returns>int - ID</returns>
-		[AllowAnonymous]
+		[Authorize]
 		public HttpResponseMessage PostEventOccurrence(WebEventOccurrence eventOccurrence)
 		{
 			if (!ModelState.IsValid || eventOccurrence == null)

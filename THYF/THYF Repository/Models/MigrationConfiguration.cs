@@ -49,6 +49,7 @@ namespace THYF_Repository.Models
 			admin.state = "IN";
 			admin.zip = "47802";
 			admin.phone = "812-123-1234";
+			admin.dateOfBirth = "01/02/1990";
 			admin.tshirtSize = "L";
 			admin.companyName = null;
 			admin.dateCreated = DateTime.UtcNow;

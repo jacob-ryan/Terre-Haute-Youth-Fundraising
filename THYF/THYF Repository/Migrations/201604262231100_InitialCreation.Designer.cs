@@ -13,7 +13,7 @@ namespace THYF_Repository.Models
         
         string IMigrationMetadata.Id
         {
-            get { return "201604181909145_InitialCreation"; }
+            get { return "201604262231100_InitialCreation"; }
         }
         
         string IMigrationMetadata.Source

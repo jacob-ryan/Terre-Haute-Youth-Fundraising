@@ -14,16 +14,18 @@ namespace THYF_Web_Models.Models
 		public string email { get; set; }
 		[Required, MaxLength(255)]
 		public string type { get; set; }
-		[MaxLength(1024)]
+		[Required, MaxLength(1024)]
 		public string address { get; set; }
-		[MaxLength(255)]
+		[Required, MaxLength(255)]
 		public string city { get; set; }
-		[MaxLength(2)]
+		[Required, MaxLength(2)]
 		public string state { get; set; }
-		[MaxLength(5)]
+		[Required, MaxLength(5)]
 		public string zip { get; set; }
-		[MaxLength(255)]
+		[Required, MaxLength(255)]
 		public string phone { get; set; }
+		[Required, MaxLength(255)]
+		public string dateOfBirth { get; set; }
 		[MaxLength(255)]
 		public string tshirtSize { get; set; }
 		[MaxLength(255)]

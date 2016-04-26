@@ -32,11 +32,12 @@ namespace THYF_Repository.Models
                         name = c.String(nullable: false, maxLength: 255),
                         email = c.String(nullable: false, maxLength: 255),
                         type = c.String(nullable: false, maxLength: 255),
-                        address = c.String(maxLength: 1024),
-                        city = c.String(maxLength: 255),
-                        state = c.String(maxLength: 2),
-                        zip = c.String(maxLength: 5),
+                        address = c.String(nullable: false, maxLength: 1024),
+                        city = c.String(nullable: false, maxLength: 255),
+                        state = c.String(nullable: false, maxLength: 2),
+                        zip = c.String(nullable: false, maxLength: 5),
                         phone = c.String(nullable: false, maxLength: 255),
+                        dateOfBirth = c.String(nullable: false, maxLength: 255),
                         tshirtSize = c.String(maxLength: 255),
                         companyName = c.String(maxLength: 255),
                         dateCreated = c.DateTime(nullable: false),
@@ -70,8 +71,9 @@ namespace THYF_Repository.Models
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
+                        isActive = c.Boolean(nullable: false),
                         type = c.String(nullable: false, maxLength: 255),
-                        description = c.String(nullable: false, maxLength: 255),
+                        description = c.String(nullable: false, maxLength: 1024),
                         date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
