@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -348,10 +349,12 @@
     <Content Include="site\js\plugins\yui.min\selector-native\selector-native-min.js" />
     <Content Include="site\js\plugins\yui.min\selector\selector-debug.js" />
     <Content Include="site\js\plugins\yui.min\selector\selector-min.js" />
+    <Content Include="site\js\registeredEvents.js" />
     <Content Include="site\js\sign-up.js" />
     <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\js\thyf-routes.js" />
     <Content Include="site\login.html" />
+    <Content Include="site\registeredEvents.html" />
     <Content Include="site\sign-up.html" />
     <Content Include="site\TestPage.html" />
     <Content Include="Views\Home\Index.cshtml" />

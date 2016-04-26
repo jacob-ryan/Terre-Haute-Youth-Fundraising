@@ -25,6 +25,8 @@
 			$("#logged-in").text("");
 			$("#logged-in-block").hide();
 			$("#notlogged-in-block").show();
+			$("#user_event").parent().hide();
+			$("#admin-link").parent().hide();
 			THYF.go("/login");
 		});
 	});

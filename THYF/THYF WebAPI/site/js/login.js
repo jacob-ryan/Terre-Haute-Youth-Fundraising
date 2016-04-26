@@ -61,6 +61,7 @@
 				}
 				else
 				{
+				    $("#user_event").parent().show();
 					THYF.go("/");
 				}
 			});
