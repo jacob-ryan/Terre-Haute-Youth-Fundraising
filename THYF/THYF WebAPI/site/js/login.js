@@ -42,26 +42,16 @@
 			contentType: "application/json",
 			data: data ? JSON.stringify(data) : null,
 			datatype: "json"
-		}).done(function(data)
+		}).done(function()
 		{
-			$.ajax({
-				type: "GET",
-				url: "/api/Login",
-				contentType: "application/json",
-				datatype: "json"
-			}).done(function(user)
+			THYF.performLogin().done(function(user)
 			{
-				$("#logged-in").html("<span class='badge badge-default'>" + user.name + "</span>");
-				$("#logged-in-block").show();
-				$("#notlogged-in-block").hide();
 				if (user.type === "admin")
 				{
-					$("#admin-link").parent().show();
 					THYF.go("/admin-home");
 				}
 				else
 				{
-				    $("#user_event").parent().show();
 					THYF.go("/");
 				}
 			});

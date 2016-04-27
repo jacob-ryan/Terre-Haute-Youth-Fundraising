@@ -362,6 +362,7 @@
     <Content Include="site\js\plugins\yui.min\selector\selector-min.js" />
     <Content Include="site\js\registeredEvents.js" />
     <Content Include="site\js\sign-up.js" />
+    <Content Include="site\js\thyf-core.js" />
     <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\js\thyf-routes.js" />
     <Content Include="site\login.html" />
