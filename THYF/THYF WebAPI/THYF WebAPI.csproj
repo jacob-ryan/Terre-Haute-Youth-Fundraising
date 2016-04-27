@@ -238,6 +238,18 @@
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="site\css\bootstrap.min.css" />
+    <Content Include="site\css\font-awesome.min.css" />
+    <Content Include="site\css\jquery-ui-1.9.2.custom.min.css" />
+    <Content Include="site\css\styles.css" />
+    <Content Include="site\fonts\fontawesome-webfont.eot" />
+    <Content Include="site\fonts\fontawesome-webfont.svg" />
+    <Content Include="site\fonts\fontawesome-webfont.ttf" />
+    <Content Include="site\fonts\fontawesome-webfont.woff" />
+    <Content Include="site\fonts\fontawesome-webfont.woff2" />
+    <Content Include="site\fonts\FontAwesome.otf" />
+    <Content Include="site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\js\plugins\bootstrap.min.js" />
     <Content Include="site\js\plugins\jquery-ui-1.9.2.custom.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
@@ -252,7 +264,6 @@
     <Content Include="site\company_signup.html" />
     <Content Include="site\company_sponsorship_bowling.html" />
     <Content Include="site\contact-us.html" />
-    <Content Include="site\css\styles.css" />
     <Content Include="site\donate.html" />
     <Content Include="site\footer.html" />
     <Content Include="site\frosty-5k-registration.html" />
@@ -365,6 +376,10 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="site\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="site\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="site\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="site\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
