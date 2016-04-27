@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    THYF.hideLoading();
     var userEventsTable; 
 
     $.ajax({
@@ -18,10 +19,7 @@
             console.log(f);
         });
     });
-
-    THYF.hideLoading();
-
-    userEventsTable = $('#registeredFor').DataTable({
-        "aaData": userData,
-    });
+    //userEventsTable = $('#registeredFor').DataTable({
+    //    "aaData": userData,
+    //});
 });

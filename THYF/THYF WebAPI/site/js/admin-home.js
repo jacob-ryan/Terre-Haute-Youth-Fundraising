@@ -13,8 +13,8 @@
 
 
 	// <summary>
-	// Get's all event's from database and populates the event selector within the
-	// Events tab
+    // Get's all event's from database and populates the event selector and
+	// event table within the Events tab
 	// </summary>
 	$.ajax({
 		type: "GET",
@@ -53,15 +53,17 @@
 		            //console.log(e[i]);
 		            registrationsData.push(e[i]);
 		        }
-		        console.log(registrationsData);
-                
+		        
+                console.log(registrationsData);
 
 		        var eventTableData = [];
                 var temp = []
-		        //for (i = 0; i < registrationsData.length; i++) {
-		           	        
-		        //}
-                temp.push("12", "Bowling", "1", "6", "November 5");
+                for (i = 0; i < registrationsData.length; i++) {
+                    var info = registrationsData[i];
+                    temp.push(info.eventOccurrenceId, "Frosty 5K", info.userId, info.id, info.dateCreated);
+                    
+                }
+                //temp.push("12", "Bowling", "1", "6", "November 5");
                 eventTableData.push(temp);
 		        eventTable = $('#eventUsers').DataTable({
 		            "aaData": eventTableData,
@@ -229,8 +231,10 @@
 	// </summary>
 	$("#editEventButton").on("click", function()
 	{
-		$("#descriptionEvent").val(eventList[$("#selectEvent").val() - 1].description);
-		$("#datepickerID2").val(eventList[$("#selectEvent").val() - 1].date);
+	    if(eventList.length != 0){
+	      $("#descriptionEvent").val(eventList[$("#selectEvent").val() - 1].description);
+	      $("#datepickerID2").val(eventList[$("#selectEvent").val() - 1].date);
+	   }
         
         //Need date so I can populate hours field here
 		//$("eventTimeEdit").val(eventList[$("#selectEvent").val() - 1);
@@ -238,27 +242,28 @@
 
 	$("#updateEventButton").on("click", function()
 	{
-		var eventId = $("#selectEvent").val();
-		var data = {
-		    id: eventId,
-			date: $("#datepickerID2").val(),
-			type: eventList[eventId - 1].type,
-			description: $("#descriptionEvent").val()
-		};
+	    var eventId = $("#selectEvent").val();
+	    if (eventId != null) {
+	        var data = {
+	            id: eventId,
+	            date: $("#datepickerID2").val(),
+	            type: eventList[eventId - 1].type,
+	            description: $("#descriptionEvent").val()
+	        };
 
-		//console.log(data);
-		//console.log(eventId);
+	        //console.log(data);
+	        //console.log(eventId);
 
-		$.ajax({
-			type: "PUT",
-			url: "/api/EventOccurrence/" + eventId,
-			contentType: "application/json",
-			data: data ? JSON.stringify(data) : null,
-			datatype: "json"
-		}).fail(function()
-		{
-			alert("Failed To Update Event");
-		});
+	        $.ajax({
+	            type: "PUT",
+	            url: "/api/EventOccurrence/" + eventId,
+	            contentType: "application/json",
+	            data: data ? JSON.stringify(data) : null,
+	            datatype: "json"
+	        }).fail(function () {
+	            alert("Failed To Update Event");
+	        });
+	    }
 	});
 });
 

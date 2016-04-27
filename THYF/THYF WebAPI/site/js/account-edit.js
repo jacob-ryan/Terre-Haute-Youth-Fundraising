@@ -91,7 +91,10 @@
     $("#update").on("click", function (e) {
         e.preventDefault();
         $("#updateForm").valid();
-        console.log("Button Pressed");
+        THYF.showLoading();
+        $("#sign-up-duplicate-email").slideUp();
+        $("#infoUpdated").slideUp();
+        $("#sign-up-unknown-error").slideUp();
         var newPass = $("#password").val();
         var newPassCheck = $("#passwordCheck").val();
         var newName = $("#name").val();
@@ -132,8 +135,20 @@
                 data: data ? JSON.stringify(data) : null,
                 datatype: "json"
             }).done(function (data) {
+               THYF.hideLoading();
                $("#logged-in").html("<span class='badge badge-default'>" + newName + "</span>");
-               alert("Information Updated!\nReturned: '" + data + "'");
+               $("#infoUpdated").slideDown();
+            }).fail(function (jqXHR, textStatus, error) {
+                THYF.hideLoading();
+                $("#infoUpdated").slideUp();
+                var message = jqXHR.responseJSON ? jqXHR.responseJSON.Message : "No details";
+                if (message === "Email address is already in use") {
+                    $("#sign-up-duplicate-email").slideDown();
+                }
+                else {
+                    $("#sign-up-unknown-error").slideDown();
+                    $("#sign-up-unknown-error > div").text(textStatus + " - " + message);
+                }
             });
         }
     });
