@@ -32,7 +32,7 @@ namespace THYF_WebAPI.Controllers
 			try
 			{
 				List<WebFrostyRegistration> registrations = repo.getFrostyRegistrations();
-				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+				return Request.CreateResponse(HttpStatusCode.OK, registrations);
 			}
 			catch (Exception e)
 			{
@@ -51,7 +51,7 @@ namespace THYF_WebAPI.Controllers
 			try
 			{
 				List<WebFrostyRegistration> registrations = repo.getFrostyRegistrations(userId);
-				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+				return Request.CreateResponse(HttpStatusCode.OK, registrations);
 			}
 			catch (Exception e)
 			{

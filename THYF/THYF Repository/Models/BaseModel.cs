@@ -26,14 +26,26 @@ namespace THYF_Repository.Models
 						if (srcProp.GetValue(src) != null)
 						{
 							Type listType = typeof(List<>);
-							Type t = srcProp.PropertyType;
-							if (t.IsGenericType && listType.IsAssignableFrom(t.GetGenericTypeDefinition()))
+							Type srcType = srcProp.PropertyType;
+							if (srcType.IsGenericType && listType.IsAssignableFrom(srcType.GetGenericTypeDefinition()))
 							{
 								// Don't auto-convert List properties.
 							}
-							else
+							else if (srcProp.PropertyType == dstProp.PropertyType)
 							{
 								dstProp.SetValue(dst, srcProp.GetValue(src));
+							}
+							else
+							{
+								object value = null;
+								if (typeof(BaseModel<WebUser>).IsAssignableFrom(srcType))
+								{
+									value = ((BaseModel<WebUser>) srcProp.GetValue(src)).convert();
+								}
+								if (value != null)
+								{
+									dstProp.SetValue(dst, value);
+								}
 							}
 						}
 					}
