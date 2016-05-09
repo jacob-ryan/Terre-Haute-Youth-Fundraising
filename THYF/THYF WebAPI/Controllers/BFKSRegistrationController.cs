@@ -27,12 +27,12 @@ namespace THYF_WebAPI.Controllers
 		/// </summary>
 		/// <returns>BFKSRegistration[] - all registrations</returns>
 		[Authorize]
-		public HttpResponseMessage GetBFKSRegistrations()
+		public HttpResponseMessage Get()
 		{
 			try
 			{
 				List<WebBFKSRegistration> registrations = repo.getBFKSRegistrations();
-				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+				return Request.CreateResponse(HttpStatusCode.OK, registrations);
 			}
 			catch (Exception e)
 			{
@@ -46,12 +46,12 @@ namespace THYF_WebAPI.Controllers
 		/// </summary>
 		/// <returns>BFKSRegistration[] - all registrations</returns>
 		[Authorize]
-		public HttpResponseMessage GetBFKSRegistrations(int userId)
+		public HttpResponseMessage Get(int userId)
 		{
 			try
 			{
 				List<WebBFKSRegistration> registrations = repo.getBFKSRegistrations(userId);
-				return Request.CreateResponse(HttpStatusCode.Created, registrations);
+				return Request.CreateResponse(HttpStatusCode.OK, registrations);
 			}
 			catch (Exception e)
 			{
@@ -66,7 +66,7 @@ namespace THYF_WebAPI.Controllers
 		/// <param name="registration">BFKSRegistration - registration info</param>
 		/// <returns>int - ID</returns>
 		[Authorize]
-		public HttpResponseMessage PostBFKSRegistration(WebBFKSRegistration registration)
+		public HttpResponseMessage Post(WebBFKSRegistration registration)
 		{
 			if (!ModelState.IsValid || registration == null)
 			{
@@ -77,6 +77,32 @@ namespace THYF_WebAPI.Controllers
 			{
 				int id = repo.addBFKSRegistration(registration);
 				return Request.CreateResponse(HttpStatusCode.Created, id);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
+		}
+
+		// PUT api/BFKSRegistration/42
+		/// <summary>
+		/// Updates an existing BFKS registration with the information in the given BFKSRegistration object.
+		/// </summary>
+		/// <param name="id">int - registration ID</param>
+		/// <param name="registration">BFKSRegistration - registration info</param>
+		/// <returns>Nothing</returns>
+		[Authorize]
+		public HttpResponseMessage Put(int id, WebBFKSRegistration registration)
+		{
+			if (!ModelState.IsValid || registration == null || id != registration.id)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+			}
+
+			try
+			{
+				repo.updateBFKSRegistration(registration);
+				return Request.CreateResponse(HttpStatusCode.OK);
 			}
 			catch (Exception e)
 			{

@@ -43,12 +43,19 @@ namespace THYF_Repository.Repositories
 
 		public int addFrostyRegistration(WebFrostyRegistration webRegistration)
 		{
-			// Perhaps check if registration is enabled for this event (future?).
-			if (true)
+			// Check if registration is enabled for this event occurrence.
+			EventOccurrence eventOccurrence = db.EventOccurrences
+				.SingleOrDefault(e => e.id == webRegistration.eventOccurrenceId);
+			if (eventOccurrence != null)
 			{
+				if (!eventOccurrence.isActive)
+				{
+					throw new Exception("You cannot register for this event because it is not active");
+				}
 				FrostyRegistration registration = new FrostyRegistration();
 				registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
 				registration.userId = this.me.id;
+				registration.isPaid = false;
 				registration.isMinor = webRegistration.isMinor;
 				registration.dateCreated = DateTime.UtcNow;
 
@@ -56,6 +63,42 @@ namespace THYF_Repository.Repositories
 				db.SaveChanges();
 
 				return registration.id;
+			}
+			else
+			{
+				throw new PermissionDeniedException();
+			}
+		}
+
+		public void updateFrostyRegistration(WebFrostyRegistration webRegistration)
+		{
+			// Check if registration is enabled for this event occurrence.
+			EventOccurrence eventOccurrence = db.EventOccurrences
+				.SingleOrDefault(e => e.id == webRegistration.eventOccurrenceId);
+			if (eventOccurrence != null)
+			{
+				if (!eventOccurrence.isActive)
+				{
+					throw new Exception("You cannot register for this event because it is not active");
+				}
+				FrostyRegistration registration = db.FrostyRegistrations
+					.SingleOrDefault(r => r.id == webRegistration.id);
+				if (registration != null && (registration.userId == me.id || me.type == "admin"))
+				{
+					registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
+					// Only allow admins to manually mark registration as being paid (e.g. in person with cash/check).
+					if (me.type == "admin")
+					{
+						registration.isPaid = webRegistration.isPaid;
+					}
+					registration.isMinor = webRegistration.isMinor;
+
+					db.SaveChanges();
+				}
+				else
+				{
+					throw new PermissionDeniedException();
+				}
 			}
 			else
 			{

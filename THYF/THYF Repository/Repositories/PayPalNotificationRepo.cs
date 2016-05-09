@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using THYF_Repository.Helpers;
 using THYF_Repository.Models;
@@ -26,24 +27,9 @@ namespace THYF_Repository.Repositories
 				{
 					foreach (PayPalNotification notification in notifications)
 					{
-						WebPayPalNotification n = notification.convert();
-
-						/*n.id = notification.id;
-						n.dateReceived = notification.dateReceived;
-						n.transactionId = notification.transactionId;
-						n.payerId = notification.payerId;
-						n.paymentGross = notification.paymentGross;
-						n.paymentFee = notification.paymentFee;
-						n.mcCurrency = notification.mcCurrency;
-						n.mcGross = notification.mcGross;
-						n.reasonCode = notification.reasonCode;
-						n.paymentDate = notification.paymentDate;
-						n.paymentStatus = notification.paymentStatus;
-						n.custom = notification.custom;*/
-
-						n.authorization = authorizationRepo.getAuthorization(this.me, notification.custom);
-
-						result.Add(n);
+						WebPayPalNotification webNotification = notification.convert();
+						webNotification.authorization = authorizationRepo.getAuthorization(this.me, notification.custom);
+						result.Add(webNotification);
 					}
 				}
 
@@ -73,6 +59,28 @@ namespace THYF_Repository.Repositories
 
 			db.PayPalNotifications.Add(n);
 			db.SaveChanges();
+
+			updateRegistrationPayment(n);
+		}
+
+		private void updateRegistrationPayment(PayPalNotification notification)
+		{
+			PayPalAuthorization authorization = db.PayPalAuthorizations
+				.Include(a => a.bfksRegistration)
+				.Include(a => a.frostyRegistration)
+				.SingleOrDefault(a => a.guid == notification.custom);
+			if (authorization != null)
+			{
+				if (authorization.bfksRegistration != null)
+				{
+					authorization.bfksRegistration.isPaid = true;
+				}
+				if (authorization.frostyRegistration != null)
+				{
+					authorization.frostyRegistration.isPaid = true;
+				}
+				db.SaveChanges();
+			}
 		}
 	}
 }

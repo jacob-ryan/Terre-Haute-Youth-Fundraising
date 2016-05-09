@@ -26,6 +26,8 @@ namespace THYF_Repository.Repositories
 					webAuth.id = authorization.id;
 					webAuth.guid = authorization.guid;
 					webAuth.type = authorization.type;
+					webAuth.bfksRegistrationId = authorization.bfksRegistrationId;
+					webAuth.frostyRegistrationId = authorization.frostyRegistrationId;
 					webAuth.userId = authorization.userId;
 					webAuth.user = authorization.user != null ? authorization.user.convert() : null;
 					webAuth.email = authorization.email;
@@ -46,14 +48,30 @@ namespace THYF_Repository.Repositories
 
 		public string createAuthorization(WebPayPalAuthorization authorization, int currentUserId)
 		{
-			if ((authorization.type == "Logged-in" && currentUserId >= 0)
+			if ((authorization.type == "Logged-in" && currentUserId > 0)
 				|| (authorization.type == "Email" && currentUserId == -1)
 				|| (authorization.type == "Anonymous" && currentUserId == -1))
 			{
+				if (authorization.type == "Logged-in" && (authorization.email != null || authorization.name != null))
+				{
+					throw new Exception("Incompatible email or name provided while logged-in.");
+				}
+				if (authorization.type == "Email" && (String.IsNullOrWhiteSpace(authorization.email) || String.IsNullOrWhiteSpace(authorization.name)))
+				{
+					throw new Exception("Email or name not provided with Email type.");
+				}
+				if (authorization.type == "Anonymous" && (authorization.email != null || authorization.name != null))
+				{
+					throw new Exception("Incompatible email or name provided with Anonymous type.");
+				}
 				PayPalAuthorization a = new PayPalAuthorization();
 				a.guid = Guid.NewGuid().ToString();
 				a.type = authorization.type;
-				if (currentUserId >= 0)
+
+				a.bfksRegistrationId = authorization.bfksRegistrationId;
+				a.frostyRegistrationId = authorization.frostyRegistrationId;
+
+				if (currentUserId > 0)
 				{
 					a.userId = currentUserId;
 				}
@@ -61,6 +79,7 @@ namespace THYF_Repository.Repositories
 				{
 					a.userId = null;
 				}
+
 				a.email = authorization.email;
 				a.name = authorization.name;
 				a.date = DateTime.UtcNow;

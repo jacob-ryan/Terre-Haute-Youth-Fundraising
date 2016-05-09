@@ -33,7 +33,7 @@ namespace THYF_Repository.Repositories
 			{
 				List<BFKSRegistration> registrations = db.BFKSRegistrations
 					.Include(r => r.bowlers)
-					.Where(r => r.teamCaptainId == userId || r.bowlers.Any(b => b.userId == userId))
+					.Where(r => r.userId == userId || r.teamCaptainId == userId || r.bowlers.Any(b => b.userId == userId))
 					.ToList();
 				return registrations.convertList<BFKSRegistration, WebBFKSRegistration>();
 			}
@@ -45,11 +45,19 @@ namespace THYF_Repository.Repositories
 
 		public int addBFKSRegistration(WebBFKSRegistration webRegistration)
 		{
-			// Perhaps check if registration is enabled for this event (future?).
-			if (true)
+			// Check if registration is enabled for this event occurrence.
+			EventOccurrence eventOccurrence = db.EventOccurrences
+				.SingleOrDefault(e => e.id == webRegistration.eventOccurrenceId);
+			if (eventOccurrence != null)
 			{
+				if (!eventOccurrence.isActive)
+				{
+					throw new Exception("You cannot register for this event because it is not active");
+				}
 				BFKSRegistration registration = new BFKSRegistration();
 				registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
+				registration.userId = this.me.id;
+				registration.isPaid = false;
 				registration.teamName = webRegistration.teamName;
 				registration.teamCaptainId = webRegistration.teamCaptainId;
 				registration.dateCreated = DateTime.UtcNow;
@@ -68,6 +76,55 @@ namespace THYF_Repository.Repositories
 				db.SaveChanges();
 
 				return registration.id;
+			}
+			else
+			{
+				throw new PermissionDeniedException();
+			}
+		}
+
+		public void updateBFKSRegistration(WebBFKSRegistration webRegistration)
+		{
+			// Check if registration is enabled for this event occurrence.
+			EventOccurrence eventOccurrence = db.EventOccurrences
+				.SingleOrDefault(e => e.id == webRegistration.eventOccurrenceId);
+			if (eventOccurrence != null)
+			{
+				if (!eventOccurrence.isActive)
+				{
+					throw new Exception("You cannot register for this event because it is not active");
+				}
+				BFKSRegistration registration = db.BFKSRegistrations
+					.SingleOrDefault(r => r.id == webRegistration.id);
+				if (registration != null && (registration.userId == me.id || me.type == "admin"))
+				{
+					registration.eventOccurrenceId = webRegistration.eventOccurrenceId;
+					// Only allow admins to manually mark registration as being paid (e.g. in person with cash/check).
+					if (me.type == "admin")
+					{
+						registration.isPaid = webRegistration.isPaid;
+					}
+					registration.teamName = webRegistration.teamName;
+					registration.teamCaptainId = webRegistration.teamCaptainId;
+
+					db.BFKSBowlers.RemoveRange(registration.bowlers);
+
+					registration.bowlers = new List<BFKSBowler>();
+					foreach (WebBFKSBowler webBowler in webRegistration.bowlers)
+					{
+						BFKSBowler bowler = new BFKSBowler();
+						bowler.userId = webBowler.userId;
+						bowler.name = webBowler.name;
+						bowler.tshirtSize = webBowler.tshirtSize;
+						registration.bowlers.Add(bowler);
+					}
+
+					db.SaveChanges();
+				}
+				else
+				{
+					throw new PermissionDeniedException();
+				}
 			}
 			else
 			{
