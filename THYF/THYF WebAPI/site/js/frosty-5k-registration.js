@@ -9,7 +9,7 @@
     }).done(function (d) {
         console.log(d);
         $.each(d, function (key, value) {
-            if (value.type == "Frosty 5k" && value.isActive == true) {
+            if (value.type == "frosty" && value.isActive == true) {
                 $('#occurrence')
                     .append($("<option></option>")
                     .attr("value", value.id)

@@ -326,7 +326,7 @@ function jsFunction() {
     for (var i = 0; i < globalTable.length; i++) {
         //console.log(globalTable[i]);
         //console.log($("#selectEvent").val() - 1);
-        if (globalTable[i][0] == $("#selectEvent").val() - 1) {
+        if (globalTable[i][0] == $("#selectEvent").val()) {
             eventTableData.push(globalTable[i]);
             eventTable.rows.add(eventTableData);
         }
