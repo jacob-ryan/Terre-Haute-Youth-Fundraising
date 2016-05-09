@@ -27,7 +27,7 @@ namespace THYF_WebAPI.Controllers
 		/// </summary>
 		/// <returns>FrostyRegistration[] - all registrations</returns>
 		[Authorize]
-		public HttpResponseMessage GetFrostyRegistrations()
+		public HttpResponseMessage Get()
 		{
 			try
 			{
@@ -46,7 +46,7 @@ namespace THYF_WebAPI.Controllers
 		/// </summary>
 		/// <returns>FrostyRegistration[] - all registrations</returns>
 		[Authorize]
-		public HttpResponseMessage GetFrostyRegistrations(int userId)
+		public HttpResponseMessage Get(int userId)
 		{
 			try
 			{
@@ -77,6 +77,32 @@ namespace THYF_WebAPI.Controllers
 			{
 				int id = repo.addFrostyRegistration(registration);
 				return Request.CreateResponse(HttpStatusCode.Created, id);
+			}
+			catch (Exception e)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+			}
+		}
+
+		// PUT api/FrostyRegistration/42
+		/// <summary>
+		/// Updates an existing Frosty registration with the information in the given FrostyRegistration object.
+		/// </summary>
+		/// <param name="id">int - registration ID</param>
+		/// <param name="registration">FrostyRegistration - registration info</param>
+		/// <returns>int - ID</returns>
+		[Authorize]
+		public HttpResponseMessage Put(int id, WebFrostyRegistration registration)
+		{
+			if (!ModelState.IsValid || registration == null || id != registration.id)
+			{
+				return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+			}
+
+			try
+			{
+				repo.updateFrostyRegistration(registration);
+				return Request.CreateResponse(HttpStatusCode.OK);
 			}
 			catch (Exception e)
 			{

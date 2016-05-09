@@ -18,8 +18,8 @@ namespace THYF_Repository.Models
                         BFKSRegistration_id = c.Int(),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.Users", t => t.userId)
                 .ForeignKey("dbo.BFKSRegistrations", t => t.BFKSRegistration_id)
+                .ForeignKey("dbo.Users", t => t.userId)
                 .Index(t => t.userId)
                 .Index(t => t.BFKSRegistration_id);
             
@@ -56,14 +56,18 @@ namespace THYF_Repository.Models
                     {
                         id = c.Int(nullable: false, identity: true),
                         eventOccurrenceId = c.Int(nullable: false),
+                        userId = c.Int(nullable: false),
+                        isPaid = c.Boolean(nullable: false),
                         teamName = c.String(),
                         teamCaptainId = c.Int(nullable: false),
                         dateCreated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.teamCaptainId, cascadeDelete: true)
+                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId)
+                .ForeignKey("dbo.Users", t => t.teamCaptainId)
+                .ForeignKey("dbo.Users", t => t.userId)
                 .Index(t => t.eventOccurrenceId)
+                .Index(t => t.userId)
                 .Index(t => t.teamCaptainId);
             
             CreateTable(
@@ -77,6 +81,23 @@ namespace THYF_Repository.Models
                         date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
+            
+            CreateTable(
+                "dbo.FrostyRegistrations",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        eventOccurrenceId = c.Int(nullable: false),
+                        userId = c.Int(nullable: false),
+                        isPaid = c.Boolean(nullable: false),
+                        isMinor = c.Boolean(nullable: false),
+                        dateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId)
+                .ForeignKey("dbo.Users", t => t.userId)
+                .Index(t => t.eventOccurrenceId)
+                .Index(t => t.userId);
             
             CreateTable(
                 "dbo.ContactUs",
@@ -95,35 +116,25 @@ namespace THYF_Repository.Models
                 .PrimaryKey(t => t.id);
             
             CreateTable(
-                "dbo.FrostyRegistrations",
-                c => new
-                    {
-                        id = c.Int(nullable: false, identity: true),
-                        eventOccurrenceId = c.Int(nullable: false),
-                        userId = c.Int(nullable: false),
-                        isMinor = c.Boolean(nullable: false),
-                        dateCreated = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.EventOccurrences", t => t.eventOccurrenceId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.userId, cascadeDelete: true)
-                .Index(t => t.eventOccurrenceId)
-                .Index(t => t.userId);
-            
-            CreateTable(
                 "dbo.PayPalAuthorizations",
                 c => new
                     {
                         id = c.Int(nullable: false, identity: true),
-                        guid = c.String(maxLength: 36),
-                        type = c.String(maxLength: 255),
+                        guid = c.String(nullable: false, maxLength: 36),
+                        type = c.String(nullable: false, maxLength: 255),
+                        bfksRegistrationId = c.Int(),
+                        frostyRegistrationId = c.Int(),
                         userId = c.Int(),
                         email = c.String(maxLength: 255),
                         name = c.String(maxLength: 255),
                         date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.BFKSRegistrations", t => t.bfksRegistrationId)
+                .ForeignKey("dbo.FrostyRegistrations", t => t.frostyRegistrationId)
                 .ForeignKey("dbo.Users", t => t.userId)
+                .Index(t => t.bfksRegistrationId)
+                .Index(t => t.frostyRegistrationId)
                 .Index(t => t.userId);
             
             CreateTable(
@@ -150,24 +161,30 @@ namespace THYF_Repository.Models
         public override void Down()
         {
             DropForeignKey("dbo.PayPalAuthorizations", "userId", "dbo.Users");
+            DropForeignKey("dbo.PayPalAuthorizations", "frostyRegistrationId", "dbo.FrostyRegistrations");
+            DropForeignKey("dbo.PayPalAuthorizations", "bfksRegistrationId", "dbo.BFKSRegistrations");
+            DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
             DropForeignKey("dbo.FrostyRegistrations", "userId", "dbo.Users");
             DropForeignKey("dbo.FrostyRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
+            DropForeignKey("dbo.BFKSRegistrations", "userId", "dbo.Users");
             DropForeignKey("dbo.BFKSRegistrations", "teamCaptainId", "dbo.Users");
             DropForeignKey("dbo.BFKSRegistrations", "eventOccurrenceId", "dbo.EventOccurrences");
             DropForeignKey("dbo.BFKSBowlers", "BFKSRegistration_id", "dbo.BFKSRegistrations");
-            DropForeignKey("dbo.BFKSBowlers", "userId", "dbo.Users");
             DropIndex("dbo.PayPalAuthorizations", new[] { "userId" });
+            DropIndex("dbo.PayPalAuthorizations", new[] { "frostyRegistrationId" });
+            DropIndex("dbo.PayPalAuthorizations", new[] { "bfksRegistrationId" });
             DropIndex("dbo.FrostyRegistrations", new[] { "userId" });
             DropIndex("dbo.FrostyRegistrations", new[] { "eventOccurrenceId" });
             DropIndex("dbo.BFKSRegistrations", new[] { "teamCaptainId" });
+            DropIndex("dbo.BFKSRegistrations", new[] { "userId" });
             DropIndex("dbo.BFKSRegistrations", new[] { "eventOccurrenceId" });
             DropIndex("dbo.Users", new[] { "email" });
             DropIndex("dbo.BFKSBowlers", new[] { "BFKSRegistration_id" });
             DropIndex("dbo.BFKSBowlers", new[] { "userId" });
             DropTable("dbo.PayPalNotifications");
             DropTable("dbo.PayPalAuthorizations");
-            DropTable("dbo.FrostyRegistrations");
             DropTable("dbo.ContactUs");
+            DropTable("dbo.FrostyRegistrations");
             DropTable("dbo.EventOccurrences");
             DropTable("dbo.BFKSRegistrations");
             DropTable("dbo.Users");

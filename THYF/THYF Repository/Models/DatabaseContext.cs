@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace THYF_Repository.Models
 {
@@ -8,7 +9,7 @@ namespace THYF_Repository.Models
 		{
 			this.Configuration.LazyLoadingEnabled = false;
 			this.Configuration.ProxyCreationEnabled = false;
-			this.Database.CommandTimeout = 10;
+			this.Database.CommandTimeout = 20;
 
 			Database.SetInitializer<DatabaseContext>(new MigrateDatabaseToLatestVersion<DatabaseContext, MigrationConfiguration>());
 		}
@@ -21,5 +22,11 @@ namespace THYF_Repository.Models
 		public DbSet<ContactUs> ContactUsSubmissions { get; set; }
 		public DbSet<PayPalNotification> PayPalNotifications { get; set; }
 		public DbSet<PayPalAuthorization> PayPalAuthorizations { get; set; }
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+			modelBuilder.Entity<BFKSRegistration>().HasRequired(r => r.teamCaptain).WithMany(u => u.bfksRegistrations);
+		}
 	}
 }

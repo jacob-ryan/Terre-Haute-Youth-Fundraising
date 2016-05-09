@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using THYF_Web_Models.Models;
@@ -45,6 +46,9 @@ namespace THYF_Repository.Models
 				_dateCreated = value;
 			}
 		}
+
+		public List<BFKSRegistration> bfksRegistrations { get; set; }
+		public List<FrostyRegistration> frostyRegistrations { get; set; }
 
 		[Required]
 		public byte[] passwordSalt { get; set; }
