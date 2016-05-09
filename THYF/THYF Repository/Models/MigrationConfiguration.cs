@@ -10,9 +10,12 @@ namespace THYF_Repository.Models
 {
 	public class MigrationConfiguration : DbMigrationsConfiguration<DatabaseContext>
 	{
+		private Random random;
+
 		public MigrationConfiguration()
 		{
 			this.AutomaticMigrationsEnabled = false;
+			this.random = new Random();
 		}
 
 		protected override void Seed(DatabaseContext context)
@@ -24,6 +27,10 @@ namespace THYF_Repository.Models
 				//#if DEBUG
 				addDefaultAdmin(context);
 				for (int i = 0; i < 5; i += 1)
+				{
+					addTestEvent(context);
+				}
+				for (int i = 0; i < 10; i += 1)
 				{
 					addTestAuthorizations(context);
 				}
@@ -62,25 +69,54 @@ namespace THYF_Repository.Models
 			db.SaveChanges();
 		}
 
+		private void addTestEvent(DatabaseContext db)
+		{
+			EventOccurrence e = new EventOccurrence();
+			e.isActive = (this.random.NextDouble() < 0.5) ? true : false;
+			e.type = (this.random.NextDouble() < 0.5) ? "frosty" : "bfks";
+			e.date = DateTime.UtcNow;
+			e.description = "Foo Bar";
+
+			db.EventOccurrences.Add(e);
+			db.SaveChanges();
+		}
+
 		private void addTestAuthorizations(DatabaseContext db)
 		{
 			PayPalAuthorization a = new PayPalAuthorization();
 			a.guid = Guid.NewGuid().ToString();
-			a.type = "Logged-in";
-			a.userId = 1;
-			a.email = null;
-			a.name = "TEST AUTHORIZATION";
+			if (this.random.NextDouble() < 1.0 / 3.0)
+			{
+				a.type = "Logged-in";
+				a.userId = 1;
+				a.email = null;
+				a.name = null;
+			}
+			else if (this.random.NextDouble() < 1.0 / 3.0)
+			{
+				a.type = "Email";
+				a.userId = null;
+				a.email = "Some.Email@xyz.com";
+				a.name = "Foo Bar Name";
+			}
+			else
+			{
+				a.type = "Anonymous";
+				a.userId = null;
+				a.email = null;
+				a.name = null;
+			}
 			a.date = DateTime.UtcNow;
 			db.PayPalAuthorizations.Add(a);
 
 			PayPalNotification n = new PayPalNotification();
 			n.dateReceived = DateTime.UtcNow;
-			n.transactionId = "Random hash";
-			n.payerId = "Random hash";
-			n.paymentGross = "42.00";
-			n.paymentFee = "10.00";
+			n.transactionId = (this.random.NextDouble() * (1 << 31)).ToString();
+			n.payerId = (this.random.NextDouble() * (1 << 31)).ToString();
+			n.paymentGross = (this.random.NextDouble() * 1000).ToString();
+			n.paymentFee = (Double.Parse(n.paymentGross) * 0.1).ToString();
 			n.mcCurrency = "USD";
-			n.mcGross = "42.00";
+			n.mcGross = n.paymentGross;
 			n.reasonCode = null;
 			n.paymentDate = (DateTime.UtcNow - new TimeSpan(4, 30, 0)).ToString();
 			n.paymentStatus = "Completed";
