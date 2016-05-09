@@ -10,6 +10,7 @@
     var eventType;
     var allRegistrations = [];
     var globalTable = [];
+    var event;
 
     //console.log(eventList);
 
@@ -134,6 +135,7 @@
         var data = {
             date: dateObject,
             type: $("#EventType").val(),
+            isActive:  $("#activeCreate").is(":checked"),
             description: $("#description").val()
         };
 
@@ -155,31 +157,44 @@
     // within the Events tab
     // </summary>
     $("#editEventButton").on("click", function () {
-        if (eventList.length != 0) {
-            $("#descriptionEvent").val(eventList[$("#selectEvent").val() - 1].description);
-            $("#datepickerID2").val(eventList[$("#selectEvent").val() - 1].date);
-        }
+        $.ajax({
+            type: "GET",
+            url: "/api/EventOccurrence",
+            contentType: "application/json",
+        }).done(function (d) {                  
+          
+            for (var i = 0; i < d.length; i++) {             
+                if (d[i].id == ($("#selectEvent").val())) {
+                    event = d[i];
+                }
+            }
 
-        //Need date so I can populate hours field here
-        //$("eventTimeEdit").val(eventList[$("#selectEvent").val() - 1);
+            if (event.isActive) {
+                $("#activeEdit").attr("checked", "checked");
+            }
+                
+           $("#descriptionEvent").val(event.description);
+        });
     });
 
     $("#updateEventButton").on("click", function () {
         var eventId = $("#selectEvent").val();
         if (eventId != null) {
             var data = {
-                id: eventId,
+                id: event.id,
+                isActive: $("#activeEdit").is(":checked"),
                 date: $("#datepickerID2").val(),
-                type: eventList[eventId - 1].type,
+                type: event.type,
                 description: $("#descriptionEvent").val()
             };
 
             //console.log(data);
             //console.log(eventId);
+            console.log(event);
 
             $.ajax({
                 type: "PUT",
-                url: "/api/EventOccurrence/" + eventId,
+                url: "/api/EventOccurrence/" + event.id,
                 contentType: "application/json",
                 data: data ? JSON.stringify(data) : null,
                 datatype: "json"
@@ -219,7 +234,7 @@ function makeAPICalls(userID, activateBoolean) {
     });
 }
 
-function EventApiCalls(userData) {
+var EventApiCalls = function(userData) {
     // <summary>
     // Get's all event's from database and populates the event selector and
     // event table within the Events tab
@@ -230,9 +245,8 @@ function EventApiCalls(userData) {
         type: "GET",
         url: "/api/EventOccurrence",
         contentType: "application/json",
-    }).done(function (d) {
-        //console.log(d);
-        eventList = d;
+    }).done(function (d) {      
+        eventList = d;     
         $.each(d, function (key, value) {
             $('#selectEvent')
                 .append($("<option></option>")
