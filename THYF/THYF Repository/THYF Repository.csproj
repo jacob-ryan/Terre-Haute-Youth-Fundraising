@@ -74,6 +74,7 @@
     <Compile Include="Repositories\EventOccurrenceRepo.cs" />
     <Compile Include="Repositories\FrostyRegistrationRepo.cs" />
     <Compile Include="Repositories\LoginRepo.cs" />
+    <Compile Include="Repositories\PasswordResetRepo.cs" />
     <Compile Include="Repositories\PayPalAuthorizationRepo.cs" />
     <Compile Include="Repositories\PayPalNotificationRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />

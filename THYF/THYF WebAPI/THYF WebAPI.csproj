@@ -169,6 +169,7 @@
     <Compile Include="Controllers\HomeController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\PasswordResetController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PayPalAuthorizationController.cs" />
     <Compile Include="Controllers\PayPalNotificationController.cs" />
@@ -249,6 +250,9 @@
     <Content Include="site\fonts\fontawesome-webfont.woff2" />
     <Content Include="site\fonts\FontAwesome.otf" />
     <Content Include="site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\js\reset-password.js" />
+    <Content Include="site\reset-password.html" />
+    <Content Include="site\js\forgot-password.js" />
     <Content Include="site\js\plugins\bootstrap.min.js" />
     <Content Include="site\js\plugins\jquery-ui-1.9.2.custom.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -365,6 +369,7 @@
     <Content Include="site\js\thyf-core.js" />
     <Content Include="site\js\thyf-loader.js" />
     <Content Include="site\js\thyf-routes.js" />
+    <Content Include="site\forgot-password.html" />
     <Content Include="site\login.html" />
     <Content Include="site\registeredEvents.html" />
     <Content Include="site\sign-up.html" />

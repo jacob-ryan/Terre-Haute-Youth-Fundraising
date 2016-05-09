@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\WebEmail.cs" />
     <Compile Include="Models\WebPayPalNotification.cs" />
     <Compile Include="Models\WebPayPalAuthorization.cs" />
     <Compile Include="Models\WebPayPalIPN.cs" />

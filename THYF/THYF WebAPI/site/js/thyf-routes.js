@@ -101,6 +101,24 @@
 					THYF.changePage("login.html");
 				}
 			},
+			{
+				path: "/forgot-password",
+				callbacks: function()
+				{
+					THYF.changePage("forgot-password.html");
+				}
+			},
+			{
+				path: "/reset-password/:email/:tempPass",
+				callbacks: function(data)
+				{
+					THYF.pageParams = {
+						email: decodeURIComponent(data.params.email),
+						password: decodeURIComponent(data.params.tempPass)
+					};
+					THYF.changePage("reset-password.html");
+				}
+			},
 			/* Must be last!  This is the default route handler for invalid locations. */
 			{
 				path: "*",

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -19,6 +20,17 @@ namespace THYF_Repository.Helpers
 			string subject = "Welcome " + user.name + " - BBBS of Vigo County";
 			string body = "A new user account has been created for you.  You can log in using your e-mail address and password at: <a href='https://thyf.azurewebsites.net/' target='_blank'>https://thyf.azurewebsites.net/</a>.";
 			sendEmail(to, subject, body, null, null);
+		}
+
+		public static void sendPasswordResetEmail(string to, string name, string password)
+		{
+			string subject = "Account Password Reset - BBBS of Vigo County";
+			string body = "Hello " + name + ",<br><br>"
+				+ "The password for your account in the BBBS system has been reset.  "
+				+ "You will need to log in using the link provided below.  "
+				+ "This temporary link will expire after 24 hours, so be sure to log in and update your password as soon as possible.<br><br>"
+				+ "<a href=\"https://thyf.azurewebsites.net/#/reset-password/" + Uri.EscapeDataString(to) + "/" + Uri.EscapeDataString(password) + "\">Reset Password Now</a>";
+			Email.sendEmail(to, subject, body, null, null);
 		}
 
 		public static void sendContactUs(string to, ContactUs contactUs)
