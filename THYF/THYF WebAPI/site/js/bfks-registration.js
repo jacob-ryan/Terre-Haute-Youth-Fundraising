@@ -175,7 +175,9 @@
 					{
 						alert("Your team was registered successfully!");
 						THYF.go("/");
-					});
+					}).fail(function () {
+					    alert("Failed to Register For event");
+					});;
 				});
 			},
 			rules: generateRules()

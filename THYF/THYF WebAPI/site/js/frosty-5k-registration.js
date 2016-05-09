@@ -32,7 +32,9 @@
         }).done(function (data) {
             alert("Registration Successful!\nReturned: '" + data + "'");
             THYF.changePage("home.html");
-        });
+        }).fail(function () {
+            alert("Failed to Register for event");
+        });;
     });
 
     THYF.hideLoading();
