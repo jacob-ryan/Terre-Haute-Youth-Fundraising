@@ -4,6 +4,7 @@
 <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script src="js/plugins/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="js/admin-home.js"></script>
+<script src="js/admin-User.js"></script>
 
 <style type="text/css">
 	.container > .nav-tabs
@@ -23,6 +24,15 @@
 		background-color: #EEEEEE;
 		padding: 15px;
 	}
+
+    #UserTablePanel{
+        overflow: auto;
+        height: 50%; 
+    }
+    #EventTablePanel{
+        overflow: auto;
+        height: 50%;  
+    }
 </style>
 
 <div class="container">
@@ -36,9 +46,10 @@
 	</ul>
 
 	<div class="tab-content">
+
 		<div id="Users" class="tab-pane fade in active">
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-12" id="UserTablePanel">
 					<table id="example" class="display" cellspacing="0">
 						<thead>
 							<tr>
@@ -61,6 +72,7 @@
 					</table>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-sm-12">
 					<br>
@@ -70,15 +82,40 @@
 			</div>
 			<div class="row">
 				<br>
-				<div class="col-sm-3 col-sm-offset-2">
+				<div class="col-sm-3">
 					<input id="userName" type="text" class="form-control" placeholder="User Name">
 				</div>
 				<div class="col-sm-3">
 					<input id="userEmail" type="text" class="form-control" placeholder="User Email">
 				</div>
+                <div class="col-sm-2">
+                    <select id="accountType" class="form-control selectWidth">
+                        <option>admin</option>
+                        <option>company</option>
+                        <option>volunteer</option>
+                    </select>
+                </div>
 				<div class="col-sm-2">
 					<button id="addUser" class="btn btn-success btn-block" type="button">Add User</button>
 				</div>
+
+                <!--Gutter row for error handling slide downs-->
+                <div class="row no-gutter">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"><p>    </p></div>
+                    <div class="col-md-4"></div>
+                </div>
+                    <!--End Gutter row-->
+
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="alert alert-danger hide2" id="sign-up-duplicate-email">
+                        <strong>The provided e-mail address is already in use.</strong>  Please check your input and try again.
+                    </div>
+                    <div class="alert alert-danger hide2" id="sign-up-unknown-error">
+                        <strong>An unknown error has occurred while signing-up.</strong>  Details of the error:<div></div>
+                    </div>
+                </div>
+
 			</div>
 		</div>
 
@@ -103,7 +140,7 @@
                 <br/>
 
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" id="EventTablePanel">
                         <table id="eventUsers" class="display" cellspacing="0">
                             <thead>
                                 <tr>
@@ -114,9 +151,17 @@
                                     <th>User Name</th>
                                     <th>User Email</th>
                                     <th>DateCreated</th>
+                                    <th>Paid</th>
                                 </tr>
                             </thead>
                         </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-5">
+                        <br>
+                        <button id="eventPay" class="btn btn-primary" type="button">Mark User Paid</button>
                     </div>
                 </div>
 			</div>

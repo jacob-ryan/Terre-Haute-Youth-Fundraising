@@ -250,6 +250,7 @@
     <Content Include="site\fonts\fontawesome-webfont.woff2" />
     <Content Include="site\fonts\FontAwesome.otf" />
     <Content Include="site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\js\admin-User.js" />
     <Content Include="site\js\reset-password.js" />
     <Content Include="site\reset-password.html" />
     <Content Include="site\js\forgot-password.js" />
