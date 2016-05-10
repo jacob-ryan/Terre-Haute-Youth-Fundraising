@@ -103,9 +103,28 @@
 			},
 			{
 				path: "/forgot-password",
-				callbacks: function()
+				callbacks: function ()
 				{
 					THYF.changePage("forgot-password.html");
+				}
+			},
+			{
+				path: "/event-payment/:type/:registrationId",
+				callbacks: function (data)
+				{
+					THYF.pageParams = {
+						type: data.params.type,
+						registrationId: data.params.registrationId
+					};
+					if (type === "frosty")
+					{
+						THYF.changePage("frosty-5k-payment.html");
+					}
+					else
+					{
+						THYF.changePage("bfks-payment.html");
+					}
+					
 				}
 			},
 			{
