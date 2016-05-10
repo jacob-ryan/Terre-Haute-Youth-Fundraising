@@ -239,6 +239,7 @@
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="site\bfks-payment.html" />
     <Content Include="site\css\bootstrap.min.css" />
     <Content Include="site\css\font-awesome.min.css" />
     <Content Include="site\css\jquery-ui-1.9.2.custom.min.css" />
@@ -250,7 +251,10 @@
     <Content Include="site\fonts\fontawesome-webfont.woff2" />
     <Content Include="site\fonts\FontAwesome.otf" />
     <Content Include="site\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\frosty-5k-payment.html" />
     <Content Include="site\js\admin-User.js" />
+    <Content Include="site\js\donate.js" />
+    <Content Include="site\js\event-payment.js" />
     <Content Include="site\js\reset-password.js" />
     <Content Include="site\reset-password.html" />
     <Content Include="site\js\forgot-password.js" />

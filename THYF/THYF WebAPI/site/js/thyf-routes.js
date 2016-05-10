@@ -116,7 +116,7 @@
 						type: data.params.type,
 						registrationId: data.params.registrationId
 					};
-					if (type === "frosty")
+					if (THYF.pageParams.type === "frosty")
 					{
 						THYF.changePage("frosty-5k-payment.html");
 					}

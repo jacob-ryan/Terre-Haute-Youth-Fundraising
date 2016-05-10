@@ -7,7 +7,7 @@ namespace THYF_Web_Models.Models
 	{
 		public int id { get; set; }
 		// Token that is passed to PayPal using "custom" field.
-		[Required, MinLength(36), MaxLength(36)]
+		[MinLength(36), MaxLength(36)]
 		public string guid { get; set; }
 		// One of "Logged-in", "Email", or "Anonymous"
 		[Required, MaxLength(255)]
