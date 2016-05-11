@@ -202,10 +202,9 @@ var EventApiCalls = function (userData) {
 
                 eventTable.clear().draw();
                 for (var i = 0; i < globalTable.length; i++) {
-                    console.log(i);
-                    eventTableData.push(globalTable[i]);
-                    eventTable.rows.add(eventTableData);
+                    eventTableData.push(globalTable[i]);                                    
                 }
+                eventTable.rows.add(eventTableData);
                 eventTable.columns.adjust().draw();
             });
         });
@@ -238,16 +237,16 @@ function jsFunction() {
     eventTable.clear().draw();
     if ($("#selectEvent").val() == 0) {
         for (var i = 0; i < globalTable.length; i++) {
-            eventTableData.push(globalTable[i]);
-            eventTable.rows.add(eventTableData);
+            eventTableData.push(globalTable[i]);          
         }
+        eventTable.rows.add(eventTableData);
     } else {
         for (var i = 0; i < globalTable.length; i++) {
             if (globalTable[i][0] == $("#selectEvent").val()) {
-                eventTableData.push(globalTable[i]);
-                eventTable.rows.add(eventTableData);
+                eventTableData.push(globalTable[i]);             
             }
         }
+        eventTable.rows.add(eventTableData);
     }
     eventTable.columns.adjust().draw();
 }
