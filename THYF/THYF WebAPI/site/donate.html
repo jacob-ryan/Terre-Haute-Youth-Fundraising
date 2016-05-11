@@ -2,12 +2,18 @@
 <style>
 .donate-block {
 	text-align: center;
-}</style>
+}
+.frosty {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+</style>
 <div class="container donate-block">
 	<div class="col-sm-12">
 		<div class="frosty panel-default">
 			<h1 class="text-center">Click the button below to Donate to BBBS of Vigo County</h1>
-			<button id="anon-or-loggedin-call" type="button" class="btn btn-default">Make Paypal Call</button>
+			<button id="anon-or-loggedin-call" type="button" class="btn btn-default">Make Paypal Call</button> <br />
 			<form id="paypalform" class="hide" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
 				<input type="hidden" name="cmd" value="_donations">
 				<input type="hidden" name="custom" value="">
@@ -20,8 +26,9 @@
 				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
+			<br /> 
 			<p class="text-center" >If you are not logged in, you will make a donation anonymously.  You can also enter an e-mail/name below so that
-			you will have an e-mail/name associated with the transaction.  If you are logged in, your account will be associated with the donation.</p>
+			you will have an e-mail/name associated your donation.  If you are logged in, your account will be associated with your donation.</p>
 			<h1 class="text-center">Submit an e-mail to use below</h1>
 			<input type="text" id="email-email" value="Email" />
 			<input type="text" id="email-name" value="Name" /> <br />
