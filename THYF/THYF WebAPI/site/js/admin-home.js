@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var registrationsGlobal = [];
+
+$(document).ready(function () {
 
     THYF.hideLoading();
     var userData = [];
@@ -39,7 +41,7 @@
         var data = {
             date: dateObject,
             type: $("#EventType").val(),
-            isActive:  $("#activeCreate").is(":checked"),
+            isActive: $("#activeCreate").is(":checked"),
             description: $("#description").val()
         };
         $.ajax({
@@ -63,19 +65,13 @@
             return this.value;
         }).get()
 
-        console.log(checkedValues);
-        console.log(globalTable);
-        for(var i = 0; i < checkedValues; i++){
-            for (var j = 0; j < globalTable.length; j++) {
-                if(globalTable[j] == checkedValues[i]){
-                    console.log(globalTable[j]);
-                    //makeAPICalls(globalTable[j], true);
+        for (var i = 0; i < checkedValues; i++) {
+            for (var j = 0; j < registrationsGlobal.length; j++) {
+                if (registrationsGlobal[j][0].eventOccurrenceId == checkedValues[i]) {
+                    makeAPICalls(registrationsGlobal[j]);
                 }
             }
         }
-            
-            //makeAPICalls(checkedValues[i], true);
-        
     });
 
     // <summary>
@@ -87,9 +83,9 @@
             type: "GET",
             url: "/api/EventOccurrence",
             contentType: "application/json",
-        }).done(function (d) {                  
-          
-            for (var i = 0; i < d.length; i++) {             
+        }).done(function (d) {
+
+            for (var i = 0; i < d.length; i++) {
                 if (d[i].id == ($("#selectEvent").val())) {
                     event = d[i];
                 }
@@ -97,8 +93,8 @@
             if (event.isActive) {
                 $("#activeEdit").attr("checked", "checked");
             }
-                
-           $("#descriptionEvent").val(event.description);
+
+            $("#descriptionEvent").val(event.description);
         });
     });
 
@@ -127,22 +123,30 @@
     });
 });
 
-var EventApiCalls = function(userData) {
+var EventApiCalls = function (userData) {
     // <summary>
     // Get's all event's from database and populates the event selector and
     // event table within the Events tab
     // </summary>
+
+    //Create option to get see registrations for all Events
+    $('#selectEvent')
+                .append($("<option></option>")
+                .attr("value", 0)
+                .text("ALL EVENTS"));
+
+
     $.ajax({
         type: "GET",
         url: "/api/EventOccurrence",
         contentType: "application/json",
-    }).done(function (d) {      
-        eventList = d;     
+    }).done(function (d) {
+        eventList = d;
         $.each(d, function (key, value) {
             $('#selectEvent')
                 .append($("<option></option>")
                 .attr("value", value.id)
-                .text(value.type + " " + value.date));
+                .text(value.type + ": ID - " + value.id + " - " + value.date));
         });
         var registrationsData = [];
 
@@ -151,8 +155,13 @@ var EventApiCalls = function(userData) {
             url: "/api/BFKSRegistration",
             contentType: "application/json",
         }).done(function (f) {
+            var checkDataTemp = [];
             for (i = 0; i < f.length; i++) {
+                checkDataTemp[i] = [];
                 registrationsData.push(f[i]);
+                checkDataTemp[i].push(f[i]);
+                checkDataTemp[i].push("bfks");
+                registrationsGlobal.push(checkDataTemp[i]);
             }
 
             $.ajax({
@@ -160,45 +169,59 @@ var EventApiCalls = function(userData) {
                 url: "/api/FrostyRegistration",
                 contentType: "application/json",
             }).done(function (e) {
+                //console.log(e);
                 for (i = 0; i < e.length; i++) {
+                    checkDataTemp[i] = [];
                     registrationsData.push(e[i]);
+                    checkDataTemp[i].push(e[i]);
+                    checkDataTemp[i].push("frosty");
+                    registrationsGlobal.push(checkDataTemp[i]);
                 }
-                var eventTableData = [];
-                var temp = []
+
+                var temp = [];
                 for (i = 0; i < registrationsData.length; i++) {
-                    temp[i] = [];
+                    temp[i] = [];                     
                     var info = registrationsData[i];
+                    var type = findEventType(info.eventOccurrenceId);                  
                     var user = findUserData(userData, info.userId);
-                    //console.log(info);
                     var payCheck;
                     if (info.isPaid != true) {
-                        payCheck = "<input class = 'boxes' type='checkbox' value='" + info.eventOccurrenceId  + "'>";
+                        payCheck = "<input class = 'boxes' type='checkbox' value='" + info.eventOccurrenceId + "'>";
                     } else {
                         payCheck = "X";
                     }
 
-                    temp[i].push(info.eventOccurrenceId, "Frosty 5K", info.userId, info.id, user[2], user[4], info.dateCreated, payCheck);
+                    temp[i].push(info.eventOccurrenceId, type, info.userId, info.id, user[2], user[4], info.dateCreated, payCheck);
                 }
                 globalTable = temp;
-                console.log(globalTable);
-
-                for (var i = 0; i < temp.length; i++) {
-                    if (temp[i].eventOccurrenceId == $("#selectEvent").val()) {
-                        eventTableData[i].push(temp[i]);
-                    }
-                }
-
+              
+                var eventTableData = [];
                 eventTable = $('#eventUsers').DataTable({
                     "aaData": eventTableData,
                 });
 
+                eventTable.clear().draw();
+                for (var i = 0; i < globalTable.length; i++) {
+                    console.log(i);
+                    eventTableData.push(globalTable[i]);
+                    eventTable.rows.add(eventTableData);
+                }
+                eventTable.columns.adjust().draw();
             });
         });
     });
 }
 
+function findEventType(eventOccId) {
+    for (var i = 0; i < registrationsGlobal.length; i++) {
+        if (registrationsGlobal[i][0].eventOccurrenceId == eventOccId) {
+            return registrationsGlobal[i][1];
+        }
+    }
+}
+
 function findUserData(userData, userId) {
-    for(var i = 0; i < userData.length; i++){
+    for (var i = 0; i < userData.length; i++) {
         if (userData[i][1] == userId) {
             return userData[i];
         }
@@ -213,10 +236,17 @@ function jsFunction() {
     var eventTableData = [];
 
     eventTable.clear().draw();
-    for (var i = 0; i < globalTable.length; i++) {
-        if (globalTable[i][0] == $("#selectEvent").val()) {
+    if ($("#selectEvent").val() == 0) {
+        for (var i = 0; i < globalTable.length; i++) {
             eventTableData.push(globalTable[i]);
             eventTable.rows.add(eventTableData);
+        }
+    } else {
+        for (var i = 0; i < globalTable.length; i++) {
+            if (globalTable[i][0] == $("#selectEvent").val()) {
+                eventTableData.push(globalTable[i]);
+                eventTable.rows.add(eventTableData);
+            }
         }
     }
     eventTable.columns.adjust().draw();
@@ -226,47 +256,33 @@ function jsFunction() {
 // An extracted method API that is used to activate and deactivate
 // users who have paid
 // </summary>
-function makeAPICalls(eventID, eventType) {
+function makeAPICalls(registration) {
+    var info = registration[0];
+    info.isPaid = true;
 
-    if (eventType == "frosty") {
+    if (registration[1] == "frosty") {
         $.ajax({
-            type: "GET",
-            url: "/api/FrostyRegistration/" + eventID,
+            type: "PUT",
+            url: "/api/FrostyRegistration/" + info.id,
             contentType: "application/json",
             datatype: "json"
         }).done(function (data) {
-            var eventInfo = data;
-            eventInfo.isPaid = activateBoolean;
-            $.ajax({
-                type: "PUT",
-                url: "/api/FrostyRegistration/42" + userID,
-                contentType: "application/json",
-                datatype: "json"
-            }).done(function (data) {
-                //location.reload();
-            });
+            location.reload();
         }).fail(function () {
-            alert("No user with that ID");
+            alert("Failed To Pay for Event");
         });
+
     } else {
+
         $.ajax({
-            type: "GET",
-            url: "/api/BFKSRegistration" + eventID,
+            type: "PUT",
+            url: "/api/BFKSRegistration" + info.id,
             contentType: "application/json",
             datatype: "json"
         }).done(function (data) {
-            var eventInfo = data;
-            eventInfo.isPaid = activateBoolean;
-            $.ajax({
-                type: "PUT",
-                url: "/api/BFKSRegistration" + eventID,
-                contentType: "application/json",
-                datatype: "json"
-            }).done(function (data) {
-                //location.reload();
-            });
+            location.reload();
         }).fail(function () {
-            alert("No user with that ID");
+            alert("Failed To Pay for Event");
         });
     }
 }

@@ -63,7 +63,6 @@
 
         var userName = $("#userName").val();
         var userEmail = $("#userEmail").val();
-
         var data = {
             email: userEmail,
             newPassword: "change",
@@ -75,7 +74,7 @@
             phone: "change",
             year: "change",
             tshirtSize: "change",
-            type: "volunteer",
+            type: $("#accountType").val(),
             companyName: "change",
             dateOfBirth: "change",
             isActive: true
@@ -89,7 +88,7 @@
             datatype: "json"
         }).done(function (data) {
             THYF.hideLoading();
-            alert("User Created" + data + "'");
+            location.reload();
         }).fail(function (jqXHR, textStatus, error) {
             THYF.hideLoading();
             var message = jqXHR.responseJSON ? jqXHR.responseJSON.Message : "No details";
