@@ -9,6 +9,10 @@
 	}).done(function (user)
 	{
 		userInfo = user;
+		$("#anon-or-loggedin-call").text("Make Donation");
+	}).fail(function ()
+	{
+		$("#anon-or-loggedin-call").text("Make Anonymous Donation");
 	});
 	$("#anon-or-loggedin-call").on("click", function ()
 	{		
@@ -33,10 +37,7 @@
 			});
 		} else
 		{
-			//var email = userInfo.email;
-			//var name = userInfo.name;
-			//var userId = userInfo.userId;
-			//var user = userInfo
+			//Logged-in user call
 			$.ajax({
 				type: "POST",
 				url: "http://localhost:8888/api/PaypalAuthorization",
@@ -55,9 +56,9 @@
 			});
 		}
 	});
-
 	$("#emailcall").on("click", function ()
 	{
+		//E-mail call
 		if (!userInfo)
 		{
 			var localemail = $("#email-email").val();
