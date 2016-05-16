@@ -182,7 +182,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Project_Readme.html" />
-    <None Include="Properties\PublishProfiles\Terre Haute Youth Fundraising %28Production%29.pubxml" />
+    <None Include="Properties\PublishProfiles\THYF %28Production%29.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
   </ItemGroup>
   <ItemGroup>

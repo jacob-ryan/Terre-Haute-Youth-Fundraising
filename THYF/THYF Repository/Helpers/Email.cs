@@ -29,7 +29,7 @@ namespace THYF_Repository.Helpers
 				+ "The password for your account in the BBBS system has been reset.  "
 				+ "You will need to log in using the link provided below.  "
 				+ "This temporary link will expire after 24 hours, so be sure to log in and update your password as soon as possible.<br><br>"
-				+ "<a href=\"https://thyf.azurewebsites.net/#/reset-password/" + Uri.EscapeDataString(to) + "/" + Uri.EscapeDataString(password) + "\">Reset Password Now</a>";
+				+ "<a href=\"https://thyf.azurewebsites.net/site/#/reset-password/" + Uri.EscapeDataString(to) + "/" + Uri.EscapeDataString(password) + "\">Reset Password Now</a>";
 			Email.sendEmail(to, subject, body, null, null);
 		}
 
