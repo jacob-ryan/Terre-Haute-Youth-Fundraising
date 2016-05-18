@@ -65,9 +65,11 @@ $(document).ready(function () {
             return this.value;
         }).get()
 
+        //console.log(checkedValues);
+        //console.log(registrationsGlobal);
         for (var i = 0; i < checkedValues; i++) {
             for (var j = 0; j < registrationsGlobal.length; j++) {
-                if (registrationsGlobal[j][0].eventOccurrenceId == checkedValues[i]) {
+                if (registrationsGlobal[j][0].id == checkedValues[i]) {
                     makeAPICalls(registrationsGlobal[j]);
                 }
             }
@@ -186,7 +188,7 @@ var EventApiCalls = function (userData) {
                     var user = findUserData(userData, info.userId);
                     var payCheck;
                     if (info.isPaid != true) {
-                        payCheck = "<input class = 'boxes' type='checkbox' value='" + info.eventOccurrenceId + "'>";
+                        payCheck = "<input class = 'boxes' type='checkbox' value='" + info.id + "'>";
                     } else {
                         payCheck = "X";
                     }
@@ -256,9 +258,17 @@ function jsFunction() {
 // users who have paid
 // </summary>
 function makeAPICalls(registration) {
-    var info = registration[0];
-    info.isPaid = true;
+    var info;
 
+    info = {
+        id: registration[0].id,
+        eventOccurrenceId: registration[0].eventOccurrenceId,
+        userId: registration[0].userId,
+        isPaid: true,
+        isMinor: registration[0].isMinor,
+        dateCreated: registration[0].dateCreated
+    };
+    console.log(info);
     if (registration[1] == "frosty") {
         $.ajax({
             type: "PUT",
@@ -272,7 +282,6 @@ function makeAPICalls(registration) {
         });
 
     } else {
-
         $.ajax({
             type: "PUT",
             url: "/api/BFKSRegistration" + info.id,
