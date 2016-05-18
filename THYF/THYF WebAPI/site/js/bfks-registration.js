@@ -67,16 +67,16 @@
 			for (var i = 0; i < 6; i += 1)
 			{
 				rules["bowler-" + i + "-email"] = {
-					required: i < 4,
+					required: i < 0,
 					maxlength: 255,
 					email: true
 				};
 				rules["bowler-" + i + "-name"] = {
-					required: i < 4,
+					required: i < 0,
 					maxlength: 255
 				};
 				rules["bowler-" + i + "-tshirt"] = {
-					required: i < 4
+					required: i < 0
 				};
 			}
 			return rules;
