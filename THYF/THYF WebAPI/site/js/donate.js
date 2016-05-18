@@ -21,7 +21,7 @@
 			//Anonymous Call
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:8888/api/PaypalAuthorization",
+				url: "/api/PaypalAuthorization",
 				contentType: "application/json",
 				datatype: "json",
 				data: JSON.stringify({
@@ -40,7 +40,7 @@
 			//Logged-in user call
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:8888/api/PaypalAuthorization",
+				url: "/api/PaypalAuthorization",
 				contentType: "application/json",
 				datatype: "json",
 				data: JSON.stringify({
@@ -66,7 +66,7 @@
 			//alert(localname + " " + localemail);
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:8888/api/PaypalAuthorization",
+				url: "/api/PaypalAuthorization",
 				contentType: "application/json",
 				datatype: "json",
 				data: JSON.stringify({
